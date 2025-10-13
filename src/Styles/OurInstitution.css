@@ -1,0 +1,103 @@
+.institutions-wrapper {
+  width: 100%;
+  margin-top: 100px;
+  background: #fff;
+  padding: 60px 80px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+/* Headings */
+.institution-header {
+  margin-bottom: 30px;
+}
+
+.institution-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e2a36;
+  text-transform: uppercase;
+  line-height: 1.5;
+  margin: 0;
+  position: relative;
+}
+
+/* Left Yellow Bar */
+.left-border h2::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  height: 100%;
+  background: #f4b400;
+}
+
+/* Right Yellow Bar */
+.right-border h2::after {
+  content: "";
+  position: absolute;
+  right: -15px;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  height: 100%;
+  background: #f4b400;
+}
+
+.institution.reverse{
+  background-color: #f8f8f8;
+}
+
+/* Layout */
+.institution-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Reverse layout for HIT */
+.institution-content.reverse {
+  flex-direction:row;
+  
+}
+
+/* Image */
+.institution-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.institution-image img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Text */
+.institution-text {
+  flex: 2;
+}
+
+.institution-text ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.institution-text li {
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+  color: #1e2a36;
+}
+
+.institution-text strong {
+  color: #000;
+}
+.institution-header.right-border{
+  text-align: right;
+}

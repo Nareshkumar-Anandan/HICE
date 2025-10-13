@@ -1,0 +1,133 @@
+.evaluation-section {
+  position: relative;
+  padding: 40px;
+  margin-top: 20px;
+  z-index: -1;
+}
+
+.evaluation-content {
+  padding: 12px 0 0px 0;
+  min-height: 480px;
+  z-index: 10;
+}
+
+.evaluation-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  font-family: 'Outfit', sans-serif;
+}
+
+@media (min-width: 1024px) {
+  .evaluation-flex {
+    flex-direction: row;
+    gap: 80px;
+  }
+}
+
+/* Image Container */
+.evaluation-image-container {
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.decorative-img-wrapper {
+  position: absolute;
+  top: 76%;
+  left: 20%;
+  transform: translateX(-50%);
+  width: 50%;
+  z-index: 8;
+}
+
+@media (min-width: 1024px) {
+  .decorative-img-wrapper {
+    left: 33%;
+    width: 60%;
+    height: 60%;
+  }
+}
+
+.decorative-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.image-place{
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 40px;
+  z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  .image-placeholder {
+    margin-bottom: 0;
+  }
+}
+
+.placeholder-img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* Text Content */
+.evaluation-text {
+  width: 100%;
+  max-width: 600px;
+  z-index: 10;
+}
+
+.milestones-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.milestone-item {
+  color: #374151; /* Tailwind gray-700 */
+  font-size: 1rem;
+  line-height: 1.75rem;
+  text-align: justify;
+}
+
+@media (min-width: 768px) {
+  .milestone-item {
+    font-size: 1.125rem;
+  }
+}
+
+.milestone-year {
+  font-weight: bold;
+  color: #000;
+  margin-right: 4px;
+}
+
+/* Background Photo Gallery */
+.evaluation-bg {
+  position: absolute;
+  width: 100%;
+  top: 60%;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .evaluation-bg {
+    top: 20%;
+  }
+}

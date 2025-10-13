@@ -1,0 +1,31 @@
+.campus-section {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+.section-title-wrapper {
+  padding-left: 40px;
+  padding-bottom: 40px;
+}
+
+.carousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+}
+
+.carousel-track > * {
+  flex: 0 0 auto; /* items won't shrink, occupy exact width */
+}

@@ -1,0 +1,57 @@
+.hice-highlights-section {
+  padding: 60px 80px;
+  background: #fff;
+}
+
+.hice-hind-header h1 {
+  font-family: Neuton;
+  font-size: 34px;
+  font-weight: bold;
+  color: #122133;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 50px;
+}
+.hice-hind-header .highlight {
+  color: #f4b400; /* Yellow line before title */
+  font-weight: bolder;
+  margin-right: 8px;
+  height: 100px;
+  background-color: #f4b400;
+}
+
+
+.hice-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 10px solid #fff;
+  border-right: 10px solid #fff;
+  z-index: 1;
+}
+
+.hice-highlight-card {
+  padding: 40px 20px;
+  text-align: center;
+  border-right: 1px solid #f4b400;
+  border-bottom: 1px solid #f4b400;
+  
+}
+
+.hice-highlight-card .icon {
+  font-size: 40px;
+  color: #f6b400;
+  margin-bottom: 15px;
+}
+
+.hice-highlight-card h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.hice-highlight-card p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.4;
+}

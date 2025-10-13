@@ -1,0 +1,534 @@
+:root {
+  --primary-bg: #00929F;
+  --accent-bg: #00929F;
+  --light-teal: #00929F;
+  --text-white: #FFFFFF;
+  --text-black: #000000;
+  --light-bg: #F5F5F5;
+  --gray-bg: #EAEAEA;
+  --image-border: #4a90e2;
+  --dark-teal-banner: #00929F;
+}
+
+
+.trust-website {
+  width: 100%;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* About Trust Section */
+.about-trust {
+  background: var(--light-bg);
+  padding: 60px 80px;
+  height: 600px;
+}
+
+.about-content {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.about-left {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-title {
+  padding-left: -0.5rem;
+  margin-left: -4rem;
+}
+
+.about-title h2 {
+  font-size: 38px;
+  font-weight: bold;
+  font-style: Outfit;
+  transform: translateX(10px);
+}
+
+.about-title .highlight{
+  color: #f4b400; /* Yellow line before title */
+  font-weight: bold;
+  margin-right: 8px;
+  height: 100px;
+  background-color: #f4b400;
+}
+.about-left {
+  width: 650px;
+  height: 450px;
+}
+.image-placeholder  img {
+  position: absolute;
+  width: 100%;
+  max-width: 355px;
+  height: 280px;
+  border-radius: 8px;
+}
+.image-placeholder1 img {
+  position: absolute;
+  width: 100%;
+  max-width: 445px;
+  height: 300px;
+  border-radius: 8px;
+}
+.image-placeholder1{
+  margin-top: 140px;
+  margin-left: 160px;
+}
+.image-placeholder{
+  margin-top: 0px;
+  margin-left: 0px;
+}
+.about-right{
+ height: 500px;
+ padding: 50px;
+}
+
+.about-right p {
+  width: 500px;
+  font-family: Outfit;
+  font-size: 20px;
+  padding-top: 100px;
+  text-align: justify;
+  font-weight: normal;
+  margin-bottom: 16px;
+  color: #333;
+}
+.trust-vector{
+   margin-top: 230px;
+  margin-left: 0px;
+}
+/* Profile Sections */
+.profile-section {
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: visible;
+}
+
+/* Founder & Chairman Section (Teal) */
+.profile-section.teal {
+  background: #00929F;
+  height: 189px;
+  padding: 0;
+}
+.decorative-design-right {
+  position: absolute;
+  right: 3px;
+  bottom: 20px;
+  width: 480px; /* Adjust as needed */
+  height: auto;
+  z-index: 1; /* Ensure it is behind the content */
+  pointer-events: none;
+}
+.decorative-design-right img {
+  width: 100%;
+  height: auto;
+  display: block;
+   transform: scaleX(-1);
+}
+.profile-section.teal .profile-content {
+  align-items: center;
+}
+
+.profile-section.teal .profile-image-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.profile-section.teal .profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0;
+  border: 2px solid black;
+}
+
+.profile-section.teal .profile-text-wrapper {
+  color: var(--text-white);
+}
+
+/* General Profile Content Layout */
+.profile-content {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+}
+
+.profile-content.reverse {
+  flex-direction: row-reverse;
+}
+
+.profile-text {
+  flex: 1;
+}
+.geometric-banner {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 320px;
+  height: auto;
+  pointer-events: none;
+}
+.profile-section.light-teal.trustee-banner-profile {
+  position: relative;
+  overflow: visible;
+  
+}
+
+.profile-header .highlight {
+  color: #f4b400; /* Yellow line before title */
+  font-weight: bolder;
+  margin-right: 8px;
+  height: 100px;
+  background-color: #f4b400;
+  font-family: Neuton;
+  font-weight: bold;
+}
+
+.profile-header h3 {
+   font-family: Neuton;
+  font-weight: bold;
+  font-size: 38px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.quote {
+  font-family: Outfit;
+  font-size: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.profile-name{
+  font-family: Outfit;
+  font-size: 25px;
+  margin-top: 10px;
+}
+.profile-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-black);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-family: 'Outfit', sans-serif;
+  
+}
+
+/* Combined Section */
+.combined-section {
+  padding: 2rem;
+  background: var(--light-teal);
+}
+
+.profile-item {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+/* Trustee Section Styles */
+.trustee-section {
+  width: 100%;
+  background-color: white;
+}
+
+/* Biography Text Section */
+.biography-section {
+  max-width: 1152px;
+  padding: 48px 24px;
+}
+
+.biography-content {
+  text-align: center;
+  color: #1f2937;
+  line-height: 1.75;
+  
+}
+
+.biography-content p {
+  font-family: Outfit;
+  font-size: 20px;
+  text-align: justify;
+}
+.biography-section-1 {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.biography-content-1 {
+  
+  text-align: center;
+  color: #1f2937;
+  line-height: 1.75;
+}
+
+.biography-content-1 p {
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+.biography-section {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  margin-top: -80px; 
+}
+
+/* Founder Section (Image left) */
+.founder-section .profile-content {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: none;
+  margin-left: 0;
+  padding-left: 0;
+  width: 100%;
+}
+
+.founder-section .profile-image-container {
+  margin-left: -28px;
+  padding-left: -8px;
+}
+/* Managing Trustee & Executive Trustee profile banners (Image Right) */
+.trustee-banner-profile {
+  background: #00929F;
+  height: 195px;
+  padding: 0;
+  margin-bottom: 100px;
+}
+
+.trustee-banner-profile .profile-content {
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6rem;
+  max-width:none;
+  margin-right: -20px;
+  padding-left: -10px;
+  width: 100%;
+  position: relative; /* Add position relative here to contain the absolute positioned image */
+}
+/* New CSS for the decorative image */
+.decorative-design-left {
+  position: absolute;
+  left: -15px;
+  bottom: 20px;
+  width: 480px; /* Adjust as needed */
+  height: auto;
+  z-index: 1; /* Ensure it is behind the content */
+  pointer-events: none;
+}
+.decorative-design-left img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.trustee-banner-profile .profile-image-container {
+  order: 2;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 0;
+  z-index: 2;
+  overflow: hidden;
+  margin-top: -55px;
+  margin-left: -40px;
+  padding-left: -12px;
+}
+
+.trustee-banner-profile .profile-text-wrapper {
+  order: 1;
+  color: var(--text-white);
+  text-align: right;
+}
+
+.trustee-banner-profile .profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 0;
+  border: none;
+}
+
+/* Trustee Section (Image Left) */
+.trustee-section-banner {
+  background: #00929F;
+  height: 195px;
+  padding: 0;
+  margin-bottom: 100px;
+  position: relative;
+  overflow: visible;
+}
+
+.trustee-section-banner .profile-content {
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4rem;
+  flex-direction: row;
+  max-width: none;
+  margin-left: 0;
+  padding-left: 0;
+  width: 100%;
+}
+
+.trustee-section-banner .profile-image-container {
+  order: 1;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 0;
+  z-index: 2;
+  overflow: hidden;
+  margin-top: -55px;
+  margin-left: -10px;
+  padding-left: -5px;
+}
+
+.trustee-section-banner .profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 0;
+  border: none;
+}
+
+.trustee-section-banner .profile-text-wrapper {
+  order: 2;
+  color: var(--text-white);
+  text-align: left;
+}
+
+.trustee-section-banner .profile-text-wrapper .profile-header {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-content,
+  .profile-content,
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .profile-section.teal {
+    height: auto;
+  }
+
+  .profile-content.reverse {
+    flex-direction: column-reverse;
+  }
+
+  .profile-section.teal .profile-image-container {
+    margin-top: -50px;
+  }
+
+  .about-left h2 {
+    font-size: 2rem;
+  }
+
+  .decorative-shape {
+    display: none;
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .biography-section {
+    padding: 32px 16px;
+  }
+
+  .biography-content p {
+    font-size: 14px;
+    margin-bottom: 16px;
+  
+  }
+  
+
+  .banner-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 48px 16px;
+  }
+
+  .profile-container {
+    margin-left: 0;
+    margin-top: 32px;
+  }
+
+  .profile-image-wrapper {
+    width: 128px;
+    height: 128px;
+  }
+
+  .managing-trustee-title {
+    font-size: 28px;
+  }
+
+  .trustee-quote,
+  .trustee-name {
+    font-size: 18px;
+  }
+
+  .trustee-banner-profile .profile-content {
+    flex-direction: column-reverse;
+  }
+
+  .trustee-section-banner .profile-content {
+    flex-direction: column;
+  }
+
+  .trustee-banner-profile .profile-image-container,
+  .trustee-section-banner .profile-image-container {
+    margin-top: 0;
+  }
+
+  .trustee-banner-profile .profile-text-wrapper,
+  .trustee-section-banner .profile-text-wrapper {
+    text-align: center;
+  }
+
+  .trustee-banner-profile .profile-text-wrapper .profile-header,
+  .trustee-section-banner .profile-text-wrapper .profile-header {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .managing-trustee-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .title-divider {
+    height: 48px;
+    margin-bottom: 16px;
+  }
+
+  .trustee-quote,
+  .trustee-name {
+    font-size: 16px;
+  }
+}

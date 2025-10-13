@@ -1,0 +1,98 @@
+.image-animator-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+}
+
+@media (min-width: 768px) {
+  .image-animator-container {
+    width: 80%;
+    height: 380px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .image-animator-container {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+.image-box {
+  position: absolute;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.image-box.with-shadow {
+  box-shadow: 0 10px 80px rgba(0, 0, 0, 0.2);
+}
+
+.image-box.top {
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 160px;
+}
+
+@media (min-width: 768px) {
+  .image-box.top {
+    width: 75%;
+    height: 220px;
+  }
+}
+
+.image-box.bottom {
+  bottom: 40px;
+  left: 80px;
+  width: 80%;
+  height: 180px;
+}
+
+@media (min-width: 768px) {
+  .image-box.bottom {
+    bottom: 20px;
+    left: 120px;
+    height: 250px;
+  }
+}
+
+.image-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  animation: fadeSlide 0.7s ease-in-out;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.decorative-element {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  z-index: -1;
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+  transform: scale(1.5);
+}
+
+@media (min-width: 768px) {
+  .decorative-element {
+    bottom: 56px;
+    left: 28px;
+    width: 160px;
+    transform: scale(2);
+  }
+}

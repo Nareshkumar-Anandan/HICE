@@ -1,0 +1,36 @@
+.counter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  background: #f8f8f8;
+  flex-wrap: wrap; /* makes it responsive */
+}
+
+.counter-box {
+  text-align: center;
+  color: #0a1a2f;
+  font-family: Arial, sans-serif;
+  flex: 1 1 200px; /* responsive sizing */
+}
+
+.counter-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.counter-box h2 {
+  font-size: 32px;
+  font-family: Quattrocento;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.counter-box p {
+  font-family: Odar Mean Chey;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}

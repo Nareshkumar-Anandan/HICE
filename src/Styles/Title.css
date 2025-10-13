@@ -1,0 +1,74 @@
+.title-container {
+  display: flex;
+}
+
+.title-heading {
+  font-family: 'Neuton', serif;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 110%;
+  text-transform: uppercase;
+  color: #102634;
+  padding-left: 36px;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.7s ease-out;
+}
+
+.title-heading.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.title-heading.hide {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+@media (min-width: 640px) {
+  .title-heading {
+    font-size: 32px;
+    padding-left: 48px;
+  }
+}
+
+@media (min-width: 768px) {
+  .title-heading {
+    font-size: 40px;
+    padding-left: 64px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title-heading {
+    font-size: 48px;
+  }
+}
+
+.title-with-line {
+  position: relative;
+}
+
+.title-with-line::before {
+  content: "";
+  position: absolute;
+  left: -36px;
+  top: 0;
+  height: 100%;
+  width: 10px;
+  background: #ffbd05;
+}
+
+@media (min-width: 640px) {
+  .title-with-line::before {
+    left: -48px;
+    width: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .title-with-line::before {
+    left: -64px;
+    width: 16px;
+  }
+}

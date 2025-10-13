@@ -1,0 +1,59 @@
+.vision-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: all 0.5s ease-out;
+  border: 2px solid transparent; /* required for gradient border */
+  background-clip: padding-box; /* keep background inside the border */
+  
+  /* Gradient border */
+  border-image: linear-gradient(90deg, #101534, #00929F, #FFBD05) 1;
+  
+  /* Optional shadow */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.vision-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vision-card-content {
+  padding: 24px 32px;
+  flex: 1;
+  text-align: justify;
+}
+
+.vision-card-title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #1f2937; /* text-gray-800 */
+}
+
+@media (min-width: 768px) {
+  .vision-card-title {
+    font-size: 1.5rem; /* md:text-2xl */
+  }
+}
+
+.vision-card-desc {
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.625rem; /* leading-relaxed */
+  color: #000;
+}
+
+@media (min-width: 768px) {
+  .vision-card-desc {
+    font-size: 1rem; /* md:text-base */
+  }
+}
+
+.animated-border-box {
+  /* optional: if you want a subtle border animation around card */
+  /* e.g., you can add shadow or border here if needed */
+}

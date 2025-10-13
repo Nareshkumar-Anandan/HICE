@@ -1,0 +1,47 @@
+.why-right h2{
+    font-family: 'Outfit';
+    font-size: 26px;
+    font-weight: 900;
+}
+h2 .highlight-head{
+    color: #f1c40f;
+    background-color: #f1c40f;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.principal-container{
+    padding: 60px 80px;
+    height: 900px;
+}
+.principal-message{
+    position: relative;
+    border: 3px solid #f1c40f;
+    border-image: linear-gradient(90deg,  #FFBD05, #00929F,#101534) 1;
+    font-family: 'Outfit';
+    line-height: 1.5rem;
+}
+.principal-message h2{
+    position: absolute;
+    top: -45px;
+    left: 50px;
+    font-family: Neuton;
+    font-size: 36px;
+    font-weight:bolder ;
+    background: white;
+}
+.principal-hypothesize{
+    padding: 30px 40px;
+}
+.principal-hypothesize p{
+    font-size: 20px;
+    font-family: "Outfit";
+    font-weight: 500;
+    line-height: 2rem;
+    text-align: justify;
+}
+.principal-hypothesize p:last-child{
+    margin-left: 80%;
+    margin-top: 100px;
+}

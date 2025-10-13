@@ -1,0 +1,23 @@
+.image-box-container {
+  flex-shrink: 0; /* prevents shrinking */
+}
+
+.image-box-inner {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.image-box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-box-img:hover {
+  transform: scale(1.05);
+}

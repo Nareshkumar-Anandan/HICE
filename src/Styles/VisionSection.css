@@ -1,0 +1,75 @@
+.vision-section {
+  position: relative;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 520px;
+  background: linear-gradient(to bottom, #ffffff, #f0f8ff, #d6f4f7);
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.vision-section.visible {
+  opacity: 1;
+}
+
+.vision-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+}
+
+@media (min-width: 768px) {
+  .vision-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+.vision-crown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.75);
+  opacity: 0;
+  transition: all 0.7s ease-out;
+  display: none; /* hidden on mobile */
+  z-index: 20;
+  padding: 12px;
+}
+
+.vision-crown.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (min-width: 768px) {
+  .vision-crown {
+    display: block;
+  }
+}
+
+.animated-border-circle {
+  padding: 16px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: white;
+}
+
+.crown-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .crown-img {
+    width: 88px;
+    height: 88px;
+  }
+}
