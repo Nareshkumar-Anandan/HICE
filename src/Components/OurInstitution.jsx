@@ -1,11 +1,11 @@
 import React from "react";
 import "../Styles/OurInstitution.css";
+import "../Styles/Home.css"
 import campusBackground from "../Assets/Subtract.png";
 import LeftImage from "../Assets/lab.jpg";
 import LeftImage1 from "../Assets/library.jpg";
 import TrustVector from "../Assets/Vector.png";
 import crown from "../Assets/Vector/Crown.png";
-import Frame from "../Assets/Frame.png";
 import Footer from "./Footer";
 import HicetImg from '../Assets/library.jpg'
 

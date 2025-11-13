@@ -14,6 +14,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [admissionOpen, setAdmissionOpen] = useState(false);
   const [infrastructureOpen,setinfrastructureOpen] = useState(false);
+  const [placementsOpen, setPlacementsOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -199,8 +200,8 @@ const Navbar = () => {
         <div className="admission-intro">
           <h3>Admission Information</h3>
           <p>
-            Get complete details regarding admissions, eligibility,
-            scholarship benefits and procedures.
+            Admission Information provides clear details on eligibility, application procedures, and 
+            important dates for enrolling at Hindusthan College of Engineering.
           </p>
         </div>
 
@@ -213,7 +214,8 @@ const Navbar = () => {
             }}
           >
             <h3>Admission Policy <span className="icon-vector"><FaChevronRight /></span></h3>
-            <p>Understand our transparent admission selection criteria.</p>
+            <p>Our Admission Policy ensures fair evaluation, equal opportunity, and a structured 
+              process for selecting deserving candidates across all programs.</p>
           </div>
 
           <div
@@ -224,7 +226,8 @@ const Navbar = () => {
             }}
           >
             <h3>Application Form <span className="icon-vector"><FaChevronRight /></span></h3>
-            <p>Start your application journey here.</p>
+            <p>The Application Form allows prospective students to submit their personal, academic, and program
+               details required for the admission process.</p>
           </div>
 
           <div
@@ -235,7 +238,8 @@ const Navbar = () => {
             }}
           >
             <h3>Prospectus <span className="icon-vector"><FaChevronRight /></span></h3>
-            <p>Download our program details and course overview.</p>
+            <p>Our Prospectus offers detailed insights into courses, campus life, faculty excellence, and 
+              opportunities available at Hindusthan College of Engineering.</p>
           </div>
 
           <div
@@ -246,7 +250,8 @@ const Navbar = () => {
             }}
           >
             <h3>Scholarships <span className="icon-vector"><FaChevronRight /></span></h3>
-            <p>Exclusive scholarships for meritorious students.</p>
+            <p>Scholarships are offered to support eligible students by recognizing academic excellence and providing
+               financial assistance to ease their educational journey.</p>
           </div>
         </div>
       </div>
@@ -286,12 +291,12 @@ const Navbar = () => {
                       }}
                     >
                       <h3>
-                        UG & PG Programmes{" "}
+                        Programmes{" "}
                         <span className="icon-vector">
                           <FaChevronRight />
                         </span>
                       </h3>
-                      <p>Comprehensive UG & PG courses across disciplines.</p>
+                      <p>Explore diverse, industry-ready programmes for your academic growth.</p>
                     </div>
 
                     <div
@@ -302,12 +307,87 @@ const Navbar = () => {
                       }}
                     >
                       <h3>
-                        Our Faculty{" "}
+                        Curiculum & Syllabus{" "}
                         <span className="icon-vector">
                           <FaChevronRight />
                         </span>
                       </h3>
-                      <p>Highly qualified educators shaping future leaders.</p>
+                      <p>Access detailed course structures and subject-wise syllabi for every programme.</p>
+                    </div>
+                    <div
+                      className="about-nav"
+                      onClick={() => {
+                        navigate("/faculty");
+                        closeMenus();
+                      }}
+                    >
+                      <h3>
+                        Academic Calender{" "}
+                        <span className="icon-vector">
+                          <FaChevronRight />
+                        </span>
+                      </h3>
+                      <p>View the scheduled academic activities, timelines, and important institutional dates.</p>
+                    </div>
+                    <div
+                      className="about-nav"
+                      onClick={() => {
+                        navigate("/faculty");
+                        closeMenus();
+                      }}
+                    >
+                      <h3>
+                        Student Centric Learning{" "}
+                        <span className="icon-vector">
+                          <FaChevronRight />
+                        </span>
+                      </h3>
+                      <p>Experience learning designed to support individual student needs, growth, and active participation.</p>
+                    </div>
+                    <div
+                      className="about-nav"
+                      onClick={() => {
+                        navigate("/faculty");
+                        closeMenus();
+                      }}
+                    >
+                      <h3>
+                        SDGs{" "}
+                        <span className="icon-vector">
+                          <FaChevronRight />
+                        </span>
+                      </h3>
+                      <p>Promoting Sustainable Development Goals through education, innovation, and responsible campus initiatives.</p>
+                    </div>
+                    <div
+                      className="about-nav"
+                      onClick={() => {
+                        navigate("/faculty");
+                        closeMenus();
+                      }}
+                    >
+                      <h3>
+                        Educational Philosophy{" "}
+                        <span className="icon-vector">
+                          <FaChevronRight />
+                        </span>
+                      </h3>
+                      <p>Our educational philosophy focuses on holistic learning that nurtures knowledge, values, and real-world skills.</p>
+                    </div>
+                     <div
+                      className="about-nav"
+                      onClick={() => {
+                        navigate("/faculty");
+                        closeMenus();
+                      }}
+                    >
+                      <h3>
+                        Magazine{" "}
+                        <span className="icon-vector">
+                          <FaChevronRight />
+                        </span>
+                      </h3>
+                      <p>Explore our annual magazine showcasing student achievements, events, and institutional highlights.</p>
                     </div>
                   </div>
                 </div>
@@ -350,7 +430,8 @@ const Navbar = () => {
                           <FaChevronRight />
                         </span>
                       </h3>
-                      <p>Comprehensive UG & PG courses across disciplines.</p>
+                      <p>Modern, technology-enabled classrooms designed to enhance interactive and engaging learning experiences.
+They provide a comfortable environment that supports effective teaching and student participation.</p>
                     </div>
 
                     <div
@@ -366,7 +447,8 @@ const Navbar = () => {
                           <FaChevronRight />
                         </span>
                       </h3>
-                      <p>Highly qualified educators shaping future leaders.</p>
+                      <p>Our library offers a vast collection of books, journals, e-resources, and digital learning materials.
+It serves as a knowledge hub that supports research, academic growth, and self-learning.</p>
                     </div>
                      <div
                       className="infrastructure-nav"
@@ -381,7 +463,8 @@ const Navbar = () => {
                           <FaChevronRight />
                         </span>
                       </h3>
-                      <p>Highly qualified educators shaping future leaders.</p>
+                      <p>The hostel provides safe, comfortable, and well-maintained living spaces for students.
+It ensures a homely environment with essential amenities and round-the-clock support.</p>
                     </div>
                      <div
                       className="infrastructure-nav"
@@ -396,7 +479,8 @@ const Navbar = () => {
                           <FaChevronRight />
                         </span>
                       </h3>
-                      <p>Highly qualified educators shaping future leaders.</p>
+                      <p>Our sports facilities promote physical fitness, teamwork, and a strong competitive spirit among students.
+A wide range of indoor and outdoor games encourages active participation and overall development.</p>
                     </div>
                      <div
                       className="infrastructure-nav"
@@ -411,7 +495,8 @@ const Navbar = () => {
                           <FaChevronRight />
                         </span>
                       </h3>
-                      <p>Highly qualified educators shaping future leaders.</p>
+                      <p>The canteen offers hygienic, fresh, and affordable food options that cater to diverse tastes.
+It provides a lively space for students to relax, interact, and enjoy nutritious meals.</p>
                     </div>
                   </div>
                 </div>
@@ -419,11 +504,74 @@ const Navbar = () => {
             )}
           </li>
 
-          <li>
-            <NavLink to="" onClick={closeMenus}>
-              Placements
-            </NavLink>
-          </li>
+          {/* Placements */}
+<li
+  className="placements-dropdown"
+  onMouseEnter={() => !menuOpen && setPlacementsOpen(true)}
+  onMouseLeave={() => !menuOpen && setPlacementsOpen(false)}
+  onClick={() => menuOpen && setPlacementsOpen(!placementsOpen)}
+>
+  <NavLink to="/placements" onClick={closeMenus}>
+    Placements <FaChevronRight className="mobile-arrow" />
+  </NavLink>
+
+  {(placementsOpen || (!menuOpen && placementsOpen)) && (
+    <div className="megamenu placements-megamenu">
+      <div className="placements-flex">
+
+        {/* LEFT INTRO */}
+        <div className="placements-intro">
+          <h3>Placement Excellence</h3>
+          <p>
+            Our dedicated placement cell ensures strong industry connections,
+            career guidance, and excellent job opportunities for students.
+          </p>
+        </div>
+
+        {/* RIGHT GRID */}
+        <div className="placement-grid">
+
+          {/* Training & Development */}
+          <div
+            className="placement-item"
+            onClick={() => {
+              navigate("/training-development");
+              closeMenus();
+            }}
+          >
+            <h3>
+              Placement Training <span className="icon-vector"><FaChevronRight /></span>
+            </h3>
+            <p>
+              Soft skills, aptitude training, communication skills,
+              interview preparation, and corporate readiness programs.
+            </p>
+          </div>
+
+          {/* Recruiters */}
+          <div
+            className="placement-item"
+            onClick={() => {
+              navigate("/recruiters");
+              closeMenus();
+            }}
+          >
+            <h3>
+              Our Recruiters <span className="icon-vector"><FaChevronRight /></span>
+            </h3>
+            <p>
+              Leading MNCs like TCS, Wipro, Cognizant, Infosys, HCL,
+              and more recruit from our campus every year.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  )}
+</li>
+
 
           <li>
             <a href="/applyNow" className="apply-btn" onClick={closeMenus}>

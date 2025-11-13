@@ -123,12 +123,11 @@
 .about-megamenu {
   margin-top: 0px;
   position: absolute;
-  width: 1540px;
+  width: 1550px;
   height: 550px;
   left: -745px;
   justify-content: center;
-  overflow: hidden;
-  
+  overflow: hidden; 
 }
 .about-flex{
   margin-top: 39px;
@@ -214,7 +213,7 @@
 .admission-megamenu {
   margin-top: 0px;
   position: absolute;
-  width: 1520px;     /* same as About */
+  width: 1540px;     /* same as About */
   height: 550px;     /* same height */
   left: -838px;      /* adjust to align center with nav (you can tweak pixel if needed) */
   justify-content: center;
@@ -297,7 +296,7 @@
 .academics-megamenu {
   margin-top: 0px;
   position: absolute;
-  width: 1520px;   /* same as about */
+  width: 1540px;   /* same as about */
   height: 550px;   /* same height */
   left: -960px;    /* align under nav */
   justify-content: center;
@@ -326,6 +325,7 @@
 .academics-megamenu .about-intro h3 {
   font-family: Podkava;
   font-size: 25px;
+
 }
 
 .academics-megamenu .about-intro p {
@@ -334,23 +334,22 @@
 }
 
 .academics-megamenu .about-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   width: 1000px;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .academics-megamenu .about-nav {
-  width: 350px;
+  width: 450px;
   transition: background 0.3s ease;
-  height: 150px;
-  margin-left: 80px;
+  height: 100px;
+  margin-left: 50px;
 }
 
 .academics-megamenu .about-nav h3 {
   font-size: 22px;
   font-family: Podkava;
   font-weight: bold;
-  align-items: center;
   height:auto;
 }
 
@@ -361,7 +360,6 @@
 
 .academics-megamenu .about-nav h3 .icon-vector {
   position: absolute;
-  margin-bottom: 10px;
   margin-left: 10px;
   margin-top: 2px;
 }
@@ -369,6 +367,7 @@
 .academics-megamenu .about-grid p {
   font-family: Outfit;
   font-size: 15px;
+  margin-top: -10px;
 }
 /* ✅ Infrastructure Dropdown */
 .infrastructure-dropdown {
@@ -378,9 +377,9 @@
 .infrastructure-megamenu {
   margin-top: 0px;
   position: absolute;
-  width: 1520px;       /* align same as other menus */
+  width: 1540px;       /* align same as other menus */
   height: 550px;
-  left: -1070px;       /* adjust value based on nav item placement */
+  left: -1100px;       /* adjust value based on nav item placement */
   justify-content: center;
   overflow: hidden;
   z-index: 999;
@@ -457,9 +456,9 @@
 .infrastructure-megamenu {
   margin-top: 0px;
   position: absolute;
-  width: 1520px;       /* align same as other menus */
+  width: 1530px;       /* align same as other menus */
   height: 550px;
-  left: -1070px;       /* adjust value based on nav item placement */
+  left: -1090px;       /* adjust value based on nav item placement */
   justify-content: center;
   overflow: hidden;
   z-index: 999;
@@ -528,7 +527,91 @@
   font-family: Outfit;
   font-size: 15px;
 }
+/* ================================
+   📌 PLACEMENTS DROPDOWN MENU
+================================ */
+.placements-dropdown {
+  position: relative;
+}
 
+.placements-megamenu {
+  margin-top: 0px;
+  position: absolute;
+  width: 1540px;        /* same layout as About & Admission */
+  height: 550px;
+  left: -1240px;        /* adjust for perfect alignment with nav item */
+  justify-content: center;
+  overflow: hidden;
+  z-index: 999;
+}
+
+/* MAIN FLEX CONTAINER */
+.placements-megamenu .placements-flex {
+  margin-top: 39px;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  justify-content: center;
+  padding: 15px;
+  border-top: 1px solid rgba(128, 128, 128, 0.292);
+  box-shadow: 0px 8px 6px -6px rgba(0, 0, 0, 0.3);
+}
+
+/* LEFT INFO SECTION */
+.placements-megamenu .placements-intro {
+  width: 440px;
+  height: 400px;
+  border-right: 2px solid grey;
+  padding-right: 20px;
+}
+
+.placements-megamenu .placements-intro h3 {
+  font-family: Podkava;
+  font-size: 25px;
+}
+
+.placements-megamenu .placements-intro p {
+  font-family: Outfit;
+  font-size: 20px;
+}
+
+/* RIGHT GRID */
+.placements-megamenu .placement-grid {
+  display: grid;
+  width: 1000px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* EACH ITEM */
+.placements-megamenu .placement-item {
+  width: 350px;
+  height: 150px;
+  margin-left: 80px;
+  transition: background 0.3s ease;
+}
+
+.placements-megamenu .placement-item h3 {
+  font-size: 22px;
+  font-family: Podkava;
+  font-weight: bold;
+  position: relative;
+}
+
+.placements-megamenu .placement-item h3:hover {
+  color: #f1c40f;
+  cursor: pointer;
+}
+
+.placements-megamenu .placement-item h3 .icon-vector {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 2px;
+}
+
+.placements-megamenu .placement-grid p {
+  font-family: Outfit;
+  font-size: 15px;
+}
 
 /* ✅ MOBILE RESPONSIVENESS */
 .menu-toggle {
