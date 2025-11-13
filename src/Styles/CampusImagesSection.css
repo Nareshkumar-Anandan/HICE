@@ -29,3 +29,56 @@
 .carousel-track > * {
   flex: 0 0 auto; /* items won't shrink, occupy exact width */
 }
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  border: 2px solid black;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 1024px; /* roughly max-w-4xl */
+  max-height: 90vh;
+  padding: 16px;
+  gap: 30px;
+ 
+}
+
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+   
+}
+.image-box-container {
+  flex-shrink: 0; /* prevents shrinking */
+}
+
+.image-box-inner {
+  width: 96%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-box-img:hover {
+  transform: scale(1.05);
+}

@@ -1,15 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef} from "react";
+import { useInView } from "react-intersection-observer";
 import '../Styles/AboutInstitutionSection.css';
 import campusBackground from "../Assets/Subtract.png";
 import LeftImage from "../Assets/hospital.jpg";
 import LeftImage2 from '../Assets/hostel.jpg';
 import img1 from "../Assets/hospital.jpg";
 import img2 from '../Assets/hostel.jpg';
-import VisionSection from "./VisionSection.jsx";
-import EvaluationOfCampus from "./EvaluationOfCampus.jsx";
+import PhotoGalleryLayoutBackground from "./PhotoGalleryLayoutBackground";
+import "../Styles/EvaluationOfCampus.css";
+import HiceImg from "../Assets/lab.jpg";
+import HiceVector from "../Assets/vectorEvent.png";
+import SectionTitle from "./Title";
 import CampusImagesSection from "./CampusImagesSection.jsx";
 import Footer from "./Footer.jsx";
-import RightImage from "../Assets/Vector.png"
+import RightImage from "../Assets/Vector.png";
+import crown from "../Assets/Vector/Crown.png";
 const IMAGE_LIST = [
    img1,
    img2,
@@ -45,9 +50,24 @@ const AboutInstitutionSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const topImage = IMAGE_LIST[currentIndex];
-  const bottomImage =
-    IMAGE_LIST[(currentIndex - 1 + IMAGE_LIST.length) % IMAGE_LIST.length];
+  const milestonesData = [
+  {
+    year: "1998:",
+    text: "Founded with an intake of 144 students, HICAS has grown to accommodate over 9,300 students annually across various academic programs.",
+  },
+  {
+    year: "2015:",
+    text: "Achieved autonomous status, allowing the institution to design its own curriculum and conduct examinations independently, while still awarding degrees conferred by Bharathiar University.",
+  },
+  {
+    year: "2021:",
+    text: "Launched the Hindusthan International Research Academy (HIRA), a significant milestone in fostering research and innovation.",
+  },
+  {
+    year: "2024:",
+    text: "Organized a Faculty Development Programme on Emotional Intelligence and Resiliency in Higher Education, emphasizing the institution's commitment to faculty development.",
+  },
+];
 
   return (
     <div>
@@ -105,8 +125,86 @@ const AboutInstitutionSection = () => {
             </div>
           </div>
         </section>
-    <VisionSection/>
-    <EvaluationOfCampus/>
+     {/* Courses Section */}
+      <div className="courses-container">
+        <div className="courses-card">
+          <h3>Our Mission</h3>
+          <ul>
+            <li>
+             To provide quality education and foster an environment of intellectual growth, ethical values, 
+             and social responsibility, empowering students to become leaders and innovators in a global society.
+            </li>
+          </ul>
+        </div>
+        <div className="courses-card">
+          <h3>Academic Excellence</h3>
+          <ul>
+            <li>
+              Committed to the highest standards of teaching and research, we offer a 
+              diverse range of programs that encourage critical thinking, creativity, and a passion for lifelong learning.
+            </li>
+    
+          </ul>
+        </div>
+        <div className="courses-card">
+          <h3>Course Duration And Intake</h3>
+          <ul>
+            <li>3 Years</li>
+            <li>180 Intakes</li>
+          </ul>
+        </div>
+        <div className="courses-card">
+          <h3>Industry Recognition</h3>
+          <ul>
+            <li>
+              Our BCA course is recognised by DBT Star college scheme. We also
+              have an Industry Integrated Course with GOOGLE Technologies.
+            </li>
+          </ul>
+        </div>
+        <div className="courses-center-icon">
+          <span>
+            <img src={crown} alt="Crown" />
+          </span>
+        </div>
+      </div>
+     <section className="evaluation-section">
+      <SectionTitle
+        text={"Hindusthan college of engineering,"}
+        nextLineText={"Ingur"}
+      />
+      <section className="evaluation-content">
+        <div className="evaluation-flex">
+          <div className="evaluation-image-container">
+            <div className="decorative-img-wrapper">
+              <img
+                src={HiceVector}
+                alt="Decorative background elements"
+                className="decorative-img"
+              />
+            </div>
+
+           <div className="image-place">
+             <img src={HiceImg} alt="HICE" className="placeholder-img" />
+           </div>
+          </div>
+
+          <div className="evaluation-text">
+            <ul className="milestones-list">
+              {milestonesData.map((item, index) => (
+                <li key={index} className="milestone-item">
+                  <strong className="milestone-year">{item.year}</strong>
+                  {item.text}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+      <div className="evaluation-bg">
+        <PhotoGalleryLayoutBackground />
+      </div>
+    </section>
     <CampusImagesSection/>
     <Footer/>
     </div>

@@ -705,3 +705,342 @@
   font-weight: bold;
   text-transform: uppercase;
 }
+
+/* ========================= */
+/* ✅ RESPONSIVE DESIGN CSS  */
+/* ========================= */
+
+
+@media (max-width: 480px) {
+
+  /* ===== HOME SECTION ===== */
+  .home {
+    height: 90vh;
+  }
+
+  .home-content {
+    width: 100px;
+    height: 100px;
+    right: 10px;
+    bottom: 15px;
+    text-align: right;
+  }
+
+  .campus-tour {
+    font-size: 9px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+  }
+  .campus-tour .campus-icon{
+    width: 100px;
+    height: 100px;
+  }
+
+
+  /* ===== WHY HINDUSTHAN ===== */
+  .why-section {
+   display: flex;
+    flex-direction: column;
+    padding: 0px;
+    padding: 20px 10px;
+  }
+
+  .why-title {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+  .why-container{
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .why-right p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .why-left {
+    width: 200px;
+    height: 230px;
+    text-align: left;
+    margin-left: -140px;
+  }
+  .why-left-bottom{
+    margin-top: 90px;
+    margin-left: 100px;
+  }
+  .why-left-bottom img {
+    width: 100%;
+    height: auto;
+  }
+  .why-right-bottom{
+    width: 90px;
+    margin-top: 140px;
+    margin-left: 20px;
+  }
+  .why-right p {
+    font-size: 14px;
+    text-align: justify;
+    padding: 0px  20px;
+    line-height: 1.5;
+  }
+  .why-left img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ===== ABOUT SECTION ===== */
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+  
+  }
+  .about-header {
+    padding: 20px 10px;
+    margin-bottom: 0px;
+  }
+  .about-header h2 {
+    font-size: 20px;
+  }
+  .about-header p {
+    font-size: 16px;
+  }
+  .about-box-home {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-top: 0px;
+  }
+  .about-image{
+    width: 100%;
+    height: 200px;
+
+  }
+  .about-image img {
+    border-top-right-radius: 50px;
+    width: 300px;
+    height: 200px;
+  }
+
+  .about-text-first h3 {
+    font-size: 20px;
+  }
+
+  .about-text-first p {
+    font-size: 14px;
+    text-align: justify;
+  }
+
+  .view-btn {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+  .nav-arrow {
+    width: 40px;
+    height: 45px;
+    text-align: center;
+    align-self: center;
+  }
+  .nav-arrow.left {
+    position: absolute;
+    left: 10px;
+    bottom: 470px;
+}
+  .nav-arrow.right {
+    position: absolute;
+    left: 310px;
+    bottom: 470px;
+  }
+  .about-vector1 {
+    position: absolute;
+    margin-top: 0px;
+    right: 0px;
+  }
+  .about-vector1 img{
+    width: 150px;
+    height: 150px;
+  }
+  .about-vector2{
+    position: absolute;
+    bottom: -20px;
+    right: -10px;
+  }
+  .about-vector2 img{
+    width: 100px;
+    height: 100px;
+    
+  }
+
+  /* ===== EDUCATION SECTION ===== */
+  .edu-wrapper {
+    padding: 0;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .edu-wrapper .edu-heading {
+    position: absolute;
+    font-size: 24px;
+    margin-left: -75px;
+    bottom: 250px;
+    padding-left: 0px;
+  }
+  .edu-left .edu-desc{
+    margin-top: 50px;
+    text-align: justify;
+    font-size: 15px;
+    padding: 0px 15px;
+  }
+  .edu-right{
+    width: 100%;
+  }
+  .edu-frame {
+    flex-direction: row;
+    gap: 10px;
+    height: auto;
+    margin-top: 20px;
+  }
+  .edu-image {
+    border-top-left-radius: 40px;
+    height: 220px;
+    width: 70%;
+    margin-left: 20px;
+  }
+   .edu-image2{
+    height: 300px;
+   }
+  .edu-desc {
+    font-size: 14px;
+  }
+  .edu-search-row {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .edu-search-box {
+    width: 50%;
+  }
+
+  .edu-programs li {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .edu-programs{
+    width: 180px;
+  }
+  .edu-vector{
+    width: 250px;
+    bottom: 0px;
+  }
+
+  
+  /* ===== HINDUSTHAN GRID ===== */
+
+  .hind-header {
+    padding: 0;
+    margin-left: -70px;
+  }
+
+  .hind-title h1 {
+    font-size: 28px;
+    width: 150px;
+  }
+.hind-header h1 span {
+  color: #f4b400;
+  font-family: 'Neuton', serif;
+  font-weight: normal;
+  font-size: 20px;
+}
+.hind-header h1::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 5px;
+  background-color:#f4b400;
+  margin-bottom: 10px; /* spacing between line and text */
+}
+  .hind-header p {
+    font-size: 14px;
+    width: 250px;
+    text-align: justify;
+  }
+
+  .hind-grid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+    justify-items: center;
+  }
+
+  .hind-card {
+    width: 100%;
+    height: 280px;
+  }
+
+  .hind-card img,
+  .hind-overlay {
+   height: auto;
+  }
+
+  .hind-overlay h3 {
+    font-size: 18px;
+  }
+
+  .hind-overlay p {
+    font-size: 14px;
+  }
+
+  .explore-btn {
+    font-size: 16px;
+    bottom: 15px;
+    left: 50%;
+  }
+
+  /* ===== COUNTER SECTION ===== */
+/* ===== COUNTER SECTION (MOBILE) ===== */
+.counter-wrapper {
+  margin-top: 855px;
+  padding: 20px;
+  border: 2px solid red;
+  height: 650px;
+  display: flex;
+  flex-direction: row;        /* ✅ Keep boxes in one line */
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;          /* ✅ No wrapping */
+                  
+}
+
+.counter-box {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.counter-box .counter-icon {
+  width: 40px;
+  height: 40px;
+ 
+  margin-bottom: 5px;
+}
+
+.counter-box h2 {
+  font-size: 13px;
+ 
+  margin: 2px 0;
+}
+
+.counter-box p {
+  font-size: 11px;
+  margin: 0;
+}
+
+
+}

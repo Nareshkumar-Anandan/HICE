@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import SectionTitle from "./Title";
-import ShowClickedImage from "./ShowClickedImage";
-import ImageBox from "./ImageBox";
 import "../Styles/CampusImagesSection.css";
-import img1 from "../Assets/lab.jpg"
-const imageSources = [
-  img1,img1,img1,img1,img1,img1,
-];
+import img1 from "../Assets/lab.jpg";
+
+const imageSources = [img1, img1, img1, img1, img1, img1];
 
 const CAROUSEL_SETTINGS = {
   scrollInterval: 3000,
@@ -17,6 +14,7 @@ const CAROUSEL_SETTINGS = {
   breakpointLG: 1024,
 };
 
+// ✅ Combined Main Component
 const CampusImagesSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(CAROUSEL_SETTINGS.itemsPerViewLG);
@@ -27,6 +25,7 @@ const CampusImagesSection = () => {
 
   const loopedImageSources = [...imageSources, ...imageSources.slice(0, itemsPerView)];
 
+  // Responsive Items Per View
   useEffect(() => {
     const updateItemsPerView = () => {
       if (window.innerWidth < CAROUSEL_SETTINGS.breakpointMD) {
@@ -42,6 +41,7 @@ const CampusImagesSection = () => {
     return () => window.removeEventListener("resize", updateItemsPerView);
   }, []);
 
+  // Auto Carousel Loop
   useEffect(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
@@ -68,6 +68,7 @@ const CampusImagesSection = () => {
         <SectionTitle text="Campus" />
       </div>
 
+      {/* Carousel Section */}
       <div className="carousel-wrapper">
         <div className="carousel-viewport">
           <div
@@ -86,12 +87,60 @@ const CampusImagesSection = () => {
         </div>
       </div>
 
+      {/* Modal for clicked image */}
       {selectedImage && (
         <ShowClickedImage
           selectedImage={selectedImage}
           setSelectedImage={setSelectedImage}
         />
       )}
+    </div>
+  );
+};
+
+// ✅ Inner Component 1: Image Box
+const ImageBox = ({ imageSources, setSelectedImage, itemsPerView }) => {
+  const handleImageClick = (src) => {
+    setSelectedImage(src);
+  };
+
+  return (
+    <>
+      {imageSources.map((src, index) => (
+        <div
+          key={index}
+          className="image-box-container"
+          style={{ width: `${100 / itemsPerView}%` }}
+        >
+          <div className="image-box-inner">
+            <img
+              src={src}
+              alt={`Slide ${index + 1}`}
+              className="image-box-img"
+              onClick={() => handleImageClick(src)}
+            />
+          </div>
+        </div>
+      ))}
+    </>
+  );
+};
+
+// ✅ Inner Component 2: Modal for Clicked Image
+const ShowClickedImage = ({ selectedImage, setSelectedImage }) => {
+  const handleCloseModal = () => {
+    setSelectedImage(null);
+  };
+
+  return (
+    <div
+      className="modal-overlay"
+      onClick={handleCloseModal}
+      title="Click anywhere to close"
+    >
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <img src={selectedImage} alt="Full screen view" className="modal-img" />
+      </div>
     </div>
   );
 };

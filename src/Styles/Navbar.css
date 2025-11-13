@@ -123,9 +123,9 @@
 .about-megamenu {
   margin-top: 0px;
   position: absolute;
-  width: 1440px;
+  width: 1540px;
   height: 550px;
-  left: -800px;
+  left: -745px;
   justify-content: center;
   overflow: hidden;
   
@@ -138,11 +138,10 @@
   justify-content: center;
   padding: 15px;
   border-top: 1px solid rgba(128, 128, 128, 0.292);
- box-shadow: 
-  0px 8px 6px -6px rgba(0, 0, 0, 0.3),   /* bottom */
+  box-shadow: 0px 8px 6px -6px rgba(0, 0, 0, 0.3);
 }
 .about-megamenu .about-intro{
-  width: 400px;
+  width: 440px;
   height: 400px;
   border-right: 2px solid grey;
   padding-right: 20px;
@@ -206,6 +205,90 @@
   margin-right: 8px;
   vertical-align: middle;
 }
+/* Admission */
+
+.admission-dropdown {
+  position: relative;
+}
+
+.admission-megamenu {
+  margin-top: 0px;
+  position: absolute;
+  width: 1520px;     /* same as About */
+  height: 550px;     /* same height */
+  left: -838px;      /* adjust to align center with nav (you can tweak pixel if needed) */
+  justify-content: center;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.admission-megamenu .admission-flex {
+  margin-top: 39px;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  justify-content: center;
+  padding: 15px;
+  border-top: 1px solid rgba(128, 128, 128, 0.292);
+   box-shadow: 
+    0px 8px 6px -6px rgba(0, 0, 0, 0.3); /* bottom */
+}
+
+/* LEFT INFO COLUMN */
+.admission-megamenu .admission-intro {
+  width: 440px;
+  height: 400px;
+  border-right: 2px solid grey;
+  padding-right: 20px;
+}
+
+.admission-megamenu .admission-intro h3 {
+  font-family: Podkava;
+  font-size: 25px;
+}
+
+.admission-megamenu .admission-intro p {
+  font-family: Outfit;
+  font-size: 20px;
+}
+
+/* RIGHT GRID COLUMN */
+.admission-megamenu .admission-grid {
+  display: grid;
+  width: 1000px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.admission-megamenu .admission-nav {
+  width: 350px;
+  transition: background 0.3s ease;
+  height: 150px;
+  margin-left: 80px;
+}
+
+.admission-megamenu .admission-nav h3 {
+  font-size: 22px;
+  font-family: Podkava;
+  font-weight: bold;
+  align-items: center;
+}
+
+.admission-megamenu .admission-nav h3:hover {
+  color: #f1c40f;
+  cursor: pointer;
+}
+
+.admission-megamenu .admission-nav h3 .icon-vector {
+  position: absolute;
+  margin-left: 0px;
+  margin-top: 2px;
+}
+
+.admission-megamenu .admission-grid p {
+  font-family: Outfit;
+  font-size: 15px;
+}
+
 /* Academics Dropdown Container */
 .academics-dropdown {
   position: relative;
@@ -214,9 +297,9 @@
 .academics-megamenu {
   margin-top: 0px;
   position: absolute;
-   width: 1520px;   /* same as about */
+  width: 1520px;   /* same as about */
   height: 550px;   /* same height */
-  left: -974px;    /* align under nav */
+  left: -960px;    /* align under nav */
   justify-content: center;
   overflow: hidden;
 }
@@ -286,4 +369,525 @@
 .academics-megamenu .about-grid p {
   font-family: Outfit;
   font-size: 15px;
+}
+/* ✅ Infrastructure Dropdown */
+.infrastructure-dropdown {
+  position: relative;
+}
+
+.infrastructure-megamenu {
+  margin-top: 0px;
+  position: absolute;
+  width: 1520px;       /* align same as other menus */
+  height: 550px;
+  left: -1070px;       /* adjust value based on nav item placement */
+  justify-content: center;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.infrastructure-megamenu .infrastructure-flex {
+  margin-top: 39px;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  justify-content: center;
+  padding: 15px;
+  border-top: 1px solid rgba(128, 128, 128, 0.292);
+  box-shadow: 0px 8px 6px -6px rgba(0, 0, 0, 0.3);
+}
+
+.infrastructure-megamenu .infrastructure-intro {
+  width: 440px;
+  height: 400px;
+  border-right: 2px solid grey;
+  padding-right: 20px;
+}
+
+.infrastructure-megamenu .infrastructure-intro h3 {
+  font-family: Podkava;
+  font-size: 25px;
+}
+
+.infrastructure-megamenu .infrastructure-intro p {
+  font-family: Outfit;
+  font-size: 20px;
+}
+
+.infrastructure-megamenu .infrastructure-grid {
+  display: grid;
+  width: 1000px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.infrastructure-megamenu .infrastructure-nav {
+  width: 350px;
+  transition: background 0.3s ease;
+  height: 150px;
+  margin-left: 80px;
+}
+
+.infrastructure-megamenu .infrastructure-nav h3 {
+  font-size: 22px;
+  font-family: Podkava;
+  font-weight: bold;
+  align-items: center;
+}
+
+.infrastructure-megamenu .infrastructure-nav h3:hover {
+  color: #f1c40f;
+  cursor: pointer;
+}
+
+.infrastructure-megamenu .infrastructure-nav h3 .icon-vector {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 2px;
+}
+
+.infrastructure-megamenu .infrastructure-grid p {
+  font-family: Outfit;
+  font-size: 15px;
+}
+/* ✅ Infrastructure Dropdown */
+.infrastructure-dropdown {
+  position: relative;
+}
+
+.infrastructure-megamenu {
+  margin-top: 0px;
+  position: absolute;
+  width: 1520px;       /* align same as other menus */
+  height: 550px;
+  left: -1070px;       /* adjust value based on nav item placement */
+  justify-content: center;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.infrastructure-megamenu .infrastructure-flex {
+  margin-top: 39px;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  justify-content: center;
+  padding: 15px;
+  border-top: 1px solid rgba(128, 128, 128, 0.292);
+  box-shadow: 0px 8px 6px -6px rgba(0, 0, 0, 0.3);
+}
+
+.infrastructure-megamenu .infrastructure-intro {
+  width: 440px;
+  height: 400px;
+  border-right: 2px solid grey;
+  padding-right: 20px;
+}
+
+.infrastructure-megamenu .infrastructure-intro h3 {
+  font-family: Podkava;
+  font-size: 25px;
+}
+
+.infrastructure-megamenu .infrastructure-intro p {
+  font-family: Outfit;
+  font-size: 20px;
+}
+
+.infrastructure-megamenu .infrastructure-grid {
+  display: grid;
+  width: 1000px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.infrastructure-megamenu .infrastructure-nav {
+  width: 350px;
+  transition: background 0.3s ease;
+  height: 150px;
+  margin-left: 80px;
+}
+
+.infrastructure-megamenu .infrastructure-nav h3 {
+  font-size: 22px;
+  font-family: Podkava;
+  font-weight: bold;
+  align-items: center;
+}
+
+.infrastructure-megamenu .infrastructure-nav h3:hover {
+  color: #f1c40f;
+  cursor: pointer;
+}
+
+.infrastructure-megamenu .infrastructure-nav h3 .icon-vector {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 2px;
+}
+
+.infrastructure-megamenu .infrastructure-grid p {
+  font-family: Outfit;
+  font-size: 15px;
+}
+
+
+/* ✅ MOBILE RESPONSIVENESS */
+.menu-toggle {
+  display: none;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+  z-index: 2000;
+}
+
+.mobile-arrow {
+  display: none;
+  font-size: 14px;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.mobile-only {
+  display: none;
+}
+
+
+/* Show hamburger only on small screens */
+@media (max-width: 1024px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(10px);
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.4s ease;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    padding-top: 80px;
+  }
+
+  .navbar-menu.open {
+    right: 0;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 15px;
+    margin-left: 20px;
+  }
+
+  .navbar-links li a {
+    color: black;
+    font-size: 20px;
+  }
+
+  .about-megamenu,
+  .academics-megamenu {
+    position: static;
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+  }
+
+  .about-flex,
+  .about-grid {
+    flex-direction: column;
+    width: 100%;
+    border: none;
+  }
+
+  .about-intro {
+    border: none;
+  }
+
+  .about-nav {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .apply-btn {
+    color: black;
+  }
+
+  .navbar.scrolled .navbar-logo {
+    height: 90px;
+  }
+}
+/* ✅ Base Navbar Styles (your existing styles remain same) */
+
+
+/* ✅ Responsive Design Enhancements */
+@media (max-width: 1200px) {
+  .navbar-menu {
+    margin: 0 20px;
+    padding: 5px 15px;
+  }
+
+  .navbar-logo {
+    height: 80px;
+    margin-left: 20px;
+  }
+
+  .navbar-links li a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(10px);
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.4s ease;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    padding: 100px 30px;
+    z-index: 1500;
+  }
+
+  .navbar-menu.open {
+    right: 0;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-links li a {
+    color: black;
+    font-size: 20px;
+  }
+
+  .apply-btn {
+    margin-top: 25px;
+  }
+
+  .about-megamenu,
+  .academics-megamenu {
+    position: static;
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    background: none;
+  }
+
+  .about-flex,
+  .about-grid {
+    flex-direction: column;
+    width: 100%;
+    border: none;
+  }
+
+  .about-intro {
+    border: none;
+    width: 100%;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .about-nav {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar.scrolled .navbar-logo {
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 80px;
+  }
+
+  .navbar-logo {
+    height: 70px;
+  }
+
+  .navbar-links li a {
+    font-size: 18px;
+  }
+
+  .apply-btn {
+    padding: 6px 12px;
+    font-size: 15px;
+  }
+}
+
+/* ✅ Prevent Navbar Overflow on Small Screens */
+/* ✅ MOBILE VIEW DESIGN */
+@media (max-width: 480px) {
+  /* Navbar Base */
+  .navbar {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0px;
+    box-sizing: border-box;
+    z-index: 4000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Logo */
+  .navbar-logo {
+    height: 55px;
+    width: auto;
+  }
+
+  /* Hamburger Icon */
+  .menu-toggle {
+    display: block;
+    padding: 6px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.25);
+    color: white;
+    cursor: pointer;
+    z-index: 4100;
+  }
+
+  /* ✅ Floating Mobile Menu */
+  .navbar-menu {
+    position: absolute;
+    top: 75px; /* Just below navbar */
+    right: 0;
+    width: 280px;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    opacity: 0;
+    transform: translateX(25px);
+    pointer-events: none;
+    transition: all 0.4s ease;
+    z-index: 4200;
+
+  }
+
+  .navbar-menu.open {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  /* Links */
+  .navbar-links {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 120px;
+    gap: 16px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .navbar-links li {
+    width: 100%;
+    
+  }
+
+  .navbar-links li a {
+    font-size: 16px;
+    font-family: 'Outfit', sans-serif;
+    color: black;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .navbar-links li a:hover {
+    color: #f1c40f;
+    transform: translateX(4px);
+  }
+
+  /* Apply Button */
+ .navbar-links li .apply-btn {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 300px;
+    margin: 10px;
+    text-align: center;
+    color: white;
+    background-color: #f1c40f;
+    padding: 10px 0;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .apply-btn:hover {
+    border: turquoise;
+    color: white;
+  }
+
+  /* Hide large megamenus on mobile */
+  .about-megamenu,
+  .academics-megamenu {
+    display: none;
+  }
+
+  /* Optional: Expand dropdown behavior */
+  .about-dropdown.active > a,
+  .academics-dropdown.active > a {
+    color: #f1c40f;
+  }
+
+  /* Scroll fix */
+  body.menu-open {
+    overflow: hidden;
+  }
+   .mobile-arrow {
+    position: relative;
+    border: 2px solid black;
+    color: rgba(17, 17, 17, 0.715);
+    width: 15px;
+    text-align: center;
+    margin-left: 50px;
+  }
+
+  .navbar-links li a:hover .mobile-arrow {
+    transform: translateX(4px);
+  }
+
+  .mobile-only {
+    display: block;
+  }
 }

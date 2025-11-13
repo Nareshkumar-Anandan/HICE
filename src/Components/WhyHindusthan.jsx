@@ -136,9 +136,8 @@ const Why = () => {
   ];
 
   return (
-    <div className="why-page">
-
-     {/* Hero Section */}
+  <>
+   {/* Hero Section */}
           <section className="hero-section">
             <div className="hero-background">
               <img
@@ -171,7 +170,7 @@ const Why = () => {
               </div>
             </div>
           </section>
-   
+    <div className="why-page">   
         <div className="why-hindusthan-container">
           {/* Why Hindusthan Section */}
            <section className="why-section">
@@ -334,10 +333,10 @@ const Why = () => {
           </div>
         </div>
       </div>
-       <Footer/> 
       
      
     </div>
+ <Footer/> </>
   );
 };
 
