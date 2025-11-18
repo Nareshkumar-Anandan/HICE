@@ -573,12 +573,25 @@ It provides a lively space for students to relax, interact, and enjoy nutritious
 </li>
 
 
-          <li>
+          <li className="desktop-only">
             <a href="/applyNow" className="apply-btn" onClick={closeMenus}>
               Admission
             </a>
           </li>
           {/* Additional small-screen-only links */}
+          {/* All main nav links for mobile menu */}
+          <li className="mobile-only">
+  <a href="/applyNow" className="apply-btn" onClick={closeMenus}>
+    Apply Now
+  </a>
+</li>
+<li className="mobile-only code"><NavLink to="/" onClick={closeMenus}>Counselling Code : 2777</NavLink></li>
+<li className="mobile-only strong"><NavLink to="/" onClick={closeMenus}>Home</NavLink></li>
+<li className="mobile-only strong"><NavLink to="/about-us" onClick={closeMenus}>About Us</NavLink></li>
+<li className="mobile-only strong"><NavLink to="/admission" onClick={closeMenus}>Admission</NavLink></li>
+<li className="mobile-only strong"><NavLink to="/academics" onClick={closeMenus}>Academics</NavLink></li>
+<li className="mobile-only strong"><NavLink to="/gallery" onClick={closeMenus}>Infrastructure</NavLink></li>
+<li className="mobile-only strong"><NavLink to="/placements" onClick={closeMenus}>Placements</NavLink></li>
 <li className="mobile-only">
   <NavLink to="/blog" onClick={closeMenus}>Careers</NavLink>
 </li>
@@ -590,9 +603,6 @@ It provides a lively space for students to relax, interact, and enjoy nutritious
 </li>
 <li className="mobile-only">
   <NavLink to="/contact" onClick={closeMenus}>Contact Us</NavLink>
-</li>
-<li className="mobile-only">
-  <NavLink to="/school" onClick={closeMenus}>Counselling Code</NavLink>
 </li>
 
         </ul>

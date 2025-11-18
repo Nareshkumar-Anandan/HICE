@@ -703,6 +703,14 @@
     height: 90px;
   }
 }
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
 /* ✅ Base Navbar Styles (your existing styles remain same) */
 
 
@@ -723,162 +731,142 @@
   }
 }
 
+/* -----------------------------------------------------------
+   OPTION A — HIDE DESKTOP NAVLINKS ON SMALL SCREENS
+-----------------------------------------------------------*/
 @media (max-width: 1024px) {
+
+  /* Hide ALL desktop navlinks */
+  .navbar-links > li:not(.mobile-only) {
+    display: none !important;
+  }
+
+  /* Show mobile links */
+  .mobile-only {
+    display: block !important;
+  }
+
+  /* Menu toggle visible */
   .menu-toggle {
     display: block;
   }
 
-  .navbar {
-    justify-content: space-between;
-    padding: 0 20px;
-  }
-
+  /* Mobile Slide Menu */
   .navbar-menu {
     position: fixed;
     top: 0;
     right: -100%;
     width: 80%;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(255,255,255,0.97);
     backdrop-filter: blur(10px);
-    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
-    transition: right 0.4s ease;
     flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    padding: 100px 30px;
+    transition: right 0.4s ease;
     z-index: 1500;
+    overflow-y: auto;        /* enables vertical scroll */
+    max-height: 90vh;       /* limits height to screen */
+    overscroll-behavior: contain; /* smooth & contained scroll */
   }
-
+.navbar-menu::-webkit-scrollbar {
+  width: 6px;
+}
+.navbar-menu::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
   .navbar-menu.open {
     right: 0;
   }
 
   .navbar-links {
     flex-direction: column;
-    gap: 25px;
-    margin: 0;
     padding: 0;
+    gap: 20px;
+    margin: 50px 0px;
   }
 
+  .navbar-links li{
+    width: 100%;
+  }
   .navbar-links li a {
+    font-size: 19px;
     color: black;
-    font-size: 20px;
+    width: 100%;
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
   }
-
-  .apply-btn {
-    margin-top: 25px;
-  }
-
+  /* Style for all mobile menu links */
+.mobile-only.strong a {
+  font-size: 18px;
+  font-family: 'Outfit';
+  color: black;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  transition: 0.3s ease;
+}
+/* Hover effect */
+.mobile-only.strong a:hover {
+  color: #f1c40f;
+  transform: translateX(4px);
+}
+/* Hover effect */
+.mobile-only.strong a:hover {
+  color: #f1c40f;
+  transform: translateX(4px);
+}
+.mobile-only.code a{
+    background: white;
+    color:#0c1a3c;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid #0c1a3c;
+}
+  /* Hide all big dropdown megamenus */
   .about-megamenu,
-  .academics-megamenu {
-    position: static;
-    width: 100%;
-    height: auto;
-    box-shadow: none;
-    background: none;
-  }
-
-  .about-flex,
-  .about-grid {
-    flex-direction: column;
-    width: 100%;
-    border: none;
-  }
-
-  .about-intro {
-    border: none;
-    width: 100%;
-    text-align: center;
-    padding: 0 20px;
-  }
-
-  .about-nav {
-    margin: 10px 0;
-    width: 100%;
-    text-align: center;
-  }
-
-  .navbar.scrolled .navbar-logo {
-    height: 80px;
+  .admission-megamenu,
+  .academics-megamenu,
+  .infrastructure-megamenu,
+  .placements-megamenu {
+    display: none !important;
   }
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    height: 80px;
-  }
-
-  .navbar-logo {
-    height: 70px;
-  }
-
-  .navbar-links li a {
-    font-size: 18px;
-  }
-
-  .apply-btn {
-    padding: 6px 12px;
-    font-size: 15px;
-  }
-}
-
-/* ✅ Prevent Navbar Overflow on Small Screens */
-/* ✅ MOBILE VIEW DESIGN */
+/* -----------------------------------------------------------
+   SMALL MOBILE (≤480px)
+-----------------------------------------------------------*/
 @media (max-width: 480px) {
-  /* Navbar Base */
+
   .navbar {
-    position: fixed;
-    left: 0;
-    width: 100vw;
     height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0px;
-    box-sizing: border-box;
-    z-index: 4000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 10px;
+    position: fixed;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.445);
+    width: 420px;
   }
 
-  /* Logo */
   .navbar-logo {
     height: 55px;
-    width: auto;
   }
-
-  /* Hamburger Icon */
   .menu-toggle {
-    display: block;
-    padding: 6px;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.25);
-    color: white;
-    cursor: pointer;
-    z-index: 4100;
+    padding: 8px;
   }
 
-  /* ✅ Floating Mobile Menu */
   .navbar-menu {
-    position: absolute;
-    top: 75px; /* Just below navbar */
-    right: 0;
-    width: 280px;
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(16px);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    padding: 20px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    width: 360px;
+    top: 70px;
+    right:0;
+    margin-right: 100px;
+    border-radius: 0px;
     opacity: 0;
-    transform: translateX(25px);
+    transform: translateX(30px);
     pointer-events: none;
     transition: all 0.4s ease;
-    z-index: 4200;
-
+    
   }
 
   .navbar-menu.open {
@@ -887,90 +875,26 @@
     pointer-events: auto;
   }
 
-  /* Links */
   .navbar-links {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 120px;
-    gap: 16px;
-    padding: 0;
-    list-style: none;
-  }
-
-  .navbar-links li {
-    width: 100%;
-    
+    margin-top: 0px;
+    padding-top: 0;
   }
 
   .navbar-links li a {
     font-size: 16px;
-    font-family: 'Outfit', sans-serif;
-    color: black;
-    text-decoration: none;
+  }
+
+  /* Apply button reposition for mobile */
+  .apply-btn {
+    background: #f4c50bea;
+    color: white;
+    border: none;
     width: 100%;
-    display: block;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-  }
-
-  .navbar-links li a:hover {
-    color: #f1c40f;
-    transform: translateX(4px);
-  }
-
-  /* Apply Button */
- .navbar-links li .apply-btn {
-    position: absolute;
-    top: 30px;
-    left: 0;
-    width: 300px;
-    margin: 10px;
+    margin-top: 10px;
     text-align: center;
-    color: white;
-    background-color: #f1c40f;
-    padding: 10px 0;
-    border-radius: 25px;
-    font-weight: bold;
-    transition: all 0.3s ease;
   }
 
-  .apply-btn:hover {
-    border: turquoise;
-    color: white;
-  }
-
-  /* Hide large megamenus on mobile */
-  .about-megamenu,
-  .academics-megamenu {
-    display: none;
-  }
-
-  /* Optional: Expand dropdown behavior */
-  .about-dropdown.active > a,
-  .academics-dropdown.active > a {
-    color: #f1c40f;
-  }
-
-  /* Scroll fix */
   body.menu-open {
     overflow: hidden;
-  }
-   .mobile-arrow {
-    position: relative;
-    border: 2px solid black;
-    color: rgba(17, 17, 17, 0.715);
-    width: 15px;
-    text-align: center;
-    margin-left: 50px;
-  }
-
-  .navbar-links li a:hover .mobile-arrow {
-    transform: translateX(4px);
-  }
-
-  .mobile-only {
-    display: block;
   }
 }
