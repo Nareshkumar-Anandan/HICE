@@ -448,85 +448,7 @@
   font-family: Outfit;
   font-size: 15px;
 }
-/* ✅ Infrastructure Dropdown */
-.infrastructure-dropdown {
-  position: relative;
-}
 
-.infrastructure-megamenu {
-  margin-top: 0px;
-  position: absolute;
-  width: 1530px;       /* align same as other menus */
-  height: 550px;
-  left: -1090px;       /* adjust value based on nav item placement */
-  justify-content: center;
-  overflow: hidden;
-  z-index: 999;
-}
-
-.infrastructure-megamenu .infrastructure-flex {
-  margin-top: 39px;
-  display: flex;
-  flex-direction: row;
-  background-color: #fff;
-  justify-content: center;
-  padding: 15px;
-  border-top: 1px solid rgba(128, 128, 128, 0.292);
-  box-shadow: 0px 8px 6px -6px rgba(0, 0, 0, 0.3);
-}
-
-.infrastructure-megamenu .infrastructure-intro {
-  width: 440px;
-  height: 400px;
-  border-right: 2px solid grey;
-  padding-right: 20px;
-}
-
-.infrastructure-megamenu .infrastructure-intro h3 {
-  font-family: Podkava;
-  font-size: 25px;
-}
-
-.infrastructure-megamenu .infrastructure-intro p {
-  font-family: Outfit;
-  font-size: 20px;
-}
-
-.infrastructure-megamenu .infrastructure-grid {
-  display: grid;
-  width: 1000px;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.infrastructure-megamenu .infrastructure-nav {
-  width: 350px;
-  transition: background 0.3s ease;
-  height: 150px;
-  margin-left: 80px;
-}
-
-.infrastructure-megamenu .infrastructure-nav h3 {
-  font-size: 22px;
-  font-family: Podkava;
-  font-weight: bold;
-  align-items: center;
-}
-
-.infrastructure-megamenu .infrastructure-nav h3:hover {
-  color: #f1c40f;
-  cursor: pointer;
-}
-
-.infrastructure-megamenu .infrastructure-nav h3 .icon-vector {
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 2px;
-}
-
-.infrastructure-megamenu .infrastructure-grid p {
-  font-family: Outfit;
-  font-size: 15px;
-}
 /* ================================
    📌 PLACEMENTS DROPDOWN MENU
 ================================ */
@@ -612,7 +534,9 @@
   font-family: Outfit;
   font-size: 15px;
 }
-
+hr{
+  display: none;
+}
 /* ✅ MOBILE RESPONSIVENESS */
 .menu-toggle {
   display: none;
@@ -632,77 +556,6 @@
 .mobile-only {
   display: none;
 }
-
-
-/* Show hamburger only on small screens */
-@media (max-width: 1024px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .navbar-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(10px);
-    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
-    transition: right 0.4s ease;
-    flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    padding-top: 80px;
-  }
-
-  .navbar-menu.open {
-    right: 0;
-  }
-
-  .navbar-links {
-    flex-direction: column;
-    gap: 15px;
-    margin-left: 20px;
-  }
-
-  .navbar-links li a {
-    color: black;
-    font-size: 20px;
-  }
-
-  .about-megamenu,
-  .academics-megamenu {
-    position: static;
-    width: 100%;
-    height: auto;
-    box-shadow: none;
-  }
-
-  .about-flex,
-  .about-grid {
-    flex-direction: column;
-    width: 100%;
-    border: none;
-  }
-
-  .about-intro {
-    border: none;
-  }
-
-  .about-nav {
-    margin: 10px 0;
-    width: 100%;
-  }
-
-  .apply-btn {
-    color: black;
-  }
-
-  .navbar.scrolled .navbar-logo {
-    height: 90px;
-  }
-}
 .desktop-only {
   display: block;
 }
@@ -710,6 +563,53 @@
 .mobile-only {
   display: none;
 }
+
+/* ===========================
+   MOBILE DROPDOWN PANEL
+=========================== */
+.mobile-submenu {
+  position: absolute;
+  top: 0;
+  right: -100%;      /* hidden by default */
+  width: 100%;
+  height: 100%;
+  background: white;
+  padding: 80px 20px 20px 20px;
+  box-shadow: -4px 0 10px rgba(0,0,0,0.15);
+  transition: right 0.35s ease-in-out;
+  overflow-y: auto;
+  z-index: 9999;
+}
+
+/* When opened */
+.mobile-submenu.open {
+  right: 0;
+}
+
+/* Submenu links */
+.mobile-submenu li a {
+  font-size: 18px;
+  padding: 10px 0;
+  display: block;
+  color: black;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Back Button */
+.mobile-back {
+  font-size: 18px;
+  padding: 12px 0;
+  font-weight: bold;
+  color: #000;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.mobile-back svg {
+  margin-right: 8px;
+}
+
 
 /* ✅ Base Navbar Styles (your existing styles remain same) */
 
@@ -740,6 +640,12 @@
   .navbar-links > li:not(.mobile-only) {
     display: none !important;
   }
+  .navbar-links .mobile-only {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
   /* Show mobile links */
   .mobile-only {
@@ -754,8 +660,10 @@
   /* Mobile Slide Menu */
   .navbar-menu {
     position: fixed;
+    right: 0;
     top: 0;
-    right: -100%;
+    margin-right: 0px;
+    transform: none;
     width: 80%;
     background: rgba(255,255,255,0.97);
     backdrop-filter: blur(10px);
@@ -766,6 +674,9 @@
     max-height: 90vh;       /* limits height to screen */
     overscroll-behavior: contain; /* smooth & contained scroll */
   }
+  .navbar.scrolled .navbar-menu{
+    background: rgba(255,255,255,0.97);
+  }
 .navbar-menu::-webkit-scrollbar {
   width: 6px;
 }
@@ -773,6 +684,7 @@
   background: rgba(0, 0, 0, 0.25);
   border-radius: 20px;
 }
+
   .navbar-menu.open {
     right: 0;
   }
@@ -793,9 +705,18 @@
     width: 100%;
     display: block;
     padding: 10px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
   }
   /* Style for all mobile menu links */
+  .mobile-only.strong{
+    font-size: 18px;
+  font-family: 'Outfit';
+  color: black;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  transition: 0.3s ease;
+  padding: 0;
+  }
 .mobile-only.strong a {
   font-size: 18px;
   font-family: 'Outfit';
@@ -803,19 +724,23 @@
   text-decoration: none;
   display: block;
   width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   transition: 0.3s ease;
+  padding: 0;
 }
-/* Hover effect */
-.mobile-only.strong a:hover {
+
+.mobile-only.strong a.active {
   color: #f1c40f;
-  transform: translateX(4px);
 }
-/* Hover effect */
-.mobile-only.strong a:hover {
-  color: #f1c40f;
-  transform: translateX(4px);
-}
+.mobile-only.weak a{
+   font-size: 16px;
+  font-family: 'Outfit';
+  color: rgba(0, 0, 0, 0.753);
+  text-decoration: none;
+  display: block;
+  width: 100%;
+   transition: 0.3s ease;
+  padding: 10px 0px; 
+} 
 .mobile-only.code a{
     background: white;
     color:#0c1a3c;
@@ -826,13 +751,79 @@
     border: 1px solid #0c1a3c;
 }
   /* Hide all big dropdown megamenus */
-  .about-megamenu,
+   .about-megamenu,
   .admission-megamenu,
   .academics-megamenu,
   .infrastructure-megamenu,
   .placements-megamenu {
     display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: fixed !important;
+    left: -9999px !important; /* push completely out */
   }
+  /* ============================
+   FULL SCREEN SLIDING SUBMENU
+============================ */
+.mobile-submenu {
+  position: fixed;
+  top: 70px;
+  right: -100%;
+  width: 90%;
+  height: 100vh;
+  background: #ffffff;
+  padding: 80px 25px 20px 25px;
+  overflow-y: auto;
+  transition: right 0.35s ease;
+  z-index: 3000;
+}
+
+.mobile-submenu.open {
+  right: 0;
+}
+
+.mobile-back {
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.mobile-submenu ul li {
+   list-style: none;
+}
+.mobile-submenu li a {
+  display: block;
+  text-decoration: none;
+  list-style: none;
+  padding: 12px 0;
+  font-size: 17px;
+  color: #000;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.mobile-dropdown-arrow {
+  font-size: 15px;
+  margin-right: 12px;   /* space between text and icon */
+  transform: translateY(1px);
+  color: #1f1e1ed8;
+}
+.mobile-submenu.open ~ .navbar-menu,
+.navbar-menu.open.submenu-open {
+    display: none !important;
+    right: -100% !important;
+}
+
+hr{
+  display: block;
+  border: 1px solid #0c1a3c9a;
+  width: 100%;
+}
+
 }
 
 /* -----------------------------------------------------------
@@ -846,9 +837,12 @@
     position: fixed;
     background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.445);
-    width: 420px;
+    width: 100%;
   }
-
+  .navbar.scrolled .navbar-logo{
+    height: 70px;
+    margin-left: 0;
+  }
   .navbar-logo {
     height: 55px;
   }
@@ -857,23 +851,23 @@
   }
 
   .navbar-menu {
-    width: 360px;
+    position: fixed;
     top: 70px;
-    right:0;
-    margin-right: 100px;
+    right: -100%;      /* hide fully */
+    width: 100%;
+    max-width: 360px;
+    background: rgba(255,255,255,0.97);
     border-radius: 0px;
     opacity: 0;
-    transform: translateX(30px);
+    transform: none;
     pointer-events: none;
-    transition: all 0.4s ease;
-    
-  }
-
-  .navbar-menu.open {
+    transition: right 0.35s ease, opacity 0.3s ease;
+}
+.navbar-menu.open {
+    right: 0;
     opacity: 1;
-    transform: translateX(0);
     pointer-events: auto;
-  }
+}
 
   .navbar-links {
     margin-top: 0px;

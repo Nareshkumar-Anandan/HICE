@@ -15,6 +15,10 @@ const Navbar = () => {
   const [admissionOpen, setAdmissionOpen] = useState(false);
   const [infrastructureOpen,setinfrastructureOpen] = useState(false);
   const [placementsOpen, setPlacementsOpen] = useState(false);
+  const [mobileAbout, setMobileAbout] = useState(false);
+const [mobileAdmission, setMobileAdmission] = useState(false);
+const [mobileInfra, setMobileInfra] = useState(false);
+const [mobilePlacements, setMobilePlacements] = useState(false);
 
   const navigate = useNavigate();
 
@@ -575,38 +579,119 @@ It provides a lively space for students to relax, interact, and enjoy nutritious
 
           <li className="desktop-only">
             <a href="/applyNow" className="apply-btn" onClick={closeMenus}>
-              Admission
+              Apply Now
             </a>
           </li>
           {/* Additional small-screen-only links */}
           {/* All main nav links for mobile menu */}
-          <li className="mobile-only">
+         {/* APPLY BUTTON */}
+{/* APPLY BUTTON */}
+<li className="mobile-only apply">
   <a href="/applyNow" className="apply-btn" onClick={closeMenus}>
     Apply Now
   </a>
 </li>
-<li className="mobile-only code"><NavLink to="/" onClick={closeMenus}>Counselling Code : 2777</NavLink></li>
-<li className="mobile-only strong"><NavLink to="/" onClick={closeMenus}>Home</NavLink></li>
-<li className="mobile-only strong"><NavLink to="/about-us" onClick={closeMenus}>About Us</NavLink></li>
-<li className="mobile-only strong"><NavLink to="/admission" onClick={closeMenus}>Admission</NavLink></li>
-<li className="mobile-only strong"><NavLink to="/academics" onClick={closeMenus}>Academics</NavLink></li>
-<li className="mobile-only strong"><NavLink to="/gallery" onClick={closeMenus}>Infrastructure</NavLink></li>
-<li className="mobile-only strong"><NavLink to="/placements" onClick={closeMenus}>Placements</NavLink></li>
-<li className="mobile-only">
-  <NavLink to="/blog" onClick={closeMenus}>Careers</NavLink>
-</li>
-<li className="mobile-only">
-  <NavLink to="/careers" onClick={closeMenus}>E Campus Login</NavLink>
-</li>
-<li className="mobile-only">
-  <NavLink to="/alumni" onClick={closeMenus}>Mandtatory Discloser</NavLink>
-</li>
-<li className="mobile-only">
-  <NavLink to="/contact" onClick={closeMenus}>Contact Us</NavLink>
+
+{/* COUNSELLING CODE */}
+<li className="mobile-only code">
+  <NavLink to="/" onClick={closeMenus}>Counselling Code : 2777</NavLink>
 </li>
 
-        </ul>
+{/* MAIN NAV LINKS */}
+<li className="mobile-only strong">
+  <NavLink to="/" onClick={closeMenus}>Home</NavLink>
+</li>
+
+{/* ABOUT US */}
+<li className="mobile-only strong" onClick={() => setMobileAbout(true)}>
+  About Us
+  <FaChevronRight className="mobile-dropdown-arrow" />
+</li>
+
+{/* ADMISSION */}
+<li className="mobile-only strong" onClick={() => setMobileAdmission(true)}>
+  Admission
+  <FaChevronRight className="mobile-dropdown-arrow" />
+</li>
+
+{/* ACADEMICS */}
+<li className="mobile-only strong">
+  <NavLink to="/academics" onClick={closeMenus}>Academics</NavLink>
+</li>
+
+{/* INFRASTRUCTURE */}
+<li className="mobile-only strong" onClick={() => setMobileInfra(true)}>
+  Infrastructure
+  <FaChevronRight className="mobile-dropdown-arrow" />
+</li>
+
+{/* PLACEMENTS */}
+<li className="mobile-only strong line" onClick={() => setMobilePlacements(true)}>
+  Placements
+  <FaChevronRight className="mobile-dropdown-arrow" />
+</li>
+<hr/>
+
+{/* REMAINING MOBILE LINKS */}
+<li className="mobile-only weak"><NavLink to="/blog" onClick={closeMenus}>Careers</NavLink></li>
+<li className="mobile-only weak"><NavLink to="/careers" onClick={closeMenus}>E Campus Login</NavLink></li>
+<li className="mobile-only weak"><NavLink to="/alumni" onClick={closeMenus}>Mandatory Discloser</NavLink></li>
+<li className="mobile-only weak "><NavLink to="/contact" onClick={closeMenus}>Contact Us</NavLink></li>
+
+</ul>     
       </div>
+
+      {/* SUBMENU: ABOUT */}
+<div className={`mobile-submenu ${mobileAbout ? "open" : ""}`}>
+  <div className="mobile-back" onClick={() => setMobileAbout(false)}>
+    <FaChevronRight style={{ transform: "rotate(180deg)" }} /> Back
+  </div>
+<ul>
+  <li><NavLink to="/aboutTrust" onClick={closeMenus}>About our Trustee</NavLink></li>
+  <li><NavLink to="/aboutHICE" onClick={closeMenus}>About HICE</NavLink></li>
+  <li><NavLink to="/whyHindusthan" onClick={closeMenus}>Why Hindusthan</NavLink></li>
+  <li><NavLink to="/principal-desk" onClick={closeMenus}>Principal Desk</NavLink></li>
+  <li><NavLink to="/accrediation" onClick={closeMenus}>Accreditations</NavLink></li>
+</ul>
+</div>
+
+{/* SUBMENU: ADMISSION */}
+<div className={`mobile-submenu ${mobileAdmission ? "open" : ""}`}>
+  <div className="mobile-back" onClick={() => setMobileAdmission(false)}>
+    <FaChevronRight style={{ transform: "rotate(180deg)" }} /> Back
+  </div>
+<ul>
+  <li><NavLink to="/admission-policy" onClick={closeMenus}>Admission Policy</NavLink></li>
+  <li><NavLink to="/admission-form" onClick={closeMenus}>Application Form</NavLink></li>
+  <li><NavLink to="/prospectus" onClick={closeMenus}>Prospectus</NavLink></li>
+  <li><NavLink to="/scholarships" onClick={closeMenus}>Scholarships</NavLink></li>
+</ul>
+</div>
+
+{/* SUBMENU: INFRASTRUCTURE */}
+<div className={`mobile-submenu ${mobileInfra ? "open" : ""}`}>
+  <div className="mobile-back" onClick={() => setMobileInfra(false)}>
+    <FaChevronRight style={{ transform: "rotate(180deg)" }} /> Back
+  </div>
+<ul>
+  <li><NavLink to="/classroom" onClick={closeMenus}>Classroom</NavLink></li>
+  <li><NavLink to="/library" onClick={closeMenus}>Library</NavLink></li>
+  <li><NavLink to="/hostel" onClick={closeMenus}>Hostel</NavLink></li>
+  <li><NavLink to="/sports" onClick={closeMenus}>Sports</NavLink></li>
+  <li><NavLink to="/canteen" onClick={closeMenus}>Canteen</NavLink></li>
+</ul>
+</div>
+
+{/* SUBMENU: PLACEMENTS */}
+<div className={`mobile-submenu ${mobilePlacements ? "open" : ""}`}>
+  <div className="mobile-back" onClick={() => setMobilePlacements(false)}>
+    <FaChevronRight style={{ transform: "rotate(180deg)" }} /> Back
+  </div>
+<ul>
+  <li><NavLink to="/training-development" onClick={closeMenus}>Placement Training</NavLink></li>
+  <li><NavLink to="/recruiters" onClick={closeMenus}>Our Recruiters</NavLink></li>
+</ul>
+</div>
     </nav>
   );
 };
