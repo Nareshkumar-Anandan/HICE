@@ -732,9 +732,9 @@ hr{
   color: #f1c40f;
 }
 .mobile-only.weak a{
-   font-size: 16px;
+   font-size: 12px;
   font-family: 'Outfit';
-  color: rgba(0, 0, 0, 0.753);
+  color: rgba(0, 0, 0, 0.577);
   text-decoration: none;
   display: block;
   width: 100%;
@@ -840,7 +840,7 @@ hr{
     width: 100%;
   }
   .navbar.scrolled .navbar-logo{
-    height: 70px;
+    height: 75px;
     margin-left: 0;
   }
   .navbar-logo {

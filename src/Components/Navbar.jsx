@@ -19,6 +19,7 @@ const Navbar = () => {
 const [mobileAdmission, setMobileAdmission] = useState(false);
 const [mobileInfra, setMobileInfra] = useState(false);
 const [mobilePlacements, setMobilePlacements] = useState(false);
+const [mobileAcademics, setMobileAcademics] = useState(false);
 
   const navigate = useNavigate();
 
@@ -615,9 +616,12 @@ It provides a lively space for students to relax, interact, and enjoy nutritious
 </li>
 
 {/* ACADEMICS */}
-<li className="mobile-only strong">
-  <NavLink to="/academics" onClick={closeMenus}>Academics</NavLink>
+{/* ACADEMICS */}
+<li className="mobile-only strong" onClick={() => setMobileAcademics(true)}>
+  Academics
+  <FaChevronRight className="mobile-dropdown-arrow" />
 </li>
+
 
 {/* INFRASTRUCTURE */}
 <li className="mobile-only strong" onClick={() => setMobileInfra(true)}>
@@ -692,6 +696,22 @@ It provides a lively space for students to relax, interact, and enjoy nutritious
   <li><NavLink to="/recruiters" onClick={closeMenus}>Our Recruiters</NavLink></li>
 </ul>
 </div>
+{/* SUBMENU: ACADEMICS */}
+<div className={`mobile-submenu ${mobileAcademics ? "open" : ""}`}>
+  <div className="mobile-back" onClick={() => setMobileAcademics(false)}>
+    <FaChevronRight style={{ transform: "rotate(180deg)" }} /> Back
+  </div>
+  <ul>
+    <li><NavLink to="/ug-pg-programme" onClick={closeMenus}>Programmes</NavLink></li>
+    <li><NavLink to="/curriculum-syllabus" onClick={closeMenus}>Curriculum & Syllabus</NavLink></li>
+    <li><NavLink to="/academic-calendar" onClick={closeMenus}>Academic Calendar</NavLink></li>
+    <li><NavLink to="/student-centric-learning" onClick={closeMenus}>Student Centric Learning</NavLink></li>
+    <li><NavLink to="/sdgs" onClick={closeMenus}>SDGs</NavLink></li>
+    <li><NavLink to="/educational-philosophy" onClick={closeMenus}>Educational Philosophy</NavLink></li>
+    <li><NavLink to="/magazine" onClick={closeMenus}>Magazine</NavLink></li>
+  </ul>
+</div>
+
     </nav>
   );
 };
