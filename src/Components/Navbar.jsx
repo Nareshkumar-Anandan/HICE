@@ -600,39 +600,40 @@ It provides a lively space for students to relax, interact, and enjoy nutritious
 
 {/* MAIN NAV LINKS */}
 <li className="mobile-only strong">
-  <NavLink to="/" onClick={closeMenus}>Home</NavLink>
+<a className="mobile-link">
+  <NavLink to="/" onClick={closeMenus}>Home</NavLink></a>
 </li>
 
 {/* ABOUT US */}
 <li className="mobile-only strong" onClick={() => setMobileAbout(true)}>
+  <a className="mobile-link">
   About Us
-  <FaChevronRight className="mobile-dropdown-arrow" />
+  <FaChevronRight className="mobile-dropdown-arrow" /></a>
 </li>
 
 {/* ADMISSION */}
 <li className="mobile-only strong" onClick={() => setMobileAdmission(true)}>
-  Admission
-  <FaChevronRight className="mobile-dropdown-arrow" />
+ <a className="mobile-link"> Admission
+  <FaChevronRight className="mobile-dropdown-arrow" /></a>
 </li>
 
 {/* ACADEMICS */}
-{/* ACADEMICS */}
 <li className="mobile-only strong" onClick={() => setMobileAcademics(true)}>
-  Academics
-  <FaChevronRight className="mobile-dropdown-arrow" />
+  <a className="mobile-link">Academics
+  <FaChevronRight className="mobile-dropdown-arrow" /></a>
 </li>
 
 
 {/* INFRASTRUCTURE */}
 <li className="mobile-only strong" onClick={() => setMobileInfra(true)}>
-  Infrastructure
-  <FaChevronRight className="mobile-dropdown-arrow" />
+  <a className="mobile-link">Infrastructure
+  <FaChevronRight className="mobile-dropdown-arrow" /></a>
 </li>
 
 {/* PLACEMENTS */}
 <li className="mobile-only strong line" onClick={() => setMobilePlacements(true)}>
-  Placements
-  <FaChevronRight className="mobile-dropdown-arrow" />
+  <a className="mobile-link">Placements
+  <FaChevronRight className="mobile-dropdown-arrow" /></a>
 </li>
 <hr/>
 
