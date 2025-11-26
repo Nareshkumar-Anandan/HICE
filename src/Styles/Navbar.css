@@ -52,7 +52,6 @@
 
 /* Links */
 .navbar-links {
-  margin-left: -25px;
   list-style: none;
   display: flex;
   gap: 20px;
@@ -685,7 +684,6 @@ hr{
     right: 0;
     opacity: 1;
     pointer-events: auto;
-      z-index: 2000 !important;
   }
 
   /* Mobile nav links */
@@ -705,14 +703,9 @@ hr{
     font-size: 18px;
     color: #000;
     font-weight: 500;
+     justify-content:space-between;  
   }
-  .navbar-links li a {
-    width: 100%;
-    padding: 0;
-    display: flex;
-    justify-content:space-between;  
-    font-size: 18px;
-  }
+ 
 
   /* Strong links */
   .mobile-only.strong{
@@ -784,7 +777,6 @@ hr{
     align-items: center;
   }
   .mobile-submenu ul {
-   
     list-style: none;
   }
   .mobile-submenu li a {
@@ -805,10 +797,13 @@ hr{
   }
 
   /* Prevent scroll when menu open */
-  body.menu-open {
-   overflow: hidden !important;
-   touch-action: none;
+ html.menu-open,
+body.menu-open {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none !important;
 }
+
 
   .mobile-only.apply a{
     font-weight: 600 !important;

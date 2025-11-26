@@ -39,9 +39,16 @@ const [mobileAcademics, setMobileAcademics] = useState(false);
   };
 
   // ✅ Prevent body scroll when menu is open
-  useEffect(() => {
-    document.body.classList.toggle("menu-open", menuOpen);
-  }, [menuOpen]);
+ useEffect(() => {
+  if (menuOpen) {
+    document.documentElement.classList.add("menu-open");  // <html> tag
+    document.body.classList.add("menu-open");              // <body> tag
+  } else {
+    document.documentElement.classList.remove("menu-open");
+    document.body.classList.remove("menu-open");
+  }
+}, [menuOpen]);
+
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>

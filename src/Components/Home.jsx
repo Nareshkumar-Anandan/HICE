@@ -8,7 +8,7 @@ import img1 from "../Assets/hostel.jpg";
 import img2 from "../Assets/library.jpg";
 import img3 from "../Assets/lab.jpg";
 import "../Styles/Home.css";
-import CampusVideo from "../Assets/DJI_0015 (1).mov"; // replace with your actual campus video
+import CampusVideo from "../Assets/DJI_0015 (1).mp4"; // replace with your actual campus video
 import LeftImage from "../Assets/hostel.jpg"; // replace with your actual image
 import LeftImage2 from "../Assets/library.jpg"; // replace with your actual image
 import RightImage from "../Assets/Frame.png"; // replace with your actual image
