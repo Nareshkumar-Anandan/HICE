@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: center;
   height: 100px;
-  z-index: 1000;
+  z-index: 9999;
   background: transparent;
   transition: all 0.3s ease;
 }
@@ -614,13 +614,14 @@ hr{
   .navbar {
     height: 70px;
     padding: 0 10px;
-    position: fixed;
+    position: fixed !important;
     width: 100%;
     background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.445);
-    z-index: 2000;
+    z-index: 9999 !important;
   }
   .navbar.scrolled {
+    position: fixed !important;
     background: rgba(255, 255, 255, 0.97);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
@@ -669,7 +670,7 @@ hr{
     pointer-events: none;
     transform: translateX(100%);      /* hidden off-screen */
     transition: transform 0.35s ease, opacity 0.3s ease;
-    z-index: 2500;
+    z-index: 2000 !important;
     margin-left: 0 !important;   /* remove desktop spacing */
     margin-right: 0 !important;  /* remove desktop spacing */
     border-radius: 0 !important; /* avoid rounded corners */
@@ -684,6 +685,7 @@ hr{
     right: 0;
     opacity: 1;
     pointer-events: auto;
+      z-index: 2000 !important;
   }
 
   /* Mobile nav links */
@@ -804,10 +806,8 @@ hr{
 
   /* Prevent scroll when menu open */
   body.menu-open {
-  height: 100vh;
-  overflow: hidden !important;
-  position: fixed;       /* ⭐ prevent background scroll completely */
-  width: 100%;
+   overflow: hidden !important;
+   touch-action: none;
 }
 
   .mobile-only.apply a{
