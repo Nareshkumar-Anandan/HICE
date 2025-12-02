@@ -37,6 +37,18 @@ const [mobileAcademics, setMobileAcademics] = useState(false);
     setAcademicsOpen(false);
     setMenuOpen(false);
   };
+  const closeAllMobileSubmenus = () => {
+  setMobileAbout(false);
+  setMobileAdmission(false);
+  setMobileInfra(false);
+  setMobilePlacements(false);
+  setMobileAcademics(false);
+};
+
+const stopNavigation = (e) => {
+  e.preventDefault();      // Stop navigation everywhere
+  e.stopPropagation();     // Prevent parent click handlers from firing
+};
 
   // ✅ Prevent body scroll when menu is open
  useEffect(() => {
@@ -63,7 +75,7 @@ const [mobileAcademics, setMobileAcademics] = useState(false);
       </div>
 
       {/* ✅ Hamburger / X Toggle */}
-      <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+      <div className="menu-toggle" onClick={() => {setMenuOpen(!menuOpen); closeAllMobileSubmenus()}}>
         {menuOpen ? (
           <FaTimes size={28} color={scrolled ? "black" : "white"} />
         ) : (
@@ -87,12 +99,17 @@ const [mobileAcademics, setMobileAcademics] = useState(false);
             onMouseLeave={() => !menuOpen && setAboutOpen(false)}
             onClick={() => menuOpen && setAboutOpen(!aboutOpen)}
           >
-            <NavLink
-              to="/about-us"
-              onClick={() => menuOpen && setAboutOpen(!aboutOpen)}
-            >
-              About Us<FaChevronRight className="mobile-arrow" />
-            </NavLink>
+           <NavLink
+         to="/about-us"
+           onClick={(e) => {
+          stopNavigation(e);
+           setAboutOpen(true);
+  }}
+>
+  About Us
+</NavLink>
+
+
 
             {(aboutOpen || (!menuOpen && aboutOpen)) && (
               <div className="about-megamenu">
@@ -202,8 +219,13 @@ const [mobileAcademics, setMobileAcademics] = useState(false);
   onMouseLeave={() => !menuOpen && setAdmissionOpen(false)}
   onClick={() => menuOpen && setAdmissionOpen(!admissionOpen)}
 >
-  <NavLink to="/admission">
-    Admission <FaChevronRight className="mobile-arrow" />
+  <NavLink 
+  to="/admission" onClick={(e) => {
+    stopNavigation(e);
+    setAdmissionOpen(true);
+  }}
+>
+Admission
   </NavLink>
 
   {(admissionOpen || (!menuOpen && admissionOpen)) && (
@@ -280,7 +302,14 @@ const [mobileAcademics, setMobileAcademics] = useState(false);
             onMouseLeave={() => !menuOpen && setAcademicsOpen(false)}
             onClick={() => menuOpen && setAcademicsOpen(!academicsOpen)}
           >
-            <NavLink to="/academics">Academics<FaChevronRight className="mobile-arrow" /></NavLink>
+           <NavLink to="/academics" onClick={(e) => {
+              stopNavigation(e);
+              setAcademicsOpen(true);
+  }}
+>
+  Academics
+</NavLink>
+
 
             {(academicsOpen || (!menuOpen && academicsOpen)) && (
               <div className="academics-megamenu">
@@ -413,9 +442,14 @@ const [mobileAcademics, setMobileAcademics] = useState(false);
              onMouseLeave={() => !menuOpen && setinfrastructureOpen(false)}
              onClick={()=>menuOpen && setinfrastructureOpen(!infrastructureOpen)} 
           >
-            <NavLink to="/gallery" onClick={closeMenus}>
-             Infrastructure
-            </NavLink>
+            <NavLink to="/gallery" onClick={(e) => {
+                 stopNavigation(e);
+                 setinfrastructureOpen(true);
+  }}
+>
+  Infrastructure
+</NavLink>
+
             {(infrastructureOpen || (!menuOpen && infrastructureOpen)) && (
               <div className="infrastructure-megamenu">
                 <div className="infrastructure-flex">
@@ -523,9 +557,14 @@ It provides a lively space for students to relax, interact, and enjoy nutritious
   onMouseLeave={() => !menuOpen && setPlacementsOpen(false)}
   onClick={() => menuOpen && setPlacementsOpen(!placementsOpen)}
 >
-  <NavLink to="/placements" onClick={closeMenus}>
-    Placements <FaChevronRight className="mobile-arrow" />
-  </NavLink>
+  <NavLink to="/placements" onClick={(e) => {
+    stopNavigation(e);
+    setPlacementsOpen(true);
+  }}
+>
+  Placements
+</NavLink>
+
 
   {(placementsOpen || (!menuOpen && placementsOpen)) && (
     <div className="megamenu placements-megamenu">

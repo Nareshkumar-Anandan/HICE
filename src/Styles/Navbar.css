@@ -84,7 +84,7 @@
 }
 
 /* Active link */
-.navbar-links li .active {
+.navbar-links li a.active {
   color: #f1c40f;
   font-weight: 600;
 }
@@ -604,6 +604,66 @@ hr{
 .mobile-back svg {
   margin-right: 8px;
 }
+/* -----------------------------------------------------------
+      📌 TABLET VIEW (≤768px)
+-----------------------------------------------------------*/
+@media (max-width: 768px) {
+
+  /* --------------------------
+      Navbar Layout Adjustments
+  ---------------------------*/
+
+    .navbar {
+    position: absolute !important;   /* stays where it is */
+    left: 0;
+    height: 80px;
+    padding: 0 20px;
+    width: 100%;
+    background: transparent;
+    z-index: 9999;
+  }
+
+  .navbar.scrolled {
+    position: absolute !important;  /* DON'T move when scrolling */
+    background: transparent;        /* no color on scroll */
+    box-shadow: none;
+    border-bottom: none;
+  }
+  .navbar-logo {
+    height: 65px !important;
+    margin-left: 10px !important;
+  }
+  .navbar-menu{
+    margin-right: 0 !important;
+    width: 100%;
+  }
+  .navbar-links {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    padding-left: 0;
+  }
+ .navbar-links li{
+    padding: 0;
+    margin: 0;
+ }
+  .navbar-links li a {
+    font-size: 12px;
+    color: #000 !important;
+    padding: 8px 0;
+    justify-content: space-between;
+  }
+  .navbar-links .desktop-only a {
+    background: white;
+    padding: 5px;
+    border-radius:15px;
+    border: 1px solid  teal;;
+  }
+  .mobile-submenu{
+    display: none;
+  }
+}
+
 /* -----------------------------------------------------------
    📌 MOBILE ONLY (≤480px)
 -----------------------------------------------------------*/

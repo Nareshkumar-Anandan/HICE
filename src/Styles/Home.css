@@ -234,31 +234,6 @@
   left: 600px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .about-box {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .about-image {
-    height: 200px;
-  }
-
-  .nav-arrow {
-    top: auto;
-    bottom: -20px;
-    transform: none;
-  }
-
-  .nav-arrow.left {
-    left: 40%;
-  }
-
-  .nav-arrow.right {
-    right: 40%;
-  }
-}
 .edu-wrapper {
   display: flex;
   align-items: center;
@@ -461,44 +436,6 @@
   color: #fff;
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-  .edu-wrapper {
-    flex-direction: column;
-    padding: 40px 20px;
-  }
-
-  .edu-left {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .edu-heading {
-    text-align: center;
-    border-left: none;
-    padding-left: 0;
-  }
-
-  .edu-search-row {
-    justify-content: center;
-  }
-
-  .edu-right {
-    margin-top: 20px;
-  }
-
-  .edu-image {
-    max-width: 100%;
-    border-top-left-radius: 60px;
-  }
-
-  .edu-search-results, 
-  .edu-related-courses {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-  }
-}
 .hind-wrapper {
   font-family: Arial, sans-serif;
   color: #fff;
@@ -706,341 +643,179 @@
   text-transform: uppercase;
 }
 
-/* ========================= */
-/* ✅ RESPONSIVE DESIGN CSS  */
-/* ========================= */
+/* ===========================
+      TABLET VIEW (≤ 768px)
+   =========================== */
 
-
-@media (max-width: 480px) {
+@media (max-width: 768px) {
 
   /* ===== HOME SECTION ===== */
   .home {
-    height: 90vh;
+    height: 60vh;
   }
-
   .home-content {
-    width: 100px;
-    height: 100px;
-    right: 10px;
-    bottom: 15px;
-    text-align: right;
+    bottom: 30px;
+    right: 20px;
   }
 
-  .campus-tour {
-    font-size: 9px;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-  }
-  .campus-tour .campus-icon{
-    width: 100px;
-    height: 100px;
+  .campus-tour img {
+    width: 120px;
+    height: 120px;
   }
 
 
   /* ===== WHY HINDUSTHAN ===== */
   .why-section {
-   display: flex;
-    flex-direction: column;
-    padding: 0px;
-    padding: 20px 10px;
+    padding: 40px 30px;
   }
 
-  .why-title {
-    font-size: 24px;
-    line-height: 1.2;
-  }
-  .why-container{
+  .why-container {
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    text-align: center;
   }
 
-  .why-right p {
-    font-size: 14px;
-    line-height: 1.5;
-  }
   .why-left {
-    width: 200px;
-    height: 230px;
-    text-align: left;
-    margin-left: -140px;
+    width: 90%;
+    height: auto;
+    position: relative;
   }
-  .why-left-bottom{
-    margin-top: 90px;
-    margin-left: 100px;
-  }
+
+  .why-left-top img,
   .why-left-bottom img {
+    position: relative;
     width: 100%;
+    max-width: 100%;
     height: auto;
   }
-  .why-right-bottom{
-    width: 90px;
-    margin-top: 140px;
-    margin-left: 20px;
+
+  .why-left-bottom {
+    margin: 20px auto 0;
   }
+
+  .why-right {
+    width: 100%;
+    text-align: center;
+  }
+
   .why-right p {
-    font-size: 14px;
-    text-align: justify;
-    padding: 0px  20px;
-    line-height: 1.5;
+    font-size: 18px;
+    padding: 0 15px;
   }
-  .why-left img {
-    width: 100%;
-    height: auto;
-  }
+
 
   /* ===== ABOUT SECTION ===== */
   .about-section {
-    display: flex;
-    flex-direction: column;
-    margin: 0px;
-    padding: 0px;
-  
+    padding: 40px 30px;
   }
-  .about-header {
-    padding: 20px 10px;
-    margin-bottom: 0px;
-  }
-  .about-header h2 {
-    font-size: 20px;
-  }
-  .about-header p {
-    font-size: 16px;
-  }
-  .about-box-home {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    margin-top: 0px;
-  }
-  .about-image{
-    width: 100%;
-    height: 200px;
 
+  .about-box-home {
+    width: 100%;
+    height: auto;
+    grid-template-columns: 1fr;
   }
+
+  .about-image {
+    width: 100%;
+    height: 280px;
+    border-top-right-radius: 100px;
+  }
+
   .about-image img {
-    border-top-right-radius: 50px;
-    width: 300px;
-    height: 200px;
+    width: 100%;
+    height: 280px;
+    border-top-right-radius: 100px;
   }
 
   .about-text-first h3 {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .about-text-first p {
-    font-size: 14px;
-    text-align: justify;
+    font-size: 16px;
   }
 
-  .view-btn {
-    font-size: 13px;
-    padding: 6px 14px;
-  }
-  .nav-arrow {
-    width: 40px;
-    height: 45px;
-    text-align: center;
-    align-self: center;
-  }
-  .nav-arrow.left {
-    position: absolute;
-    left: 10px;
-    bottom: 470px;
-}
-  .nav-arrow.right {
-    position: absolute;
-    left: 310px;
-    bottom: 470px;
-  }
-  .about-vector1 {
-    position: absolute;
-    margin-top: 0px;
-    right: 0px;
-  }
-  .about-vector1 img{
-    width: 150px;
-    height: 150px;
-  }
-  .about-vector2{
-    position: absolute;
-    bottom: -20px;
-    right: -10px;
-  }
-  .about-vector2 img{
-    width: 100px;
-    height: 100px;
-    
-  }
 
   /* ===== EDUCATION SECTION ===== */
   .edu-wrapper {
-    padding: 0;
-    display: flex;
-    flex-direction: column-reverse;
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
   }
 
-  .edu-wrapper .edu-heading {
-    position: absolute;
-    font-size: 24px;
-    margin-left: -75px;
-    bottom: 250px;
-    padding-left: 0px;
+  .edu-heading {
+    position: relative;
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 32px;
   }
-  .edu-left .edu-desc{
-    margin-top: 50px;
-    text-align: justify;
-    font-size: 15px;
-    padding: 0px 15px;
-  }
-  .edu-right{
-    width: 100%;
-  }
-  .edu-frame {
-    flex-direction: row;
-    gap: 10px;
-    height: auto;
-    margin-top: 20px;
-  }
-  .edu-image {
-    border-top-left-radius: 40px;
-    height: 220px;
-    width: 70%;
-    margin-left: 20px;
-  }
-   .edu-image2{
-    height: 300px;
-   }
+
   .edu-desc {
-    font-size: 14px;
-  }
-  .edu-search-row {
-    flex-direction: row;
-    gap: 8px;
+    font-size: 18px;
+    text-align: justify;
   }
 
-  .edu-search-box {
-    width: 50%;
+  .edu-frame {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .edu-image {
+    width: 70%;
+    height: 300px;
+  }
+
+  .edu-image2 {
+    height: 300px;
   }
 
   .edu-programs li {
-    font-size: 14px;
-    line-height: 1.4;
-  }
-  .edu-programs{
-    width: 180px;
-  }
-  .edu-vector{
-    width: 250px;
-    bottom: 0px;
+    font-size: 16px;
   }
 
-  
+  .edu-vector {
+    width: 250px;
+  }
+
+
   /* ===== HINDUSTHAN GRID ===== */
-
   .hind-header {
-    padding: 0;
-    margin-left: -70px;
+    padding: 20px 30px;
+    height: auto;
   }
 
-  .hind-title h1 {
-    font-size: 28px;
-    width: 150px;
+  .hind-header h1 {
+    font-size: 38px;
   }
-.hind-header h1 span {
-  color: #f4b400;
-  font-family: 'Neuton', serif;
-  font-weight: normal;
-  font-size: 20px;
-}
-.hind-header h1::before {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 5px;
-  background-color:#f4b400;
-  margin-bottom: 10px; /* spacing between line and text */
-}
+
   .hind-header p {
-    font-size: 14px;
-    width: 250px;
-    text-align: justify;
+    font-size: 20px;
   }
 
   .hind-grid {
-    grid-template-columns: 1fr;
-    gap: 1px;
-    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
   .hind-card {
-    width: 100%;
-    height: 280px;
+    height: 300px;
   }
 
-  .hind-card img,
-  .hind-overlay {
-   height: auto;
-  }
-
-  .hind-overlay h3 {
-    font-size: 18px;
-  }
-
-  .hind-overlay p {
-    font-size: 14px;
-  }
-
-  .explore-btn {
-    font-size: 16px;
-    bottom: 15px;
-    left: 50%;
-  }
 
   /* ===== COUNTER SECTION ===== */
-/* ===== COUNTER SECTION (MOBILE) ===== */
-.counter-wrapper {
-  margin-top: 855px;
-  padding: 20px;
-  border: 2px solid red;
-  height: 650px;
-  display: flex;
-  flex-direction: row;        /* ✅ Keep boxes in one line */
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: nowrap;          /* ✅ No wrapping */
-                  
-}
+  .counter-wrapper {
+    padding: 30px 10px;
+    gap: 30px;
+  }
 
-.counter-box {
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-}
+  .counter-box {
+    width: 150px;
+  }
 
-.counter-box .counter-icon {
-  width: 40px;
-  height: 40px;
- 
-  margin-bottom: 5px;
-}
+  .counter-box h2 {
+    font-size: 24px;
+  }
 
-.counter-box h2 {
-  font-size: 13px;
- 
-  margin: 2px 0;
-}
-
-.counter-box p {
-  font-size: 11px;
-  margin: 0;
-}
-
-
+  .counter-box p {
+    font-size: 12px;
+  }
 }
