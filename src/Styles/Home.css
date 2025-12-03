@@ -666,28 +666,12 @@
 
   /* ===== WHY HINDUSTHAN ===== */
   .why-section {
-    padding: 40px 30px;
+    padding: 0px 30px;
   }
-
-  .why-container {
-    flex-direction: column;
-    text-align: center;
+  .why-section .why-title {
+    font-size: 25px;
   }
-
-  .why-left {
-    width: 90%;
-    height: auto;
-    position: relative;
-  }
-
-  .why-left-top img,
-  .why-left-bottom img {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-
+ 
   .why-left-bottom {
     margin: 20px auto 0;
   }
@@ -817,5 +801,152 @@
 
   .counter-box p {
     font-size: 12px;
+  }
+}
+@media (max-width: 480px) {
+
+  /* ===== HOME SECTION ===== */
+  .home {
+    height: 80vh;
+  }
+
+  .campus-tour img {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* ===== WHY HINDUSTHAN ===== */
+  .why-title {
+    font-size: 36px;
+  }
+  .why-section{
+    padding-top: 10px;
+  }
+
+  .why-right p {
+    font-size: 16px;
+  }
+ .why-container {
+    flex-direction: column;
+    justify-content: left;
+    text-align:left;
+    width: 380px;
+    margin-left: 0;
+    
+  }
+  .why-left {
+  margin-left: 300px;
+  height: 280px;
+}
+.why-left-top  img {
+  position: absolute;
+  width: 100%;
+  max-width: 240px;
+  height: 180px;
+  border-radius: 8px;
+}
+.why-left-bottom img {
+  position: absolute;
+  width: 100%;
+  max-width: 230px;
+  height: 200px;
+  border-radius: 8px;
+}
+.why-left-bottom{
+  margin-top: 110px;
+  margin-left: 100px;
+}
+.why-right-bottom{
+  display: none;
+}
+.why-right{
+  width: 100%;
+  text-align: justify;
+  margin-left:0px ;
+}
+  /* ===== ABOUT SECTION ===== */
+  .about-vector1 {
+    margin-top: -10px;
+}
+.about-section{
+  padding-top:10px ;
+}
+.about-vector1 img{
+    width: 150px;
+    height: 150px;
+}
+  .about-header h2 {
+    font-size: 18px;
+  }
+
+  .about-header p {
+    font-size: 14px;
+  }
+
+  .about-text-first h3 {
+    font-size: 18px;
+  }
+
+  .about-text-first p {
+    font-size: 14px;
+  }
+  .nav-arrow{
+    top: 25%;
+  }
+  .nav-arrow.right {
+  left: 300px;
+  }
+  .view-btn{
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  .about-vector2{
+    bottom: -50px;
+    right: -10px;
+  }
+  .about-vector2 img{
+    width: 100px;
+    height: 100px;
+  }
+
+  /* ===== EDUCATION SECTION ===== */
+  .edu-heading {
+    font-size: 18px;
+  }
+
+  .edu-desc {
+    font-size: 16px;
+  }
+
+  .edu-programs li {
+    font-size: 14px;
+  }
+
+  /* ===== HINDUSTHAN GRID ===== */
+  .hind-header h1 {
+    font-size: 28px;
+  }
+
+  .hind-header p {
+    font-size: 18px;
+  }
+
+  .hind-card {
+    height: 250px;
+  }
+
+  .explore-btn {
+    font-size: 24px;
+    bottom: 20px;
+    left: 130px;
+  }
+
+  /* ===== COUNTER SECTION ===== */
+  .counter-box h2 {
+    font-size: 20px;
+  }
+
+  .counter-box p {
+    font-size: 10px;
   }
 }
