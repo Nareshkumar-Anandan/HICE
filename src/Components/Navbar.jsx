@@ -46,8 +46,10 @@ const [mobileAcademics, setMobileAcademics] = useState(false);
 };
 
 const stopNavigation = (e) => {
-  e.preventDefault();      // Stop navigation everywhere
+  if(window.innerWidth > 750){
+     e.preventDefault();      // Stop navigation everywhere
   e.stopPropagation();     // Prevent parent click handlers from firing
+  }
 };
 
   // ✅ Prevent body scroll when menu is open
@@ -651,11 +653,13 @@ It provides a lively space for students to relax, interact, and enjoy nutritious
 </li>
 
 {/* ABOUT US */}
-<li className="mobile-only strong" onClick={() => setMobileAbout(true)}>
+<li
+  className="mobile-only strong" onClick={() =>setMobileAbout(true) }>
   <a className="mobile-link">
-  About Us
-  <FaChevronRight className="mobile-dropdown-arrow" /></a>
+    About Us <FaChevronRight className="mobile-dropdown-arrow" />
+  </a>
 </li>
+
 
 {/* ADMISSION */}
 <li className="mobile-only strong" onClick={() => setMobileAdmission(true)}>

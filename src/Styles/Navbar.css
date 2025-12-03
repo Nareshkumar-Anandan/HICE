@@ -660,7 +660,7 @@ hr{
     border: 1px solid  teal;;
   }
   .mobile-submenu{
-    display: none;
+    display: none !important;
   }
 }
 
@@ -806,6 +806,7 @@ hr{
 
   /* Full-screen submenu */
   .mobile-submenu {
+    display: block !important;
     position: fixed;
     top: 70px;
     right:-100%;
@@ -815,7 +816,7 @@ hr{
     padding: 60px 25px;
     overflow-y: auto;
     transition: right 0.35s ease;
-    z-index: 3000;
+    z-index: 9999;
   }
   .mobile-dropdown-arrow {
     font-size: 18px;
