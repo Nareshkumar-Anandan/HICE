@@ -665,9 +665,7 @@
 
 
   /* ===== WHY HINDUSTHAN ===== */
-  .why-section {
-    padding: 0px 30px;
-  }
+ 
   .why-section .why-title {
     font-size: 25px;
   }
@@ -816,54 +814,72 @@
   }
 
   /* ===== WHY HINDUSTHAN ===== */
-  .why-title {
-    font-size: 36px;
+   .why-section {
+    padding: 20px;
+    margin: 0;
   }
-  .why-section{
-    padding-top: 10px;
+
+  .why-title {
+    font-size: 20px !important;
+    text-align: left;
+    margin-bottom: 15px;
+  }
+
+  .why-container {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    border: 2px solid black;
+  }
+
+  /* LEFT IMAGE BLOCK — MOBILE FIX */
+  .why-left {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    margin: 0;
+  }
+  .why-left-top img{
+    width: 100%;
+    max-width: 70%;
+    height: auto;
+  }
+   .why-left-bottom img {
+    width: 100%;
+    max-width: 70%;
+    height: auto;
+    margin-left: 90px;
+    margin-top: 80px;
+   }
+ 
+  .why-left-bottom,
+  .why-left-top {
+    margin: 0;                    /* REMOVE OFFSET */
+  }
+
+  /* Remove 3rd image on mobile */
+  .why-right-bottom {
+    display: none;
+  }
+
+  /* RIGHT TEXT BLOCK — MOBILE FIX */
+  .why-right {
+    width: 100%;
+    text-align: justify;
+    padding: 0 5px;
   }
 
   .why-right p {
     font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 12px;
   }
- .why-container {
-    flex-direction: column;
-    justify-content: left;
-    text-align:left;
-    width: 380px;
-    margin-left: 0;
-    
-  }
-  .why-left {
-  margin-left: 300px;
-  height: 280px;
-}
-.why-left-top  img {
-  position: absolute;
-  width: 100%;
-  max-width: 240px;
-  height: 180px;
-  border-radius: 8px;
-}
-.why-left-bottom img {
-  position: absolute;
-  width: 100%;
-  max-width: 230px;
-  height: 200px;
-  border-radius: 8px;
-}
-.why-left-bottom{
-  margin-top: 110px;
-  margin-left: 100px;
-}
-.why-right-bottom{
-  display: none;
-}
-.why-right{
-  width: 100%;
-  text-align: justify;
-  margin-left:0px ;
-}
   /* ===== ABOUT SECTION ===== */
   .about-vector1 {
     margin-top: -10px;
@@ -881,6 +897,7 @@
 
   .about-header p {
     font-size: 14px;
+   
   }
 
   .about-text-first h3 {
@@ -889,6 +906,7 @@
 
   .about-text-first p {
     font-size: 14px;
+     text-align: justify;
   }
   .nav-arrow{
     top: 25%;
