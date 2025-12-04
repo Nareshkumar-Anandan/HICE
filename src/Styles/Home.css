@@ -817,6 +817,7 @@
    .why-section {
     padding: 20px;
     margin: 0;
+     border: 2px solid black;
   }
 
   .why-title {
@@ -832,7 +833,7 @@
     justify-content: center;
     width: 100%;
     gap: 20px;
-    border: 2px solid black;
+    
   }
 
   /* LEFT IMAGE BLOCK — MOBILE FIX */
