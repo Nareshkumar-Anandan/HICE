@@ -1,7 +1,10 @@
-/* Navbar wrapper */
+/* =============================================================================
+   1. NAVBAR WRAPPER & CORE STYLES
+============================================================================= */
 .navbar {
-  position: absolute;   /* Start inside hero image */
-  top: 50;  /* should be 0, not 50 */
+  position: absolute;
+  /* Start inside hero image */
+  top: 50px;
   left: 0;
   width: 100%;
   display: flex;
@@ -11,701 +14,289 @@
   z-index: 9999;
   background: transparent;
   transition: all 0.3s ease;
+  font-family: 'Outfit', sans-serif;
+  /* Global font default for nav */
 }
 
-/* When navbar is scrolled (fixed at top) */
+/* Scrolled state (Fixed + Glass/White) */
 .navbar.scrolled {
+  top: 0px;
   position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.99); /* glass/solid */
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo */
+/* Prevent body scroll when menu is open (applied via JS) */
+html.menu-open,
+body.menu-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* =============================================================================
+   2. LOGO
+============================================================================= */
 .navbar-logo {
   width: auto;
-  height: 100px;
+  height: 90px;
   cursor: pointer;
   margin-left: 40px;
+  transition: height 0.3s ease;
 }
+
 .navbar.scrolled .navbar-logo {
-  height: 80px; /* shrink logo on scroll */
+  height: 70px;
+  /* Slight shrink on scroll */
 }
 
-/* Glass effect menu container */
+/* =============================================================================
+   3. DESKTOP MENU LINKS
+============================================================================= */
+/* Container for links */
 .navbar-menu {
-  background: rgba(255, 255, 255, 0.308);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 50px;
-  padding: 0px 25px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  margin-left: 40px;
   margin-right: 40px;
-}
-.navbar.scrolled .navbar-menu {
-  background: none;
-  box-shadow: none;
+  padding: 20px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.247);
 }
 
-/* Links */
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 15px;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar-links li a {
-  font-family: Outfit;
+/* Individual Link Item */
+.navbar-links li {
+  /* IMPORTANT: We do NOT want relative here for the megamenu to be full width 
+     relative to the viewport/navbar. However, usually 'li' is relative. 
+     If we want full-width dropdown, we leave this static. */
+  position: static;
+}
+
+/* The actual link styling */
+.navbar-links a {
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
-  color: white; /* default white */
-  padding: 8px 12px;
+  color: white;
+  padding: 10px 15px;
   transition: all 0.3s ease;
+  font-family: 'Outfit', sans-serif;
+  border-radius: 4px;
+  /* subtle touch */
 }
 
-/* Links after scroll */
-.navbar.scrolled .navbar-links li a {
-  color: black; /* override */
-  font-family: Poppins;
-  font-size: 18px;
+.navbar.scrolled .navbar-links a {
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  /* As per original design */
 }
 
-/* Hover (only for text links, NOT logo) */
-.navbar-links li a:hover {
-  color: #f1c40f; /* yellow hover */
-}
-.navbar.scrolled .navbar-links li a:hover {
-  color: #f1c40f; /* yellow hover */
-}
-
-/* Active link */
-.navbar-links li a.active {
+/* Hover & Active States */
+.navbar-links a:hover,
+.navbar-links a.active {
   color: #f1c40f;
-  font-weight: 600;
 }
-.navbar.scrolled .navbar-links li .active {
-  color: #f1c40f;
-  font-weight: 600;
-}
+
 /* Apply Now Button */
 .apply-btn {
-  padding: 8px 16px;
+  padding: 10px 24px !important;
   background: transparent;
-  border: 1px solid white;
+  border: 1px solid;
   color: white;
-  border-radius: 30px;
+  border-radius: 50px !important;
   font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-/* Button after scroll */
-.navbar.scrolled .apply-btn {
-  border: 1px solid black;
-  color: black;
 }
 
 .apply-btn:hover {
   background: white;
   color: black;
 }
-/* Dropdown Container */
-.about-dropdown {
-  position: relative;
+
+.navbar.scrolled .apply-btn {
+  border: 1px solid #333;
+  color: #333;
 }
 
-.about-megamenu {
-  margin-top: 0px;
+.navbar.scrolled .apply-btn:hover {
+  background: #333;
+  color: white;
+}
+
+/* =============================================================================
+   4. MEGA MENU (DESKTOP)
+============================================================================= */
+/* 
+   The container for the dropdown. 
+   Positioned absolute relative to .navbar (because li is static).
+   Top: 100px (navbar height) or 100% 
+*/
+.megamenu-container {
+  display: block;
   position: absolute;
-  width: 1550px;
+  top: 100px;
+  /* Aligns exactly below navbar */
+  left: 0;
+  width: 100%;
+  background: white;
+  height: 0;
+  /* Animate height */
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  z-index: 9998;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Active State to Show Menu */
+.megamenu-container.open,
+.dropdown-item:hover .megamenu-container {
   height: 550px;
-  left: -745px;
-  justify-content: center;
-  overflow: hidden; 
+  /* Fixed height from original design */
+  opacity: 1;
+  visibility: visible;
 }
-.about-flex{
-  margin-top: 39px;
+
+/* Content Wrapper */
+.megamenu-content {
   display: flex;
-  flex-direction: row;
-  background-color:#fff ;
-  justify-content: center;
-  padding: 15px;
-  border-top: 1px solid rgba(128, 128, 128, 0.292);
-  box-shadow: 0px 8px 6px -6px rgba(0, 0, 0, 0.3);
-}
-.about-megamenu .about-intro{
-  width: 440px;
-  height: 400px;
-  border-right: 2px solid grey;
-  padding-right: 20px;
-}
-.about-intro h3{
-  font-family: podkava;
-  font-size: 25px;
-}
-.about-intro p{
-  font-family: Outfit;
-  font-size: 20px;
-}
-.about-grid {
-  display: grid;
-  width: 1000px;
-  grid-template-columns: repeat(2, 1fr);
- 
-}
-.about-nav {
-  width: 350px;
-  transition: background 0.3s ease;
-  height: 150px;
-  margin-left: 80px;
-}
-.about-nav h3 {
-  font-size: 22px;
-  font-family: Podkava;
-  font-weight: bold;
-  align-items: center;
-  height: 25px;
-
-}
-.about-nav h3:hover {
-  color: #f1c40f;
-  cursor: pointer;
-}
-.about-nav h3 .icon-vector {
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 2px;
+  max-width: 1400px;
+  /* Constrain max width for large screens */
+  margin: 0 auto;
+  padding: 20px;
+  height: 100%;
 }
 
-.about-grid p {
-  font-family: Outfit;
-  font-size: 15px;
+/* Left Intro Section */
+.megamenu-intro {
+  flex: 0 0 450px;
+  text-align: left;
+  padding-right: 40px;
+  border-right: 1px solid black;
+  display: flex;
+  flex-direction: column;
 }
+
+.megamenu-intro h3 {
+  font-family: 'Podkava', serif;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.megamenu-intro p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* Learn More Button inside menu */
 .learn-btn {
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   background: teal;
   color: white;
+  padding: 10px 20px;
   border-radius: 25px;
-  text-decoration: none;
-  font-size: 0.85rem;
+  font-weight: 500;
+  width: fit-content;
+  cursor: pointer;
+  transition: background 0.2s;
 }
+
+.learn-btn:hover {
+  background: #006666;
+  color: white !important;
+  /* Force white text */
+}
+
 .learn-btn img {
-  width: 25px;
-  height: 25px;
-  color: white;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-/* Admission */
-
-.admission-dropdown {
-  position: relative;
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
 }
 
-.admission-megamenu {
-  margin-top: 0px;
-  position: absolute;
-  width: 1540px;     /* same as About */
-  height: 550px;     /* same height */
-  left: -838px;      /* adjust to align center with nav (you can tweak pixel if needed) */
-  justify-content: center;
-  overflow: hidden;
-  z-index: 999;
-}
-
-.admission-megamenu .admission-flex {
-  margin-top: 39px;
-  display: flex;
-  flex-direction: row;
-  background-color: #fff;
-  justify-content: center;
-  padding: 15px;
-  border-top: 1px solid rgba(128, 128, 128, 0.292);
-   box-shadow: 
-    0px 8px 6px -6px rgba(0, 0, 0, 0.3); /* bottom */
-}
-
-/* LEFT INFO COLUMN */
-.admission-megamenu .admission-intro {
-  width: 440px;
-  height: 400px;
-  border-right: 2px solid grey;
-  padding-right: 20px;
-}
-
-.admission-megamenu .admission-intro h3 {
-  font-family: Podkava;
-  font-size: 25px;
-}
-
-.admission-megamenu .admission-intro p {
-  font-family: Outfit;
-  font-size: 20px;
-}
-
-/* RIGHT GRID COLUMN */
-.admission-megamenu .admission-grid {
+/* Right Grid Section */
+.megamenu-grid {
+  flex: 1;
+  padding-left: 50px;
   display: grid;
-  width: 1000px;
   grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  overflow-y: auto;
+  /* Just in case */
 }
 
-.admission-megamenu .admission-nav {
-  width: 350px;
-  transition: background 0.3s ease;
-  height: 150px;
-  margin-left: 80px;
+/* Grid Items */
+.megamenu-link-item {
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 8px;
+  transition: background 0.2s;
 }
 
-.admission-megamenu .admission-nav h3 {
+.megamenu-link-item:hover {
+  background: #f9f9f9;
+}
+
+.megamenu-link-item h3 {
+  font-family: 'Podkava', serif;
   font-size: 22px;
-  font-family: Podkava;
-  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-.admission-megamenu .admission-nav h3:hover {
+.megamenu-link-item:hover h3 {
   color: #f1c40f;
-  cursor: pointer;
 }
 
-.admission-megamenu .admission-nav h3 .icon-vector {
-  position: absolute;
-  margin-left: 0px;
-  margin-top: 2px;
-}
-
-.admission-megamenu .admission-grid p {
-  font-family: Outfit;
+.megamenu-link-item p {
   font-size: 15px;
+  color: #666;
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.5;
+  margin: 0;
 }
 
-/* Academics Dropdown Container */
-.academics-dropdown {
-  position: relative;
-}
-
-.academics-megamenu {
-  margin-top: 0px;
-  position: absolute;
-  width: 1540px;   /* same as about */
-  height: 550px;   /* same height */
-  left: -960px;    /* align under nav */
-  justify-content: center;
-  overflow: hidden;
-}
-
-.academics-megamenu .about-flex {
-  margin-top: 39px;
-  display: flex;
-  flex-direction: row;
-  background-color: #fff;
-  justify-content: center;
-  padding: 15px;
-  border-top: 1px solid rgba(128, 128, 128, 0.292);
-  box-shadow: 
-    0px 8px 6px -6px rgba(0, 0, 0, 0.3); /* bottom */
-}
-
-.academics-megamenu .about-intro {
-  width: 400px;
-  height: 400px;
-  border-right: 2px solid grey;
-  padding-right: 20px;
-}
-
-.academics-megamenu .about-intro h3 {
-  font-family: Podkava;
-  font-size: 25px;
-
-}
-
-.academics-megamenu .about-intro p {
-  font-family: Outfit;
-  font-size: 20px;
-}
-
-.academics-megamenu .about-grid {
-  display: grid;
-  width: 1000px;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.academics-megamenu .about-nav {
-  width: 450px;
-  transition: background 0.3s ease;
-  height: 100px;
-  margin-left: 50px;
-}
-
-.academics-megamenu .about-nav h3 {
-  font-size: 22px;
-  font-family: Podkava;
-  font-weight: bold;
-  height:auto;
-}
-
-.academics-megamenu .about-nav h3:hover {
-  color: #f1c40f;
-  cursor: pointer;
-}
-
-.academics-megamenu .about-nav h3 .icon-vector {
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 2px;
-}
-
-.academics-megamenu .about-grid p {
-  font-family: Outfit;
-  font-size: 15px;
-  margin-top: -10px;
-}
-/* ✅ Infrastructure Dropdown */
-.infrastructure-dropdown {
-  position: relative;
-}
-
-.infrastructure-megamenu {
-  margin-top: 0px;
-  position: absolute;
-  width: 1540px;       /* align same as other menus */
-  height: 550px;
-  left: -1100px;       /* adjust value based on nav item placement */
-  justify-content: center;
-  overflow: hidden;
-  z-index: 999;
-}
-
-.infrastructure-megamenu .infrastructure-flex {
-  margin-top: 39px;
-  display: flex;
-  flex-direction: row;
-  background-color: #fff;
-  justify-content: center;
-  padding: 15px;
-  border-top: 1px solid rgba(128, 128, 128, 0.292);
-  box-shadow: 0px 8px 6px -6px rgba(0, 0, 0, 0.3);
-}
-
-.infrastructure-megamenu .infrastructure-intro {
-  width: 440px;
-  height: 400px;
-  border-right: 2px solid grey;
-  padding-right: 20px;
-}
-
-.infrastructure-megamenu .infrastructure-intro h3 {
-  font-family: Podkava;
-  font-size: 25px;
-}
-
-.infrastructure-megamenu .infrastructure-intro p {
-  font-family: Outfit;
-  font-size: 20px;
-}
-
-.infrastructure-megamenu .infrastructure-grid {
-  display: grid;
-  width: 1000px;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.infrastructure-megamenu .infrastructure-nav {
-  width: 350px;
-  transition: background 0.3s ease;
-  height: 150px;
-  margin-left: 80px;
-}
-
-.infrastructure-megamenu .infrastructure-nav h3 {
-  font-size: 22px;
-  font-family: Podkava;
-  font-weight: bold;
-  align-items: center;
-}
-
-.infrastructure-megamenu .infrastructure-nav h3:hover {
-  color: #f1c40f;
-  cursor: pointer;
-}
-
-.infrastructure-megamenu .infrastructure-nav h3 .icon-vector {
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 2px;
-}
-
-.infrastructure-megamenu .infrastructure-grid p {
-  font-family: Outfit;
-  font-size: 15px;
-}
-
-/* ================================
-   📌 PLACEMENTS DROPDOWN MENU
-================================ */
-.placements-dropdown {
-  position: relative;
-}
-
-.placements-megamenu {
-  margin-top: 0px;
-  position: absolute;
-  width: 1540px;        /* same layout as About & Admission */
-  height: 550px;
-  left: -1240px;        /* adjust for perfect alignment with nav item */
-  justify-content: center;
-  overflow: hidden;
-  z-index: 999;
-}
-
-/* MAIN FLEX CONTAINER */
-.placements-megamenu .placements-flex {
-  margin-top: 39px;
-  display: flex;
-  flex-direction: row;
-  background-color: #fff;
-  justify-content: center;
-  padding: 15px;
-  border-top: 1px solid rgba(128, 128, 128, 0.292);
-  box-shadow: 0px 8px 6px -6px rgba(0, 0, 0, 0.3);
-}
-
-/* LEFT INFO SECTION */
-.placements-megamenu .placements-intro {
-  width: 440px;
-  height: 400px;
-  border-right: 2px solid grey;
-  padding-right: 20px;
-}
-
-.placements-megamenu .placements-intro h3 {
-  font-family: Podkava;
-  font-size: 25px;
-}
-
-.placements-megamenu .placements-intro p {
-  font-family: Outfit;
-  font-size: 20px;
-}
-
-/* RIGHT GRID */
-.placements-megamenu .placement-grid {
-  display: grid;
-  width: 1000px;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-/* EACH ITEM */
-.placements-megamenu .placement-item {
-  width: 350px;
-  height: 150px;
-  margin-left: 80px;
-  transition: background 0.3s ease;
-}
-
-.placements-megamenu .placement-item h3 {
-  font-size: 22px;
-  font-family: Podkava;
-  font-weight: bold;
-  position: relative;
-}
-
-.placements-megamenu .placement-item h3:hover {
-  color: #f1c40f;
-  cursor: pointer;
-}
-
-.placements-megamenu .placement-item h3 .icon-vector {
-  position: absolute;
-  margin-left: 10px;
-  margin-top: 2px;
-}
-
-.placements-megamenu .placement-grid p {
-  font-family: Outfit;
-  font-size: 15px;
-}
-hr{
-  display: none;
-}
-/* ✅ MOBILE RESPONSIVENESS */
-.menu-toggle {
-  display: none;
-  color: white;
-  cursor: pointer;
-  z-index: 2000;
-}
-
-.mobile-arrow {
-  display: none;
+.icon-vector {
   font-size: 14px;
-  margin-left: 8px;
-  transition: transform 0.3s ease;
+  color: #f1c40f;
+}
+
+
+/* =============================================================================
+   5. MOBILE & RESPONSIVE
+============================================================================= */
+/* Utilities to hide/show */
+.desktop-only {
+  display: block;
 }
 
 .mobile-only {
   display: none;
 }
-.desktop-only {
-  display: block;
+
+.menu-toggle {
+  display: none;
 }
 
-/* ===========================
-   MOBILE DROPDOWN PANEL
-=========================== */
-.mobile-submenu {
-  position: absolute;
-  top: 0;
-  right: -100%;      /* hidden by default */
-  width: 100%;
-  height: 100%;
-  background: white;
-  padding: 80px 20px 20px 20px;
-  box-shadow: -4px 0 10px rgba(0,0,0,0.15);
-  transition: right 0.35s ease-in-out;
-  overflow-y: auto;
-  z-index: 9999;
- 
-}
-
-/* When opened */
-.mobile-submenu.open {
-  right: 0;
-}
-
-/* Submenu links */
-.mobile-submenu li a {
-  font-size: 18px;
-  padding: 10px 0;
-  display: block;
-  color: black;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-/* Back Button */
-.mobile-back {
-  font-size: 18px;
-  padding: 12px 0;
-  font-weight: bold;
-  color: #000;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.mobile-back svg {
-  margin-right: 8px;
-}
-/* -----------------------------------------------------------
-      📌 TABLET VIEW (≤768px)
------------------------------------------------------------*/
-@media (max-width: 768px) {
-
-  /* --------------------------
-      Navbar Layout Adjustments
-  ---------------------------*/
-
-    .navbar {
-    position: absolute !important;   /* stays where it is */
-    left: 0;
-    height: 80px;
-    padding: 0 20px;
-    width: 100%;
-    background: transparent;
-    z-index: 9999;
-  }
-
-  .navbar.scrolled {
-    position: absolute !important;  /* DON'T move when scrolling */
-    background: transparent;        /* no color on scroll */
-    box-shadow: none;
-    border-bottom: none;
-  }
-  .navbar-logo {
-    height: 65px !important;
-    margin-left: 10px !important;
-  }
-  .navbar-menu{
-    margin-right: 0 !important;
-    width: 100%;
-  }
-  .navbar-links {
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-    padding-left: 0;
-  }
- .navbar-links li{
-    padding: 0;
-    margin: 0;
- }
-  .navbar-links li a {
-    font-size: 12px;
-    color: #000 !important;
-    padding: 8px 0;
-    justify-content: space-between;
-  }
-  .navbar-links .desktop-only a {
-    background: white;
-    padding: 5px;
-    border-radius:15px;
-    border: 1px solid  teal;;
-  }
-  .mobile-submenu{
-    display: none !important;
-  }
-}
-
-/* -----------------------------------------------------------
-   📌 MOBILE ONLY (≤480px)
------------------------------------------------------------*/
-@media (max-width: 480px) {
-
-  /* Navbar mobile layout */
-  .navbar {
-    height: 70px;
-    padding: 0 10px;
-    position: fixed !important;
-    width: 100%;
-    background: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.445);
-    z-index: 9999 !important;
-  }
-  .navbar.scrolled {
-    position: fixed !important;
-    background: rgb(255, 255, 255);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .navbar-logo {
-    height: 55px;
-    margin-left: 5px;
-  }
-
-  .navbar.scrolled .navbar-logo {
-    height: 55px;
-    margin: 0;
-
-  }
-
-  /* Hamburger icon */
-  .menu-toggle {
-    display: block !important;
-    padding: 8px;
-    color: black;
-    z-index: 3000;
-  }
-
-  /* Hide all desktop links */
-  .navbar-links > li:not(.mobile-only) {
+/* TABLET (up to 992px) - Switch to Hamburger */
+@media (max-width: 992px) {
+  .desktop-only {
     display: none !important;
   }
 
@@ -713,165 +304,240 @@ hr{
     display: block !important;
   }
 
-  /* Mobile slide menu */
+  /* Navbar Container */
+  .navbar {
+    top: 0;
+    height: 70px;
+    padding: 0 20px;
+    background: transparent;
+    border-bottom: 1px solid #eee;
+    /* Rely on scroll state */
+    /* If responsive design needs standard bg on mobile even when not scrolled: */
+    /* background: white; border-bottom: 1px solid #eee; */
+  }
+
+  .navbar-logo {
+    height: 50px;
+    margin-left: 0;
+  }
+
+  .navbar.scrolled .navbar-logo {
+    height: 50px;
+  }
+
+  .navbar.scrolled {
+    background: white;
+  }
+
+  /* Hamburger Toggle */
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+  }
+
+  /* 
+     Mobile Menu Drawer 
+     We reuse .navbar-menu but position it as a fixed drawer
+  */
   .navbar-menu {
     position: fixed;
     top: 70px;
-    right:0 !important;                 /* ⭐ ALWAYS ATTACHED TO RIGHT */
+    right: -100%;
+    /* Hidden */
     width: 100%;
     height: calc(100vh - 70px);
-    background: rgba(255,255,255,0.97);
-    padding: 0px 20px;
+    background: white;
+    margin: 0;
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
     overflow-y: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(100%);      /* hidden off-screen */
-    transition: transform 0.35s ease, opacity 0.3s ease;
-    z-index: 2000 !important;
-    margin-left: 0 !important;   /* remove desktop spacing */
-    margin-right: 0 !important;  /* remove desktop spacing */
-    border-radius: 0 !important; /* avoid rounded corners */
-
-  }
-  .navbar.scrolled .navbar-menu{ 
-    background: rgb(255, 255, 255);
+    box-shadow: none;
+    display: block;
+    /* override flex from desktop */
+    border-radius: 0;
+    backdrop-filter: none;
   }
 
   .navbar-menu.open {
-    transform: translateX(0);       /* ⭐ SLIDE FROM RIGHT */
     right: 0;
-    opacity: 1;
-    pointer-events: auto;
+    /* Slide in */
   }
 
-  /* Mobile nav links */
+  /* Mobile Links Layout */
   .navbar-links {
-    display: flex;
     flex-direction: column;
-    gap: 18px;
-    margin: 20px 0  30px 0;
-    padding: 0;
-  }
-  .navbar-links li{
+    align-items: flex-start;
+    gap: 0;
     width: 100%;
   }
-  .navbar-menu .navbar-links li a{
+
+  .navbar-links li {
+    width: 100%;
+    margin-bottom: 0;
+    position: static;
+    /* Still static */
+  }
+
+  /* Style the main links in mobile */
+  .mobile-link {
     display: flex;
-    padding: 4px 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
     font-size: 18px;
-    color: #000;
-    font-weight: 500;
-     justify-content:space-between;  
-  }
- 
-
-  /* Strong links */
-  .mobile-only.strong{
-    font-family: 'Outfit';
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    margin-bottom: 10px;
-  }
-  .mobile-only.strong a.active {
-  color: #f1c40f;
- }
-  /* Weak links */
-  .navbar-links li.mobile-only.weak a {
-    font-size: 12px !important;
-    color: rgba(0,0,0,0.55) !important;
+    color: #333;
+    width: 100%;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
   }
 
-  /* Apply Now button */
-  .mobile-only.code a{
-    background: white;
-    color: #0c1a3c !important;
-    font-size: 18px !important;
-    font-weight: 600 !important;
+  .navbar-links a {
+    color: #333 !important;
+    /* Force black on mobile */
+    padding: 0;
+    width: 100%;
+    display: block;
+  }
+
+  /* Separators */
+  .navbar-links li.strong,
+  .navbar-links .mobile-row {
+    border-bottom: 1px solid #eee;
+  }
+
+  hr.mobile-only {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid black;
+    margin: 20px 0;
+  }
+
+  /* Apply Button Mobile */
+  .mobile-only.apply .apply-btn {
+    display: block;
+    text-align: center;
+    background: #f1c40f;
+    color: white !important;
+    border: none;
+    margin-bottom: 15px;
+    padding: 12px !important;
+  }
+
+  /* Code link */
+  .mobile-only.code a {
+    text-align: center;
+    border: 1px solid #0c1A3c;
+    color: #0c1A3c !important;
     padding: 10px !important;
     border-radius: 25px;
-    justify-content: center !important;
-    border: 1px solid #0c1a3c ;
-    width: 100%;
+    margin-bottom: 20px;
+    font-weight: 600;
   }
 
-  /* Disable megamenus */
-  .about-megamenu,
-  .admission-megamenu,
-  .academics-megamenu,
-  .infrastructure-megamenu,
-  .placements-megamenu {
+  /* Weak links */
+  .navbar-links li.weak a {
+    font-size: 14px;
+    color: #888 !important;
+    padding: 8px 0;
+  }
+
+  /* =========================================================
+     MOBILE SUBMENUS 
+     Reusing .megamenu-container logic but creating a 
+     slide-over effect on top of the mobile menu
+  ========================================================= */
+  .megamenu-container {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    left: auto;
+    /* Reset left: 0 from desktop */
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: white;
+    box-shadow: none;
+    border: none;
+    transition: right 0.3s ease-in-out;
+    opacity: 1;
+    visibility: visible;
+    z-index: 10000;
+    padding: 0;
+    display: block;
+    /* ensure block layout */
+  }
+
+  .megamenu-container.open {
+    height: calc(100vh - 70px);
+    right: 0;
+    /* Ensure full height */
+  }
+
+  /* Hide Desktop Content in Mobile */
+  .megamenu-intro.desktop-only,
+  .megamenu-link-item p.desktop-only {
     display: none !important;
   }
 
-  /* Full-screen submenu */
-  .mobile-submenu {
+  /* Mobile Submenu Content */
+  .megamenu-content {
+    flex-direction: column;
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .megamenu-grid {
     display: block !important;
-    position: fixed;
-    top: 70px;
-    right:-100%;
     width: 100%;
-    height: 100vh;
-    background: #ffffff;
-    padding: 60px 25px;
-    overflow-y: auto;
-    transition: right 0.35s ease;
-    z-index: 9999;
-  }
-  .mobile-dropdown-arrow {
-    font-size: 18px;
-    opacity: 0.7;
-  }
-  .mobile-submenu.open {
-    right: 0;
+    flex: none;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
   }
 
-  .mobile-back {
-    font-size: 18px;
-    font-weight: 600;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    margin-bottom: 20px;
-    display: flex;
-    gap: 10px;
-    cursor: pointer;
-    align-items: center;
+  .megamenu-link-item {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid #f0f0f0 !important;
   }
-  .mobile-submenu ul {
-    list-style: none;
+
+  .megamenu-link-item:last-child {
+    border-bottom: none !important;
   }
-  .mobile-submenu li a {
-    text-decoration: none;
+
+  .megamenu-link-item:hover {
+    background: transparent;
+  }
+
+  .megamenu-link-item h3 {
     font-size: 16px;
-    padding: 12px 0;
-    color: #000;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    display: block;
-    
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+
   }
 
-  /* Horizontal line */
-  hr {
-    display: block;
-    border: 1px solid #0c1a3c9a;
-    width: 100%;
+  /* Remove random bottom space generated by desktop intro section */
+  .megamenu-intro {
+    display: none !important;
   }
 
-  /* Prevent scroll when menu open */
- html.menu-open,
-body.menu-open {
-  overflow: hidden !important;
-  height: 100vh !important;
-  touch-action: none !important;
-}
+  /* Fix container padding */
+  .megamenu-content {
+    padding: 0 !important;
+  }
 
-
-  .mobile-only.apply a{
-    font-weight: 600 !important;
-    padding: 10px !important;
-    justify-content: center !important;
-    background-color:#f1c40f;
-    color:#ffff !important;
-    border-radius: 25px;
+  /* Mobile Back Button */
+  .mobile-back {
+    margin-top: 30px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    color: #333;
   }
 }

@@ -1,6 +1,6 @@
 // src/App.js
-import React, { useEffect, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./Components/Navbar.jsx";
 import Header from "./Components/Header.jsx";
 import ScrollToTop from "./Components/ScrollToTop.jsx";
@@ -25,6 +25,37 @@ const InformationTech = React.lazy(() => import("./Components/InformationTech.js
 const Principles = React.lazy(() => import("./Components/Principles.jsx"));
 const ClassRoom = React.lazy(() => import("./Components/ClassRoom.jsx"));
 
+
+// ⭐ GLOBAL ROUTE-LEVEL LOADER COMPONENT
+function RouteLoader() {
+  const location = useLocation();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // When route changes → show loader
+    setLoading(true);
+
+    const handleLoad = () => {
+      setLoading(false); // hide loader after everything loads
+    };
+
+    // If next page already loaded from cache
+    if (document.readyState === "complete") {
+      setLoading(false);
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
+  }, [location.pathname]);
+
+  return loading ? <Loader /> : null;
+}
+
+
+
 function App() {
 
   // AOS Animation
@@ -32,7 +63,7 @@ function App() {
     AOS.init({ duration: 1000 });
   }, []);
 
-  // 🔥 Preload all pages in background after first load
+  // 🔥 Preload all components in background
   useEffect(() => {
     setTimeout(() => {
       import("./Components/Contact.jsx");
@@ -49,17 +80,19 @@ function App() {
       import("./Components/InformationTech.jsx");
       import("./Components/Principles.jsx");
       import("./Components/ClassRoom.jsx");
-    }, 1500); // loads in background slowly → user won't notice
+    }, 1500);
   }, []);
+
 
   return (
     <Router>
       <ScrollToTop />
+      <RouteLoader />   {/* 🔥 GLOBAL LOADER */}
+
       <Header />
       <Navbar />
 
       <Suspense fallback={<Loader />}>
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />

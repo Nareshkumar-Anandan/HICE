@@ -36,11 +36,13 @@
   cursor: pointer;
   margin-bottom: 30px;
 }
-.campus-tour img{
+
+.campus-tour img {
   color: violet;
   width: 150px;
   height: 150px;
 }
+
 .why-section {
   padding: 60px 80px;
   background: #f8f8f8;
@@ -51,19 +53,23 @@
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-
+  flex-wrap: wrap;
 }
+
 .why-left {
-  width: 650px;
+  width: 100%;
+  max-width: 650px;
   height: 450px;
 }
-.why-left-top  img {
+
+.why-left-top img {
   position: absolute;
   width: 100%;
   max-width: 355px;
   height: 280px;
   border-radius: 8px;
 }
+
 .why-left-bottom img {
   position: absolute;
   width: 100%;
@@ -71,11 +77,13 @@
   height: 300px;
   border-radius: 8px;
 }
-.why-left-bottom{
+
+.why-left-bottom {
   margin-top: 140px;
   margin-left: 160px;
 }
-.why-right-bottom{
+
+.why-right-bottom {
   margin-top: 230px;
   margin-left: 0px;
 }
@@ -93,7 +101,8 @@
 }
 
 .why-title .highlight {
-  color: #f4b400; /* Yellow line before title */
+  color: #f4b400;
+  /* Yellow line before title */
   font-weight: bolder;
   margin-right: 8px;
   height: 100px;
@@ -107,6 +116,7 @@
   margin-bottom: 16px;
   color: #333;
 }
+
 .about-section {
   background: #fff;
   padding: 60px 80px;
@@ -123,7 +133,7 @@
 .about-header p {
   color: #393838;
   margin-top: 8px;
-  font-family:Inter;
+  font-family: Inter;
   font-size: 23px;
   font-weight: bolder;
 }
@@ -134,11 +144,13 @@
 }
 
 .about-box-home {
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
   background: #fff;
-  width: 1200px;
-  height: 450px;
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  min-height: 450px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-top: 30px;
   padding: 30px;
@@ -151,34 +163,43 @@
 
 .about-image {
   background: #e5e5e5;
-  width: 600px;
-  height: 430px;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  min-height: 430px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #666;
   font-size: 16px;
   border-radius: 10px;
-   border-top-right-radius: 200px;
+  border-top-right-radius: 200px;
 }
+
 .about-image img {
-    width: 600px;
-    height : 430px; border-top-right-radius: 200px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-right-radius: 200px;
 }
+
 .about-vector1 {
-    position: absolute;
-    margin-top: -60px;
-    right: 0px;
+  position: absolute;
+  margin-top: -60px;
+  right: 0px;
 }
-.about-vector1 img{
-    width: 450px;
-    height: 450px;
+
+.about-vector1 img {
+  width: 450px;
+  height: 450px;
 }
-.about-vector2{
-    position: absolute;
-    bottom: -80px;
-    right: -30px;
+
+.about-vector2 {
+  position: absolute;
+  bottom: -80px;
+  right: -30px;
 }
+
 .about-text-first h3 {
   font-size: 24px;
   font-family: NATS;
@@ -188,7 +209,7 @@
 
 .about-text-first p {
   color: #444;
-  font-family:Outfit;
+  font-family: Outfit;
   font-size: 18px;
   margin-bottom: 15px;
   line-height: 1.6;
@@ -231,7 +252,7 @@
 }
 
 .nav-arrow.right {
-  left: 600px;
+  right: 10px;
 }
 
 .edu-wrapper {
@@ -247,7 +268,8 @@
 .edu-left {
   flex: 1;
   max-width: 600px;
-  position: relative; /* for dropdown positioning */
+  position: relative;
+  /* for dropdown positioning */
 }
 
 .edu-heading {
@@ -260,7 +282,8 @@
 }
 
 .edu-heading .highlight {
-  color: #f4b400; /* Yellow line before title */
+  color: #f4b400;
+  /* Yellow line before title */
   font-weight: bolder;
   margin-right: 8px;
   height: 100px;
@@ -302,7 +325,8 @@
 }
 
 .edu-search-input {
-  padding: 10px 15px 10px 35px; /* left padding for icon */
+  padding: 10px 15px 10px 35px;
+  /* left padding for icon */
   border: 1px solid #ccc;
   border-radius: 6px;
   outline: none;
@@ -451,19 +475,22 @@
   color: #fff;
   display: flex;
 }
-.hind-header .hind-title{
-    padding: 60px 80px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+
+.hind-header .hind-title {
+  padding: 60px 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
+
 .hind-header h1 {
   font-family: Neuton;
   font-size: 52px;
   font-weight: bold;
   width: 400px;
-  position: relative; /* Needed for ::before positioning */
+  position: relative;
+  /* Needed for ::before positioning */
 }
 
 .hind-header h1::before {
@@ -471,8 +498,9 @@
   display: block;
   width: 60px;
   height: 10px;
-  background-color:#f4b400;
-  margin-bottom: 10px; /* spacing between line and text */
+  background-color: #f4b400;
+  margin-bottom: 10px;
+  /* spacing between line and text */
 }
 
 .hind-header h1 span {
@@ -492,7 +520,7 @@
 /* Grid */
 .hind-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2px;
   background: #f9f9f9;
 }
@@ -501,7 +529,7 @@
 .hind-card {
   position: relative;
   overflow: hidden;
-  width: 505px;
+  width: 100%;
   height: 400px;
 }
 
@@ -574,14 +602,16 @@
   background: rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
+
 /* Explore button */
 .explore-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* space between text and icon */
+  gap: 10px;
+  /* space between text and icon */
   opacity: 0;
-  color:#fff;
+  color: #fff;
   font-family: 'Outfit';
   text-decoration: none;
   font-weight: 900;
@@ -589,37 +619,44 @@
   padding: 10px 25px;
   transition: all 0.4s ease;
   position: absolute;
-  bottom: 30px; /* distance from bottom */
-  left: 140px;    /* center horizontally */
-  transform: translateX(-50%) translateY(30px); /* hidden initially, centered */
+  bottom: 30px;
+  /* distance from bottom */
+  left: 140px;
+  /* center horizontally */
+  transform: translateX(-50%) translateY(30px);
+  /* hidden initially, centered */
   background: transparent;
 }
 
 /* Show button on hover */
 .hind-card:hover .explore-btn {
   opacity: 1;
-  transform: translateX(-50%) translateY(0); /* slide up into view */
+  transform: translateX(-50%) translateY(0);
+  /* slide up into view */
 }
 
 /* Hover effect for button */
 .explore-btn:hover {
-  color:  #e0a800;
+  color: #e0a800;
   transform: translateX(-50%) translateY(0) scale(1.05);
 }
+
 .counter-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 80px;
   background: #f8f8f8;
-  flex-wrap: wrap; /* makes it responsive */
+  flex-wrap: wrap;
+  /* makes it responsive */
 }
 
 .counter-box {
   text-align: center;
   color: #0a1a2f;
   font-family: Arial, sans-serif;
-  flex: 1 1 200px; /* responsive sizing */
+  flex: 1 1 200px;
+  /* responsive sizing */
 }
 
 .counter-icon {
@@ -653,6 +690,7 @@
   .home {
     height: 60vh;
   }
+
   .home-content {
     bottom: 30px;
     right: 20px;
@@ -665,11 +703,11 @@
 
 
   /* ===== WHY HINDUSTHAN ===== */
- 
+
   .why-section .why-title {
     font-size: 25px;
   }
- 
+
   .why-left-bottom {
     margin: 20px auto 0;
   }
@@ -801,6 +839,7 @@
     font-size: 12px;
   }
 }
+
 @media (max-width: 480px) {
 
   /* ===== HOME SECTION ===== */
@@ -814,10 +853,10 @@
   }
 
   /* ===== WHY HINDUSTHAN ===== */
-   .why-section {
+  .why-section {
     padding: 20px;
     margin: 0;
-     border: 2px solid black;
+    border: 2px solid black;
   }
 
   .why-title {
@@ -828,12 +867,13 @@
 
   .why-container {
     display: flex;
-    flex-direction: column; /* stack vertically */
+    flex-direction: column;
+    /* stack vertically */
     align-items: center;
     justify-content: center;
     width: 100%;
     gap: 20px;
-    
+
   }
 
   /* LEFT IMAGE BLOCK — MOBILE FIX */
@@ -846,22 +886,25 @@
     position: relative;
     margin: 0;
   }
-  .why-left-top img{
+
+  .why-left-top img {
     width: 100%;
     max-width: 70%;
     height: auto;
   }
-   .why-left-bottom img {
+
+  .why-left-bottom img {
     width: 100%;
     max-width: 70%;
     height: auto;
     margin-left: 90px;
     margin-top: 80px;
-   }
- 
+  }
+
   .why-left-bottom,
   .why-left-top {
-    margin: 0;                    /* REMOVE OFFSET */
+    margin: 0;
+    /* REMOVE OFFSET */
   }
 
   /* Remove 3rd image on mobile */
@@ -881,24 +924,28 @@
     line-height: 1.4;
     margin-bottom: 12px;
   }
+
   /* ===== ABOUT SECTION ===== */
   .about-vector1 {
     margin-top: -10px;
-}
-.about-section{
-  padding-top:10px ;
-}
-.about-vector1 img{
+  }
+
+  .about-section {
+    padding-top: 10px;
+  }
+
+  .about-vector1 img {
     width: 150px;
     height: 150px;
-}
+  }
+
   .about-header h2 {
     font-size: 18px;
   }
 
   .about-header p {
     font-size: 14px;
-   
+
   }
 
   .about-text-first h3 {
@@ -907,23 +954,29 @@
 
   .about-text-first p {
     font-size: 14px;
-     text-align: justify;
+    text-align: justify;
   }
-  .nav-arrow{
+
+  .nav-arrow {
     top: 25%;
   }
+
   .nav-arrow.right {
-  left: 300px;
+    left: auto;
+    right: 10px;
   }
-  .view-btn{
+
+  .view-btn {
     font-size: 14px;
     padding: 5px 10px;
   }
-  .about-vector2{
+
+  .about-vector2 {
     bottom: -50px;
     right: -10px;
   }
-  .about-vector2 img{
+
+  .about-vector2 img {
     width: 100px;
     height: 100px;
   }

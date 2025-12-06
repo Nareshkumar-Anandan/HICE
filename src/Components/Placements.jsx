@@ -17,7 +17,7 @@ const placements = [
   { id: 1, img: award1 },
   { id: 2, img: award2 },
   { id: 3, img: award3 },
-  { id: 2, img: award2 },
+  { id: 4, img: award2 },
 ];
 
 const logos = [ashok, zoho, tcs, accenture, techm];

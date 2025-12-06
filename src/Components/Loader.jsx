@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from "react";
 import "../Styles/Loader.css";
-import logo from "../logo.svg"; // change path if needed
+import logo from "../logo.svg";
 
 function PremiumLoader() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-    }, 2800); // fade-out after typing ends
+    const handlePageLoad = () => {
+      setFadeOut(true); // Fade out loader when everything is loaded
+    };
 
-    return () => clearTimeout(timer);
+    // If the page is already fully loaded (cache, fast load)
+    if (document.readyState === "complete") {
+      setFadeOut(true);
+    } else {
+      // Listen for the load event
+      window.addEventListener("load", handlePageLoad);
+    }
+
+    return () => {
+      window.removeEventListener("load", handlePageLoad);
+    };
   }, []);
 
   return (
