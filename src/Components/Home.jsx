@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";  
+import { useNavigate } from "react-router-dom";
 import { CircleArrowRight } from 'lucide-react';
 import searchIcon from "../Assets/searchIcon.png";
 import Vector from "../Assets/vectorEducation.png";
@@ -24,10 +24,9 @@ import AboutVectorTop from "../Assets/aboutvector2.png";
 import AboutVectorBottom from "../Assets/aboutvector1.png";
 // Event Page data
 import "../Styles/Event.css";
-import event1 from "../Assets/event1.png";
-import event2 from "../Assets/lab.jpg";
-import event3 from "../Assets/hostel.jpg";
-import vectorEvent from "../Assets/vectorEvent.png";
+import event1 from "../Assets/Posters/Poster-1.jpeg";
+import event2 from "../Assets/Posters/Poster-2.jpeg";
+import event3 from "../Assets/Posters/Poster-1.jpeg";
 
 //HICE Infra
 
@@ -52,21 +51,21 @@ import StaffIcon from "../Assets/Vector/StaffIcon.png";
 import AchievementIcon from "../Assets/Vector/AchievementsIcon.png";
 
 const Home = () => {
-   const images = [AboutImg1, AboutImg2, AboutImg3]; // Array of images
-    const [currentIndex, setCurrentIndex] = useState(0);
-  
-    const handleArrowClick = (direction) => {
-      if (direction === "left") {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === 0 ? images.length - 1 : prevIndex - 1
-        );
-      } else {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === images.length - 1 ? 0 : prevIndex + 1
-        );
-      }
-    };
-     const images2 = [img1, img2, img3];
+  const images = [AboutImg1, AboutImg2, AboutImg3]; // Array of images
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleArrowClick = (direction) => {
+    if (direction === "left") {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      );
+    } else {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }
+  };
+  const images2 = [img1, img2, img3];
   const [frontIndex, setFrontIndex] = useState(0);
   const navigate = useNavigate();
 
@@ -177,250 +176,295 @@ const Home = () => {
       venue: "Central Auditorium",
     },
   ];
-   const [activeIndex, setActiveIndex] = useState(0);
-  
-    // Auto slide top
-    useEffect(() => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Auto slide top
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % eventSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Counter Component
+
+  const countersData = [
+    { id: 1, img: StudentIcon, number: 500, label: "HAPPY STUDENTS" },
+    { id: 2, img: AlumniIcon, number: 100, label: "SUCCESSFUL ALUMNI" },
+    { id: 3, img: StaffIcon, number: 100, label: "DEDICATED STAFF" },
+    { id: 4, img: AchievementIcon, number: 200, label: "ACHIEVEMENTS" },
+  ];
+
+  const [counts, setCounts] = useState(countersData.map(() => 0));
+
+  useEffect(() => {
+    countersData.forEach((counter, index) => {
+      let start = 0;
+      const end = counter.number;
+      const duration = 2000; // animation duration in ms
+      const stepTime = Math.max(Math.floor(duration / end), 1);
+
       const timer = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % eventSlides.length);
-      }, 5000);
-      return () => clearInterval(timer);
-    }, []);
-
-    // Counter Component
-
-    const countersData = [
-        { id: 1, img: StudentIcon, number: 500, label: "HAPPY STUDENTS" },
-        { id: 2, img: AlumniIcon, number: 100, label: "SUCCESSFUL ALUMNI" },
-        { id: 3, img: StaffIcon, number: 100, label: "DEDICATED STAFF" },
-        { id: 4, img: AchievementIcon, number: 200, label: "ACHIEVEMENTS" },
-      ];
-    
-      const [counts, setCounts] = useState(countersData.map(() => 0));
-    
-      useEffect(() => {
-        countersData.forEach((counter, index) => {
-          let start = 0;
-          const end = counter.number;
-          const duration = 2000; // animation duration in ms
-          const stepTime = Math.max(Math.floor(duration / end), 1);
-    
-          const timer = setInterval(() => {
-            start += 1;
-            setCounts((prev) => {
-              const newCounts = [...prev];
-              newCounts[index] = start;
-              return newCounts;
-            });
-    
-            if (start === end) clearInterval(timer);
-          }, stepTime);
+        start += 1;
+        setCounts((prev) => {
+          const newCounts = [...prev];
+          newCounts[index] = start;
+          return newCounts;
         });
-      }, []);
+
+        if (start === end) clearInterval(timer);
+      }, stepTime);
+    });
+  }, []);
+
+  // Scroll Logic for Events
+  const scrollRef = useRef(null);
+
+  const handleScroll = (direction) => {
+    if (scrollRef.current) {
+      const { current } = scrollRef;
+      let scrollAmount = 300; // Default fallback
+
+      // Calculate dynamic width (Card Width + Gap)
+      const card = current.querySelector(".scroll-card");
+      const track = current.querySelector(".scroll-track");
+
+      if (card && track) {
+        const cardWidth = card.offsetWidth;
+        const gap = parseInt(window.getComputedStyle(track).gap || "0", 10);
+        scrollAmount = cardWidth + gap;
+      }
+
+      if (direction === "left") {
+        current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      } else {
+        current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      }
+    }
+  };
+
+  // Auto Scroll for Events
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    let scrollInterval;
+
+    if (scrollContainer) {
+      scrollInterval = setInterval(() => {
+        if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth) {
+          scrollContainer.scrollLeft = 0; // Reset to start
+        } else {
+          scrollContainer.scrollBy({ left: 1, behavior: "auto" }); // Slow continuous scroll or step
+        }
+      }, 20); // Adjust speed
+    }
+    return () => clearInterval(scrollInterval);
+  }, []);
+
   return (
     <div>
-    <div className="home">
-      {/* Background Video */}
-      <video
-        className="home-bg"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
-        <source src={CampusVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div className="home">
+        {/* Background Video */}
+        <video
+          className="home-bg"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={CampusVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-      <div className="home-overlay"></div>
+        <div className="home-overlay"></div>
 
-      {/* Campus Tour Section */}
-      <div className="home-content">
-        <div className="campus-tour">
-          <img src={CampusImage} alt="Campus Icon" className="campus-icon" />
-        </div>
-      </div>
-      
-    </div>
-    
-    
-    
-    <section className="about-section">
-          <div className="about-vector1">
-              <img src={AboutVectorTop} alt="vector" />
-            </div>
-          {/* Heading */}
-          <div className="about-header">
-            <h2  data-aos="fade-up">
-              <span className="highlight">DISCOVER YOUR WINGS</span>
-            </h2>
-            <p data-aos="fade-up">Hindusthan College, a place for everyone...</p>
+        {/* Campus Tour Section */}
+        <div className="home-content">
+          <div className="campus-tour">
+            <img src={CampusImage} alt="Campus Icon" className="campus-icon" />
           </div>
-           
-    
-          {/* Content Box */}
-          <div className="about-box-home">
-            {/* Left Image */}
-            <div className="about-image">
-              <img src={images[currentIndex]} alt="About hindusthan " />
-            </div>
-           
-            {/* Right Text Content */}
-            <div className="about-text-first">
-              <h3>
-                <span className="highlight">OUR HICE FAMILY</span>
-              </h3>
-              <p  data-aos="fade-left">
-                The Hindusthan Institute of Commerce and Education (HICE), Ingur Campus, 
-                is a part of Hindusthan Educational Institutions, known for its excellence in academics and student development. 
-                The campus provides a holistic environment that blends education, innovation, 
-                and values. With modern facilities and dedicated faculty,
-                 HICE ensures students are well-prepared for their future.
-              </p>
-              <p  data-aos="fade-left">
-                The campus is located in a peaceful setting at Ingur, fostering discipline,
-                 creativity, and innovation. It offers career-oriented programs 
-                 to prepare students for a successful future.
-              </p>
-    
-              {/* Button */}
-              <button className="view-btn" onClick={()=>{
-                {navigate("/aboutHICE");
-              }}} >
-                View all <span>↗</span>
-              </button>
-              <div className="about-vector2">
+        </div>
+
+      </div>
+
+
+
+      <section className="about-section">
+        <div className="about-vector1">
+          <img src={AboutVectorTop} alt="vector" />
+        </div>
+        {/* Heading */}
+        <div className="about-header">
+          <h2 data-aos="fade-up">
+            <span className="highlight">DISCOVER YOUR WINGS</span>
+          </h2>
+          <p data-aos="fade-up">Hindusthan College, a place for everyone...</p>
+        </div>
+
+
+        {/* Content Box */}
+        <div className="about-box-home">
+          {/* Left Image */}
+          <div className="about-image">
+            <img src={images[currentIndex]} alt="About hindusthan " />
+          </div>
+
+          {/* Right Text Content */}
+          <div className="about-text-first">
+            <h3>
+              <span className="highlight">OUR HICE FAMILY</span>
+            </h3>
+            <p data-aos="fade-left">
+              The Hindusthan Institute of Commerce and Education (HICE), Ingur Campus,
+              is a part of Hindusthan Educational Institutions, known for its excellence in academics and student development.
+              The campus provides a holistic environment that blends education, innovation,
+              and values. With modern facilities and dedicated faculty,
+              HICE ensures students are well-prepared for their future.
+            </p>
+            <p data-aos="fade-left">
+              The campus is located in a peaceful setting at Ingur, fostering discipline,
+              creativity, and innovation. It offers career-oriented programs
+              to prepare students for a successful future.
+            </p>
+
+            {/* Button */}
+            <button className="view-btn" onClick={() => {
+              {
+                navigate("/aboutHICE");
+              }
+            }} >
+              View all <span>↗</span>
+            </button>
+            <div className="about-vector2">
               <img src={AboutVectorBottom} alt="vector" />
             </div>
-            </div>
-            
-    
-            {/* Navigation Arrows */}
-            <button
-              className="nav-arrow left"
-              onClick={() => handleArrowClick("left")}
-            >
-              ←
-            </button>
-            <button
-              className="nav-arrow right"
-              onClick={() => handleArrowClick("right")}
-            >
-              →
-            </button>
           </div>
-        </section>
-        {/* WHY HINDUSTHAN SECTION */}
+
+
+          {/* Navigation Arrows */}
+          <button
+            className="nav-arrow left"
+            onClick={() => handleArrowClick("left")}
+          >
+            ←
+          </button>
+          <button
+            className="nav-arrow right"
+            onClick={() => handleArrowClick("right")}
+          >
+            →
+          </button>
+        </div>
+      </section>
+      {/* WHY HINDUSTHAN SECTION */}
       <section className="why-section">
-         <h2 className="why-title"  data-aos="fade-up">
-            <span className="highlight">|</span> WHY HINDUSTHAN ?
+        <h2 className="why-title" data-aos="fade-up">
+          <span className="highlight">|</span> WHY HINDUSTHAN ?
+        </h2>
+        <div className="why-container">
+          {/* Left Side Image */}
+          <div className="why-left" data-aos="fade-right">
+            <div className="why-left-top">
+              <img src={LeftImage} alt="Why Hindusthan" /></div>
+            <div className="why-left-bottom">
+              <img src={LeftImage2} alt="Why Hindusthan" /></div>
+            <div className="why-right-bottom">
+              <img src={RightImage} alt="Why Hindusthan" /></div>
+          </div>
+
+          {/* Right Side Content */}
+          <div className="why-right" data-aos="fade-right">
+
+            <p>
+              Hindusthan is known for its strong academic foundation combined with modern infrastructure.
+              The institution provides a student-friendly environment where learning goes beyond books and classrooms.
+            </p>
+            <p>
+              The college encourages innovation, research, and skill development
+              through practical exposure. With state-of-the-art labs, industry tie-ups, and
+              experienced faculty, students get real-world learning opportunities.
+              This prepares them to face global challenges with the right skills.
+            </p>
+            <p>Beyond academics, Hindusthan supports cultural, sports, and extracurricular activities to shape overall personality.
+              The campus life is vibrant, inclusive, and motivating, making students
+              feel at home while growing professionally. That’s why Hindusthan is a preferred choice for many.</p>
+          </div>
+        </div>
+      </section>
+      <div className="edu-wrapper">
+        <div className="edu-left">
+          <h2 className="edu-heading" data-aos="fade-up">
+            <span className="highlight">|</span>WHAT’S YOUR INTEREST?
           </h2>
-      <div className="why-container">
-        {/* Left Side Image */}
-        <div className="why-left" data-aos="fade-right">
-          <div className="why-left-top">
-          <img src={LeftImage} alt="Why Hindusthan" /></div>
-          <div className="why-left-bottom">
-          <img src={LeftImage2} alt="Why Hindusthan" /></div>
-          <div className="why-right-bottom">
-          <img src={RightImage} alt="Why Hindusthan" /></div>
+
+          <p className="edu-desc" data-aos="fade-up">
+            Setting new trends, introducing innovative training methodologies and
+            guiding our students towards the road to success is what we sincerely
+            aim at and by inculcating quality education in promoting various types
+            of Educational Institutions.
+          </p>
+
+          <div className="edu-search-row" ref={containerRef}>
+            <div className="edu-search-box">
+              <img src={searchIcon} alt="search" className="edu-search-icon" />
+              <input
+                type="text"
+                value={query}
+                onChange={handleSearch}
+                placeholder="Search for Programs"
+                className="edu-search-input"
+              />
+            </div>
+            <span className="edu-or">OR</span>
+            <button className="edu-apply-btn" onClick={() => navigate("/applyNow")}
+              style={{ cursor: "pointer" }}>Apply Now!</button>
+
+            {query.trim() !== "" && filteredCourses.length > 0 && (
+              <ul className="edu-search-results">
+                {filteredCourses.map((course, index) => (
+                  <li
+                    key={index}
+                    className={`edu-course-item ${course === "No programs found" ? "no-result" : ""
+                      }`}
+                    onClick={() => handleCourseClick(course)}
+                  >
+                    {course}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {selectedCourse && relatedCourses[selectedCourse] && (
+              <ul className="edu-related-courses">
+                {relatedCourses[selectedCourse].map((course, idx) => (
+                  <li key={idx} onClick={() => handleCourseClick(course)}>
+                    {course}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          <ul className="edu-programs">
+            <li>Under Graduate Programmes</li>
+            <li>Post Graduate Programmes</li>
+          </ul>
         </div>
 
-        {/* Right Side Content */}
-        <div className="why-right" data-aos="fade-right">
-         
-          <p>
-           Hindusthan is known for its strong academic foundation combined with modern infrastructure. 
-           The institution provides a student-friendly environment where learning goes beyond books and classrooms.
-          </p>
-          <p>
-           The college encourages innovation, research, and skill development 
-           through practical exposure. With state-of-the-art labs, industry tie-ups, and
-            experienced faculty, students get real-world learning opportunities.
-            This prepares them to face global challenges with the right skills.
-          </p>
-          <p>Beyond academics, Hindusthan supports cultural, sports, and extracurricular activities to shape overall personality. 
-            The campus life is vibrant, inclusive, and motivating, making students 
-            feel at home while growing professionally. That’s why Hindusthan is a preferred choice for many.</p>
+        <div className="edu-right" data-aos="fade-right">
+          <div className="edu-frame">
+            <img src={images2[frontIndex]} alt="front" className="edu-image" />
+            <img src={images2[backIndex]} alt="back" className="edu-image2" />
+            <img src={Vector} alt="vector" className="edu-vector" />
+          </div>
         </div>
       </div>
-    </section>
-         <div className="edu-wrapper">
-              <h2 className="edu-heading"  data-aos="fade-up">
-                <span className="highlight">|</span>WHAT’S YOUR INTEREST?
-              </h2>
-        
-              <div className="edu-left">
-                <p className="edu-desc"  data-aos="fade-up">
-                  Setting new trends, introducing innovative training methodologies and
-                  guiding our students towards the road to success is what we sincerely
-                  aim at and by inculcating quality education in promoting various types
-                  of Educational Institutions.
-                </p>
-        
-                <div className="edu-search-row" ref={containerRef}>
-                  <div className="edu-search-box">
-                    <img src={searchIcon} alt="search" className="edu-search-icon" />
-                    <input
-                      type="text"
-                      value={query}
-                      onChange={handleSearch}
-                      placeholder="Search for Programs"
-                      className="edu-search-input"
-                    />
-                  </div>
-                  <span className="edu-or">OR</span>
-                  <button className="edu-apply-btn"  onClick={() => navigate("/applyNow")}
-                             style={{ cursor: "pointer" }}>Apply Now!</button>
-        
-                  {query.trim() !== "" && filteredCourses.length > 0 && (
-                    <ul className="edu-search-results">
-                      {filteredCourses.map((course, index) => (
-                        <li
-                          key={index}
-                          className={`edu-course-item ${
-                            course === "No programs found" ? "no-result" : ""
-                          }`}
-                          onClick={() => handleCourseClick(course)}
-                        >
-                          {course}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-        
-                  {selectedCourse && relatedCourses[selectedCourse] && (
-                    <ul className="edu-related-courses">
-                      {relatedCourses[selectedCourse].map((course, idx) => (
-                        <li key={idx} onClick={() => handleCourseClick(course)}>
-                          {course}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-        
-                <ul className="edu-programs">
-                  <li>Under Graduate Programmes</li>
-                  <li>Post Graduate Programmes</li>
-                </ul>
-              </div>
-        
-              <div className="edu-right"  data-aos="fade-right">
-                <div className="edu-frame">
-                  <img src={images2[frontIndex]} alt="front" className="edu-image" />
-                  <img src={images2[backIndex]} alt="back" className="edu-image2" />
-                  <img src={Vector} alt="vector" className="edu-vector" />
-                </div>
-              </div>
-            </div>
-    {/* Event Section */}
-    <div className="events-container">
+      {/* Event Section */}
+      <div className="events-container">
         <div className="events-wrapper">
           <h2 className="events-heading" data-aos="fade-up"><span className="highlight">|</span>
             HAPPENINGS AT HINDUSTAN
           </h2>
-    
+
           {/* Top Section */}
           <div className="events-top" data-aos="fade-up">
             <div className="event-img-box">
@@ -443,12 +487,9 @@ const Home = () => {
               )}
             </div>
           </div>
-           <div className="vector-Event">
-              <img src={vectorEvent} alt="vector" />
-            </div>
           {/* Dots + Vector */}
           <div className="dots-box">
-           
+
             {eventSlides.map((_, idx) => (
               <span
                 key={idx}
@@ -457,12 +498,13 @@ const Home = () => {
               ></span>
             ))}
           </div>
-    
-          
+
+
         </div>
         {/* Bottom Auto Scrolling */}
-          <div className="events-bottom">
-           <div className="scroll-track">
+        {/* Bottom Auto Scrolling */}
+        <div className="events-bottom" ref={scrollRef}>
+          <div className="scroll-track">
             {eventSlides.map((slide, idx) => (
               <div className="scroll-card" key={idx}>
                 <img src={slide.img} alt={`Event ${idx}`} className="event-image" />
@@ -471,7 +513,7 @@ const Home = () => {
                 </div>
               </div>
             ))}
-    
+
             {/* Duplicate set for infinite scroll */}
             {eventSlides.map((slide, idx) => (
               <div className="scroll-card" key={`dup-${idx}`}>
@@ -482,121 +524,121 @@ const Home = () => {
               </div>
             ))}
           </div>
-            {/* Arrow buttons */}
-            <div className="arrow-buttons">
-            <button className="arrow-left">←</button>
-            <button className="arrow-right">→</button>
+        </div>
+        {/* Arrow buttons */}
+        <div className="arrow-buttons">
+          <button className="arrow-left" onClick={() => handleScroll("left")}>←</button>
+          <button className="arrow-right" onClick={() => handleScroll("right")}>→</button>
+        </div>
+      </div>
+      <div className="hind-wrapper">
+        {/* Header Section */}
+        <div className="hind-header">
+          <div className="hind-title">
+            <h1>
+              LIFE AT <br /><span>HINDUSTHAN</span>
+            </h1>
+            <p>
+              Experience vibrant campus life at Hindusthan College of Arts and Science,
+              where learning meets culture, innovation, and community.
+            </p>
+          </div>
+        </div>
+
+        {/* Content Grid */}
+        <div className="hind-grid">
+          <div className="hind-card">
+            <img src={classroomImg} alt="Classrooms" />
+            <div className="hind-overlay">
+              <img src={ClassRoomVector} alt="Classroom Vector" className="vector-icon" />
+              <h3>CLASSROOMS</h3>
+              <p>
+                Spacious, well-equipped spaces fostering engaging and effective
+                learning.
+              </p>
+              <h4><a href="/classroom" className="explore-btn">Explore Now<CircleArrowRight size={44} /></a></h4>
+            </div>
+          </div>
+
+          <div className="hind-card">
+            <img src={libraryImg} alt="Library" />
+            <div className="hind-overlay">
+              <img src={LibraryVector} alt="Library Vector" className="vector-icon" />
+              <h3>LIBRARY</h3>
+              <p>
+                Rich collection supporting learning, research, and academic
+                excellence daily.
+              </p>
+              <h4><a href="#" className="explore-btn">Explore Now <CircleArrowRight size={44} /></a></h4>
+            </div>
+          </div>
+
+          <div className="hind-card">
+            <img src={labImg} alt="Laboratory" />
+            <div className="hind-overlay">
+              <img src={LabVector} alt="Lab Vector" className="vector-icon" />
+              <h3>LABORATORY</h3>
+              <p>
+                Modern, equipped labs enabling practical skills and innovative
+                experiments.
+              </p>
+              <h4><a href="#" className="explore-btn">Explore Now <CircleArrowRight size={44} /></a></h4>
+            </div>
+          </div>
+
+          <div className="hind-card">
+            <img src={orchardImg} alt="The Orchard" />
+            <div className="hind-overlay">
+              <img src={OrchardVector} alt="Orchard Vector" className="vector-icon" />
+              <h3>THE ORCHARD</h3>
+              <p>
+                Our cafeteria is a great place to catch up with friends over lunch.
+              </p>
+              <h4><a href="#" className="explore-btn">Explore Now <CircleArrowRight size={44} /></a></h4>
+            </div>
+          </div>
+
+          <div className="hind-card">
+            <img src={flexibleImg} alt="Flexible Learning Spaces" />
+            <div className="hind-overlay">
+              <img src={EducationVector} alt="Education Vector" className="vector-icon" />
+              <h3>FLEXIBLE LEARNING SPACES</h3>
+              <p>
+                Allow teachers to develop innovative curriculum and pedagogy.
+              </p>
+              <h4><a href="#" className="explore-btn">Explore Now <CircleArrowRight size={44} /></a></h4>
+            </div>
+          </div>
+
+          <div className="hind-card">
+            <img src={playgroundImg} alt="Play Grounds" />
+            <div className="hind-overlay">
+              <img src={PlaygroundVector} alt="Playground Vector" className="vector-icon" />
+              <h3>PLAY GROUNDS</h3>
+              <p>
+                Landscaped gardens provide beautiful recreational and outdoor
+                learning spaces.
+              </p>
+              <h4><a href="#" className="explore-btn">Explore Now<CircleArrowRight size={44} /></a></h4>
             </div>
           </div>
         </div>
-        <div className="hind-wrapper">
-              {/* Header Section */}
-              <div className="hind-header">
-                <div className="hind-title">
-                  <h1>
-                    LIFE AT <br /><span>HINDUSTHAN</span>
-                  </h1>
-                  <p>
-                    Experience vibrant campus life at Hindusthan College of Arts and Science,
-                    where learning meets culture, innovation, and community.
-                  </p>
-                </div>
-              </div>
-        
-              {/* Content Grid */}
-             <div className="hind-grid">
-  <div className="hind-card">
-    <img src={classroomImg} alt="Classrooms" />
-    <div className="hind-overlay">
-      <img src={ClassRoomVector} alt="Classroom Vector" className="vector-icon" />
-      <h3>CLASSROOMS</h3>
-      <p>
-        Spacious, well-equipped spaces fostering engaging and effective
-        learning.
-      </p>
-      <h4><a href="/classroom" className="explore-btn">Explore Now<CircleArrowRight size={44}/></a></h4>
-    </div>
-  </div>
 
-  <div className="hind-card">
-    <img src={libraryImg} alt="Library" />
-    <div className="hind-overlay">
-      <img src={LibraryVector} alt="Library Vector" className="vector-icon" />
-      <h3>LIBRARY</h3>
-      <p>
-        Rich collection supporting learning, research, and academic
-        excellence daily.
-      </p>
-      <h4><a href="#" className="explore-btn">Explore Now <CircleArrowRight size={44}/></a></h4>
-    </div>
-  </div>
+      </div>
+      {/* Counter Component */}
 
-  <div className="hind-card">
-    <img src={labImg} alt="Laboratory" />
-    <div className="hind-overlay">
-      <img src={LabVector} alt="Lab Vector" className="vector-icon" />
-      <h3>LABORATORY</h3>
-      <p>
-        Modern, equipped labs enabling practical skills and innovative
-        experiments.
-      </p>
-      <h4><a href="#" className="explore-btn">Explore Now <CircleArrowRight size={44}/></a></h4>
-    </div>
-  </div>
-
-  <div className="hind-card">
-    <img src={orchardImg} alt="The Orchard" />
-    <div className="hind-overlay">
-      <img src={OrchardVector} alt="Orchard Vector" className="vector-icon" />
-      <h3>THE ORCHARD</h3>
-      <p>
-        Our cafeteria is a great place to catch up with friends over lunch.
-      </p>
-      <h4><a href="#" className="explore-btn">Explore Now <CircleArrowRight size={44}/></a></h4>
-    </div>
-  </div>
-
-  <div className="hind-card">
-    <img src={flexibleImg} alt="Flexible Learning Spaces" />
-    <div className="hind-overlay">
-      <img src={EducationVector} alt="Education Vector" className="vector-icon" />
-      <h3>FLEXIBLE LEARNING SPACES</h3>
-      <p>
-        Allow teachers to develop innovative curriculum and pedagogy.
-      </p>
-      <h4><a href="#" className="explore-btn">Explore Now <CircleArrowRight size={44}/></a></h4>
-    </div>
-  </div>
-
-  <div className="hind-card">
-    <img src={playgroundImg} alt="Play Grounds" />
-    <div className="hind-overlay">
-      <img src={PlaygroundVector} alt="Playground Vector" className="vector-icon" />
-      <h3>PLAY GROUNDS</h3>
-      <p>
-        Landscaped gardens provide beautiful recreational and outdoor
-        learning spaces.
-      </p>
-      <h4><a href="#" className="explore-btn">Explore Now<CircleArrowRight size={44}/></a></h4>
-    </div>
-  </div>
-</div>
-
-            </div>
-            {/* Counter Component */}
-
-             <div className="counter-wrapper">
-      {countersData.map((counter, index) => (
-        <div className="counter-box" key={counter.id}>
-          <img src={counter.img} alt={counter.label} className="counter-icon" />
-          <h2>{counts[index]}+</h2>
-          <p>{counter.label}</p>
-        </div>
-      ))}
-    </div>
-    <Placements/>
-    <Highlights/>
-    <Footer/>
+      <div className="counter-wrapper">
+        {countersData.map((counter, index) => (
+          <div className="counter-box" key={counter.id}>
+            <img src={counter.img} alt={counter.label} className="counter-icon" />
+            <h2>{counts[index]}+</h2>
+            <p>{counter.label}</p>
+          </div>
+        ))}
+      </div>
+      <Placements />
+      <Highlights />
+      <Footer />
     </div>
   );
 };

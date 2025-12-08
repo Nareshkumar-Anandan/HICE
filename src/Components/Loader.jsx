@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../Styles/Loader.css";
-import logo from "../logo.svg";
 
 function PremiumLoader() {
   const [fadeOut, setFadeOut] = useState(false);
@@ -26,7 +25,7 @@ function PremiumLoader() {
   return (
     <div className={`premium-loader-wrapper ${fadeOut ? "fade-out" : ""}`}>
       <div className="loader-content">
-        <img src={logo} alt="HICE Logo" className="loader-logo" />
+        <img src="/logo192.png" alt="HICE Logo" className="loader-logo" />
 
         <h2 className="typing-text">
           Loading...<span className="cursor">|</span>

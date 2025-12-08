@@ -4,17 +4,20 @@
   background: #ffffff;
   font-family: Arial, sans-serif;
 }
-.placements-header{
-    padding: 20px 80px;
-    display: flex;
+
+.placements-header {
+  padding: 20px 80px;
+  display: flex;
 }
-.highlights{
+
+.highlights {
   color: #f4b400;
   font-weight: bolder;
   margin-right: 10px;
   height: 100px;
   background-color: #f4b400;
 }
+
 /* Heading */
 .placements-header h2 {
   font-family: Neuton;
@@ -25,16 +28,18 @@
 }
 
 .placements-header p {
-    position: absolute;
-    right: 100px;
+  position: absolute;
+  right: 100px;
   font-family: Neuton;
   font-size: 25px;
   color: #1d1c1c;
 }
-.placements-header p .highlight-content{
-    color: #cf0303;
-    font-size: 20px;
+
+.placements-header p .highlight-content {
+  color: #cf0303;
+  font-size: 20px;
 }
+
 /* Placement Cards */
 .placements-cards {
   display: flex;
@@ -48,13 +53,13 @@
   border-radius: 12px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .placement-card:hover {
   transform: scale(1.08);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
   z-index: 5;
 }
 
@@ -72,11 +77,11 @@
 }
 
 .logo-slider h3 {
-    position: absolute;
-    margin-top: 0px;
-    border-left: 5px solid #f4b400;
-    padding: 0px 20px;
-    background-color: #F9F6F6;
+  position: absolute;
+  margin-top: 0px;
+  border-left: 5px solid #f4b400;
+  padding: 0px 20px;
+  background-color: #F9F6F6;
   font-size: 24px;
   font-weight: 600;
   color: #222;
@@ -103,6 +108,97 @@
 }
 
 @keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 480px) {
+.placements-header {
+  display: flex;
+  align-items: left;
+  padding: 0px 20px;
+}
+
+.highlights {
+  color: #f4b400;
+  font-weight: bolder;
+  margin-right: 10px;
+  height: 100px;
+  background-color: #f4b400;
+}
+
+/* Heading */
+.placements-header h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.placements-header p {
+  right: 10px;
+  font-size: 12px;
+}
+
+.placements-header p .highlight-content {
+  font-size: 12px;
+}
+
+.placement-card {
+  width: 250px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.placement-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+.placement-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Recruiters Section */
+.recruiters {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.logo-slider h3 {
+  position: absolute;
+  margin-top: 0px;
+  border-left: 5px solid #f4b400;
+  padding: 0px 20px;
+  background-color: #F9F6F6;
+  font-size: 24px;
+  font-weight: 600;
+  color: #222;
+  z-index: 2;
+}
+
+/* Logo Slider */
+.logo-slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 15s linear infinite;
+}
+
+.logo-track img {
+  height: 50px;
+  margin: 0 10px;
+  object-fit: contain;
+}
+
 }

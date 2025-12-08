@@ -162,11 +162,9 @@
 }
 
 .about-image {
-  background: #e5e5e5;
   width: 100%;
   max-width: 600px;
-  height: auto;
-  min-height: 430px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -259,7 +257,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 60px 0px 60px 80px;
+  padding: 60px 0px 20px 80px;
   background: #fff;
   gap: 40px;
   position: relative;
@@ -273,11 +271,11 @@
 }
 
 .edu-heading {
-  position: absolute;
+  /* position: absolute; removed */
   margin-bottom: 15px;
   font-family: Neuton;
   font-weight: bolder;
-  margin-top: -400px;
+  /* margin-top: -400px; removed */
   color: #102634;
 }
 
@@ -286,7 +284,7 @@
   /* Yellow line before title */
   font-weight: bolder;
   margin-right: 8px;
-  height: 100px;
+  /* height: 100px; removed */
   background-color: #f4b400;
 }
 
@@ -520,8 +518,9 @@
 /* Grid */
 .hind-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 0px;
   background: #f9f9f9;
 }
 
@@ -531,6 +530,7 @@
   overflow: hidden;
   width: 100%;
   height: 400px;
+  
 }
 
 .hind-card img {
@@ -585,7 +585,7 @@
 .hind-overlay h3 {
   font-size: 28px;
   font-family: Graduate;
-  margin-top: 270px;
+  margin-top: 240px;
   padding: 10px 10px 0 10px;
 }
 
@@ -647,16 +647,13 @@
   align-items: center;
   gap: 80px;
   background: #f8f8f8;
-  flex-wrap: wrap;
-  /* makes it responsive */
 }
 
 .counter-box {
   text-align: center;
   color: #0a1a2f;
   font-family: Arial, sans-serif;
-  flex: 1 1 200px;
-  /* responsive sizing */
+  
 }
 
 .counter-icon {
@@ -671,6 +668,7 @@
   font-family: Quattrocento;
   font-weight: bold;
   margin: 5px 0;
+
 }
 
 .counter-box p {
@@ -856,7 +854,6 @@
   .why-section {
     padding: 20px;
     margin: 0;
-    border: 2px solid black;
   }
 
   .why-title {
@@ -945,7 +942,6 @@
 
   .about-header p {
     font-size: 14px;
-
   }
 
   .about-text-first h3 {
@@ -986,6 +982,30 @@
     font-size: 18px;
   }
 
+  .edu-frame {
+    height: 350px;
+    gap: 10px;
+    align-items: right;
+    justify-content: right;
+    margin-left: 10px;
+  }
+
+  .edu-image {
+    height: 300px;
+  }
+
+  .edu-image2 {
+    height: 250px;
+  }
+
+  .edu-wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .edu-vector {
+    display: none;
+  }
+
   .edu-desc {
     font-size: 16px;
   }
@@ -995,6 +1015,9 @@
   }
 
   /* ===== HINDUSTHAN GRID ===== */
+  .hind-wrapper{
+    height: 1800px;
+  }
   .hind-header h1 {
     font-size: 28px;
   }
@@ -1007,18 +1030,81 @@
     height: 250px;
   }
 
+  /* ===== HINDUSTHAN GRID ===== */
+  .hind-header {
+    padding: 20px;
+    height: auto;
+  }
+
+  .hind-header .hind-title {
+    flex-direction: column;
+    padding: 0;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .hind-header h1 {
+    font-size: 28px;
+    width: 100%;
+  }
+
+  .hind-header p {
+    font-size: 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .hind-grid {
+    grid-template-columns: 1fr;
+  }
+  .hind-grid{
+    gap: 3px;
+  }
+  .hind-card {
+    height: 250px;
+  }
+
   .explore-btn {
     font-size: 24px;
     bottom: 20px;
     left: 130px;
   }
+.hind-overlay h3 {
+  font-size: 18px;
+  font-family: Graduate;
+  margin-top: 240px;
+  padding: 10px 10px 0 10px;
+}
+
+.hind-overlay p {
+  font-family: Inria, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #fff;
+  padding: 0 10px 10px 10px;
+}
 
   /* ===== COUNTER SECTION ===== */
+  .counter-wrapper{
+    flex-direction: row;
+    gap: 10px;
+  }
+  .counter-box{
+    width: 80px !important;
+    height: 100px !important;
+    padding: 10px !important;
+    margin-bottom: 0;
+  }
+  .counter-box .counter-icon{
+    width: 30px;
+    height: 30px;
+  }
   .counter-box h2 {
-    font-size: 20px;
+    font-size: 14px !important;
+    align-self: center;
   }
 
   .counter-box p {
-    font-size: 10px;
+    font-size: 12px !important;
+    align-self: center;
   }
 }

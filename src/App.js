@@ -1,5 +1,5 @@
 // src/App.js
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState, Suspense, useLayoutEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./Components/Navbar.jsx";
 import Header from "./Components/Header.jsx";
@@ -7,6 +7,7 @@ import ScrollToTop from "./Components/ScrollToTop.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Loader from "./Components/Loader.jsx";
+import Preloader from "./Components/Preloader.jsx";
 
 // 🔥 Lazy Loading All Pages
 const Home = React.lazy(() => import("./Components/Home.jsx"));
@@ -27,31 +28,46 @@ const ClassRoom = React.lazy(() => import("./Components/ClassRoom.jsx"));
 
 
 // ⭐ GLOBAL ROUTE-LEVEL LOADER COMPONENT
+// ⭐ GLOBAL ROUTE-LEVEL LOADER COMPONENT
+// ⭐ GLOBAL ROUTE-LEVEL LOADER COMPONENT
 function RouteLoader() {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
+  const visitedRoutes = useRef(new Set()); // Track visited paths
 
-  useEffect(() => {
-    // When route changes → show loader
-    setLoading(true);
-
-    const handleLoad = () => {
-      setLoading(false); // hide loader after everything loads
-    };
-
-    // If next page already loaded from cache
-    if (document.readyState === "complete") {
+  useLayoutEffect(() => {
+    // If route is already visited, skip loader
+    if (visitedRoutes.current.has(location.pathname)) {
       setLoading(false);
-    } else {
-      window.addEventListener("load", handleLoad);
+      return;
     }
 
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
+    // New route -> Show loader
+    setLoading(true);
+    visitedRoutes.current.add(location.pathname);
+
+    // 2. Minimum time promise (e.g., 2000ms)
+    const minTimePromise = new Promise((resolve) => {
+      setTimeout(resolve, 2000);
+    });
+
+    // 3. Content load promise
+    const contentLoadPromise = new Promise((resolve) => {
+      if (document.readyState === "complete") {
+        resolve();
+      } else {
+        window.addEventListener("load", resolve, { once: true });
+      }
+    });
+
+    // 4. Wait for BOTH
+    Promise.all([minTimePromise, contentLoadPromise]).then(() => {
+      setLoading(false);
+    });
+
   }, [location.pathname]);
 
-  return loading ? <Loader /> : null;
+  return <Preloader isLoading={loading} />;
 }
 
 

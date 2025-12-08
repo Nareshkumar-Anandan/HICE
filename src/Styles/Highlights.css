@@ -12,8 +12,10 @@
   display: inline-block;
   margin-bottom: 50px;
 }
+
 .hice-hind-header .highlight {
-  color: #f4b400; /* Yellow line before title */
+  color: #f4b400;
+  /* Yellow line before title */
   font-weight: bolder;
   margin-right: 8px;
   height: 100px;
@@ -34,7 +36,7 @@
   text-align: center;
   border-right: 1px solid #f4b400;
   border-bottom: 1px solid #f4b400;
-  
+
 }
 
 .hice-highlight-card .icon {
@@ -54,4 +56,32 @@
   font-size: 16px;
   color: #555;
   line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .hice-highlights-section {
+    padding: 0px;
+  }
+
+  .hice-hind-header h1 {
+    font-size: 18px;
+      padding: 20px;
+  }
+
+  .hice-highlights-grid {
+    grid-template-columns: 1fr;
+    gap:0px;
+  }
+
+  .hice-highlight-card {
+    padding: 20px 0px;
+  }
+
+  .hice-highlight-card h2 {
+    font-size: 20px;
+  }
+
+  .hice-highlight-card p {
+    font-size: 14px;
+  }
 }

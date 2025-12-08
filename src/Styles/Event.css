@@ -1,6 +1,7 @@
 /* 🌐 Base Styles (as provided) */
 .events-container {
   background: #f8f8f8;
+ 
 }
 
 .events-wrapper {
@@ -34,7 +35,7 @@
   justify-content: space-between;
   align-items: stretch;
   background: #fff;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   margin: 0 auto 20px;
   border-radius: 10px;
   overflow: hidden;
@@ -43,13 +44,15 @@
 .event-img-box {
   flex: 1;
   margin-right: 20px;
+  padding: 10px;
+  background-color: #009f3515;
 }
 
 .event-main-img {
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .event-text-box {
@@ -83,41 +86,31 @@
   background-color: #1a2a44;
 }
 
-/* 🎨 Vector */
-.vector-Event {
-  width: 400px;
-  height: auto;
-}
-
-.vector-Event img {
-  position: absolute;
-  margin-top: -150px;
-  width: 400px;
-  height: auto;
-}
-
 /* 🔄 Bottom Scroll Section */
 .events-bottom {
   width: 100%;
   overflow: hidden;
   position: relative;
   padding: 20px 0;
+  
 }
 
 .scroll-track {
   display: flex;
   gap: 40px;
-  animation: scroll-left 30s linear infinite;
+
+  /* animation: scroll-left 30s linear infinite; removed for JS control */
 }
 
 .scroll-card {
+  
   display: flex;
   align-items: center;
 }
 
 .event-image {
-  width: 280px;
-  height: 200px;
+  width: 250px;
+  height: 300px;
   object-fit: cover;
 }
 
@@ -129,7 +122,7 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(#fff, #fff) padding-box,
-              linear-gradient(90deg, #101534, #00929F, #FFBD05) border-box;
+    linear-gradient(90deg, #101534, #00929F, #FFBD05) border-box;
   border: 2px solid transparent;
   border-radius: 20px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
@@ -146,10 +139,11 @@
 .arrow-buttons {
   display: flex;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 10px;
   gap: 50px;
   justify-content: center;
   z-index: 10;
+  padding-bottom: 20px;
 }
 
 .arrow-left,
@@ -164,8 +158,13 @@
 
 /* ✨ Auto Scroll Effect */
 @keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* 📱 RESPONSIVE DESIGN */
@@ -186,7 +185,8 @@
   }
 
   .event-main-img {
-    height: 300px;
+    height: 400px;
+    object-fit: contain;
   }
 
   .event-text-box {
@@ -199,8 +199,8 @@
   }
 
   .event-image {
-    width: 240px;
-    height: 180px;
+    width: 200px;
+    height: 300px;
   }
 }
 
@@ -221,12 +221,14 @@
     box-shadow: none;
   }
 
-  .event-img-box, .event-text-box {
+  .event-img-box,
+  .event-text-box {
     width: 100%;
   }
 
   .event-main-img {
-    height: 250px;
+    height: 350px;
+    object-fit: contain;
   }
 
   .event-text-box {
@@ -271,12 +273,14 @@
     height: 30px;
     font-size: 16px;
   }
-  
-  .event-title-box p{
-    font-size: 12px; 
-    text-align: justify; 
+
+  .event-title-box p {
+    font-size: 12px;
+    text-align: justify;
     width: 250px;
     height: 80px;
   }
-  
+  .arrow-buttons,.events-bottom{
+    display: none;
+  }
 }
