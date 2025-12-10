@@ -374,6 +374,7 @@
   background: #00929F;
   height: 195px;
   padding: 0;
+  margin-top: 65px;
   margin-bottom: 100px;
   position: relative;
   overflow: visible;
@@ -423,112 +424,578 @@
   justify-content: flex-start;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .about-content,
-  .profile-content,
-  .footer-content {
-    flex-direction: column;
+/* --------------------- UPDATED: Targeted fixes for laptop ~1024px --------------------- */
+@media (max-width: 1024px) {
+  .about-trust {
+    padding: 40px 48px;
+    height: auto;
+  }
+
+  .about-content {
+    display: flex;
     gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  /* left column narrower to free space for text */
+  .about-left {
+     flex: 0 0 34%; 
+    max-width: 38%;
+  }
+
+  .about-image-container {
+    position: relative;
+    width: 100%;
+    min-height: 320px;
+  }
+
+  .image-placeholder img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    width: 180px;
+    height: 120px;
+    border-radius: 8px;
+  }
+
+ /* vector sizing and positioning (target the img directly so it's enforced) */
+.trust-vector {
+  position: absolute;
+  top: 110px;   
+  left: 10px;    
+  z-index: 1;
+  pointer-events: none;
+  margin: 0;
+}
+
+.trust-vector img {
+  width: 140px ; 
+  height: auto ;
+  display: block;
+}
+
+
+  /* center (big) image: reduce size and shift less far right */
+  .image-placeholder1 {
+    margin-left: 0;
+    margin-top: 70px;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: block;
+  }
+  .image-placeholder1 img {
+    position: relative;
+    display: block;
+    margin-left: 35%;    
+    max-width: 190%;      
+    height: 140px;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+  .profile-header h3 {
+    font-size: 32px;  
+  }
+
+  .quote {
+    font-size: 30px;   
+  }
+
+  .profile-name {
+  font-size: 28px; 
+
+  /* Right column: bigger so text reads like desktop */
+  .about-right {
+    flex: 0 0 52%;
+    max-width: 54%;
+    min-width: 340px;   
+    height: auto;
+    padding: 24px 10px;
+    box-sizing: border-box;
+  }
+
+  .about-right p {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;    
+    padding-top: 12px;
+    line-height: 1.65;
+    text-align: justify;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin: 0;
+  }
+
+  .decorative-design-left,
+  .decorative-design-right {
+    width: 300px;
+    padding-bottom: 60px;
+    padding-left: 20px;
+  }
+
+  .profile-section.teal .profile-image-container,
+  .trustee-banner-profile .profile-image-container,
+  .trustee-section-banner .profile-image-container {
+    width: 220px;
+    height: 220px;
+    margin-top: -48px;
+    box-sizing: border-box;
   }
 
   .profile-section.teal {
     height: auto;
+    padding: 18px 0;
+  }
+  .trustee-banner-profile,
+  .trustee-section-banner {
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 60px;
   }
 
-  .profile-content.reverse {
-    flex-direction: column-reverse;
+  .trustee-banner-profile .profile-text-wrapper {
+    text-align: right;
+  }
+  .trustee-section-banner .profile-text-wrapper {
+    text-align: left;
   }
 
-  .profile-section.teal .profile-image-container {
-    margin-top: -50px;
+  .profile-content {
+    gap: 1.5rem;
   }
 
-  .about-left h2 {
-    font-size: 2rem;
+  .about-title {
+    margin-left: -3rem;
   }
 
-  .decorative-shape {
-    display: none;
-  }
-
-  .footer-content {
-    grid-template-columns: repeat(2, 1fr);
+  /* Safeguard: keep big image from overflowing into the text */
+  .image-placeholder1 img {
+    max-width: calc(100% - 40%);
   }
 
   .biography-section {
-    padding: 32px 16px;
+    padding: 36px 20px;
   }
-
   .biography-content p {
-    font-size: 14px;
-    margin-bottom: 16px;
-  
+    font-size: 18px;
   }
-  
+}
+ 
+/* --------------------- NEW: UPDATED rules for TABLET view (<= 768px) --------------------- */
 
-  .banner-content {
-    flex-direction: column;
-    text-align: center;
-    padding: 48px 16px;
+@media (max-width: 768px) {
+  .about-trust {
+    padding: 40px 48px;
+    height: auto;
   }
 
-  .profile-container {
+  .about-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  /* left column settings copied from the 1024px adjustments */
+  .about-left {
+    flex: 0 0 44%;
+    max-width: 50%;
+  }
+
+  .about-image-container {
+    position: relative;
+    width: 100%;
+    min-height: 320px;
+  }
+
+  .image-placeholder img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    width: 180px;
+    height: 120px;
+    border-radius: 8px;
+  }
+
+  /* vector sizing/positioning as in your 1024px changes */
+  .trust-vector {
+    position: absolute;
+    top: 110px;
+    left: 10px;
+    z-index: 1;
+    pointer-events: none;
+    margin: 0;
+  }
+  .trust-vector img {
+    width: 140px !important;
+    height: auto !important;
+    display: block;
+  }
+
+  /* center/big image (kept same behavior as 1024px block) */
+  .image-placeholder1 {
     margin-left: 0;
-    margin-top: 32px;
+    margin-top: 70px;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: block;
+  }
+  .image-placeholder1 img {
+    position: relative;
+    display: block;
+    margin-left: 35%;
+    max-width: 210px;
+    height: 160px;
+    border-radius: 8px;
+    box-sizing: border-box;
   }
 
-  .profile-image-wrapper {
-    width: 128px;
-    height: 128px;
+  /* banner font-size adjustments (same as 1024px) */
+  .profile-header h3 {
+    font-size: 30px;
   }
 
-  .managing-trustee-title {
+  .quote {
     font-size: 28px;
   }
 
-  .trustee-quote,
-  .trustee-name {
-    font-size: 18px;
+  .profile-name {
+    font-size: 26px;
   }
 
-  .trustee-banner-profile .profile-content {
-    flex-direction: column-reverse;
+  /* text column sizing and typography (copied from 1024px) */
+  .about-right {
+    flex: 0 0 52%;
+    max-width: 54%;
+    min-width: 340px;
+    height: auto;
+    padding: 24px 10px;
+    box-sizing: border-box;
+    margin-left: 40px;
   }
 
-  .trustee-section-banner .profile-content {
-    flex-direction: column;
+  .about-right p {
+    width: 100%;
+    max-width: 100%;
+    font-size: 14px;
+    padding-top: 12px;
+    line-height: 1.65;
+    text-align: justify;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin: 0;
   }
 
+  .decorative-design-left {
+    width: 300px;
+    padding-bottom: 80px;
+    padding-left: 20px;
+  }
+  .decorative-design-right {
+    width: 300px;
+    padding-bottom: 60px;
+    padding-left: 20px;
+  }
+
+  .profile-section.teal .profile-image-container,
   .trustee-banner-profile .profile-image-container,
   .trustee-section-banner .profile-image-container {
-    margin-top: 0;
+    width: 220px;
+    height: 220px;
+    margin-top: -48px;
+    box-sizing: border-box;
   }
 
-  .trustee-banner-profile .profile-text-wrapper,
+  .profile-section.teal {
+    height: auto;
+    padding: 18px 0;
+  }
+  .trustee-banner-profile,
+  .trustee-section-banner {
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 60px;
+  }
+
+  .trustee-banner-profile .profile-text-wrapper {
+    text-align: right;
+  }
   .trustee-section-banner .profile-text-wrapper {
-    text-align: center;
+    text-align: left;
   }
 
-  .trustee-banner-profile .profile-text-wrapper .profile-header,
-  .trustee-section-banner .profile-text-wrapper .profile-header {
-    justify-content: center;
+  .profile-content {
+    gap: 1.5rem;
+  }
+
+  .about-title {
+    margin-left: -3rem;
+  }
+
+  /* safeguard for big image overflow as used at 1024px */
+  .image-placeholder1 img {
+    max-width: calc(100% - 40%);
+  }
+
+  .biography-section {
+    padding: 36px 20px;
+  }
+  .biography-content p {
+    font-size: 18px;
   }
 }
 
+/* --------------------- NEW: Mobile (<= 480px)  --------------------- */
 @media (max-width: 480px) {
-  .managing-trustee-title {
-    font-size: 24px;
-    margin-bottom: 16px;
+  .about-trust {
+    padding: 18px 12px;
+    height: 373px;
   }
 
-  .title-divider {
-    height: 48px;
-    margin-bottom: 16px;
+  .about-title h2 {
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+  .about-content {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 
-  .trustee-quote,
-  .trustee-name {
+  /* smaller left column for images */
+  .about-left {
+    flex: 0 0 36%;
+    max-width: 38%;
+    min-width: 110px;
+    position: relative;
+  }
+
+  .about-image-container {
+    position: relative;
+    width: 100%;
+    min-height: 140px;
+  }
+
+  /* small thumbnail: decreased so it sits under the title neatly */
+  .image-placeholder img {
+    position: absolute;
+    top: 6px;
+    left: -20px;
+    width: 120px;         
+    height: auto;
+    max-width: 100%;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+
+  .trust-vector {
+  position: absolute;
+  top: 80px;
+  left: -19px;   
+  z-index: 2;
+  pointer-events: none;
+  margin: 0;
+  width: 24px !important;  
+  height: auto !important;
+}
+
+.trust-vector img {
+  width: 44px !important;   /* ↓ decrease size */
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+  /* big overlapping image: scaled and shifted left to sit under the small thumbnail */
+  .image-placeholder1 {
+    position: absolute;
+    top: -26px;     
+    left: -32px;    
+    z-index: 3;
+    width: auto;
+    pointer-events: none;
+  }
+  .image-placeholder1 img {
+    position: relative;
+    display: block;
+    width: 110px;       
+    max-width: none;
+    height: 140px;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  /* text column: takes remaining width and remains readable */
+  .about-right {
+    flex: 0 0 60%;
+    max-width: 60%;
+    min-width: 140px;
+    height: auto;
+    padding: 10px 8px;
+    box-sizing: border-box;
+    margin-left: 0;
+  }
+
+  /* decreased font for mobile — tighter spacing for the long paragraph */
+  .about-right p {
+    width: 100%;
+    max-width: 100%;
+    font-size: 9px;    
+    padding-top: 8px;
+    line-height: 1.5;    
+    text-align: justify;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin: 0;
+  }
+
+  /* Banner font sizes reduced for mobile so they don't dominate */
+  .profile-header h3 {
     font-size: 16px;
   }
+
+  .quote {
+    font-size: 13px;
+  }
+
+  .profile-name {
+    font-size: 10px;
+  }
+
+ 
+
+  /* decorative shapes smaller */
+  .decorative-design-left,
+  .decorative-design-right {
+    width: 150px;
+  }
+
+  .profile-section.teal .profile-image-container,
+  .trustee-banner-profile .profile-image-container,
+  .trustee-section-banner .profile-image-container {
+    width: 160px;
+    height: 160px;
+    margin-top: -50px;
+    box-sizing: border-box;
+  }
+
+  
+  .profile-section.teal {
+    height: auto;
+    padding: 12px 0;
+    margin-top: -40px;
+  }
+
+.trustee-section {
+  width: 100%;
+  background-color: white;
+}
+
+
+.trustee-banner-profile {
+  background: #00929F;
+  height: 110px;
+  padding: 0;
+  margin-bottom: 50px;
+}
+
+  
+  .trustee-section-banner {
+    height: auto;
+    padding-top: -4px;
+    padding-bottom: 8px;
+    margin-bottom: 40px;
+    margin-top: 10px;
+  }
+   .trustee-section-banner .profile-text-wrapper {
+    margin-left: -60px ;
+    text-align: left ;
+}
+
+ .trustee-banner-profile .profile-text-wrapper {
+      margin-left:28px ; 
+      text-align: right ; 
+  }
+  /* Increase ONLY the Managing Trustee image size */
+.trustee-banner-profile .profile-image-container {
+    width: 110px !important;  
+    height: 200% !important;
+      position: relative !important;
+    left: 13px !important;  
+      top: -10px !important;
+}
+
+.trustee-banner-profile .profile-image {
+    object-fit: contain !important;
+}
+
+.trustee-banner-profile .profile-image-container {
+
+  flex: 0 0 auto ;
+  width: 220px ;     
+  height: 220px ;   
+  max-width: 60% ;   
+  margin-top: -10px ;
+  overflow: visible ;
+  box-sizing: border-box ;
+}
+
+/* Make the actual image fill the container */
+.trustee-banner-profile .profile-image {
+  width: 120px ;
+  height: 100px ;
+  object-fit: cover ;
+  object-position: center ;
+  display: block ;
+}
+
+/* If layout uses order / positioning, allow the text to flow correctly */
+.trustee-banner-profile .profile-content {
+  align-items: center ;
+  gap: 0.75rem ;
+}
+
+/* Debug outline — remove once you see it's working */
+.trustee-banner-profile .profile-image-container.debug-outline {
+  outline: 2px dashed rgba(255,255,255,0.6) ;
+}
+.decorative-design-left{
+  top: -45px;
+}
+
+  .profile-content {
+    gap: 0.75rem;
+  }
+
+  .about-title {
+    margin-left: -1.5rem;
+  }
+
+  .biography-section {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  margin-top: -80px;
+}
+
+  .biography-content p {
+    font-size: 12px;
+  }
+
+  /* safety: ensure large image can't create horizontal scrolling */
+  .image-placeholder1 img {
+    max-width: calc(100vw - 80px);
+  }
+}
 }
