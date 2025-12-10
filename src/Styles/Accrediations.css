@@ -36,12 +36,10 @@
     justify-content: center;
     max-width: 960px;
     margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-/* * This is the corrected section.
- * It uses 'grid-column' and 'justify-self' to position the cards,
- * which no longer conflicts with the 'transform' on hover.
- */
 .accreditations-grid .accreditation-card:nth-last-child(2) {
     grid-column: 2 / span 1;
     justify-self: center;
@@ -103,7 +101,6 @@
     margin: 0;
 }
 
-/* --- Responsive Adjustments for Accreditations --- */
 @media (max-width: 992px) {
     .accreditations-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -163,8 +160,6 @@
     }
 }
 
-/* --- New Awards Section Styling --- */
-
 .awards-section {
     margin-top: 30px;
     padding: 60px 20px;
@@ -191,7 +186,6 @@
     gap: 15px;
 }
 
-/* New CSS for the yellow line */
 .awards-header-line {
     width: 5px;
     height: 60px;
@@ -215,12 +209,11 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    gap: 70px;
+    gap: 90px;
     flex-grow: 1;
 }
 
 .award-logo-container {
-    /* Decreased image size */
     height: 80px;
     width: auto;
     display: flex;
@@ -239,55 +232,308 @@
     object-fit: contain;
 }
 
-/* Responsive adjustments for Awards section */
 @media (max-width: 992px) {
     .awards-container {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         gap: 20px;
         padding: 15px 0;
     }
     .awards-text-box {
         margin: 0;
-        width: fit-content;
+        width: 100%;
         border: none;
-        padding: 0;
-        text-align: center;
-        flex-direction: column;
+        padding: 0 20px;
+        text-align: left;
+        flex-direction: row;
         align-items: center;
+        justify-content: flex-start;
     }
     .awards-header-line {
-        height: 3px;
-        width: 60px;
+        height: 36px;
+        margin-right: 12px;
     }
     .awards-text p {
-        font-size: 18px;
+        font-size: 20px;
         white-space: normal;
+        margin: 0;
     }
+
     .awards-logo-grid {
-        justify-content: center;
-        gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 36px;
+        width: 100%;
+        align-items: center;
+        justify-items: center;
+        padding: 12px 20px 24px 20px;
     }
+
     .award-logo-container {
-        /* Adjusted height for smaller screens */
-        height: 60px;
+        height: 96px;
+        max-width: 220px;
+        padding: 8px;
+    }
+
+    .award-logo-container img {
+        max-height: 84px;
+        width: auto;
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 425px) {
     .awards-container {
-        padding: 10px 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 12px 8px;
     }
     .awards-text-box {
-        padding: 0;
+        width: 100%;
+        padding: 0 12px;
+        text-align: left;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .awards-header-line {
+        height: 30px;
+        margin-right: 10px;
+    }
+    .awards-text p {
+        font-size: 18px;
+    }
+
+    .awards-logo-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+        width: 100%;
+        padding: 8px 12px 16px 12px;
+        justify-items: center;
+    }
+
+    .award-logo-container {
+        height: 80px;
+        max-width: 160px;
+        padding: 6px;
+    }
+    .award-logo-container img {
+        max-height: 68px;
+        width: auto;
+    }
+}
+
+@media (max-width: 390px) {
+    .awards-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 10px 8px;
+    }
+    .awards-text-box {
+        padding: 0 10px;
+        justify-content: flex-start;
+    }
+    .awards-header-line {
+        height: 28px;
+        margin-right: 8px;
     }
     .awards-text p {
         font-size: 16px;
     }
+
     .awards-logo-grid {
-        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        width: 100%;
+        padding: 6px 10px 12px 10px;
+        justify-items: center;
     }
+
     .award-logo-container {
-        height: 50px;
+        height: 68px;
+        max-width: 140px;
+        padding: 4px;
     }
+    .award-logo-container img {
+        max-height: 56px;
+        width: auto;
+    }
+}
+
+@media (max-width: 320px) {
+    .awards-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 8px 6px;
+    }
+    .awards-text-box {
+        padding: 0 8px;
+        justify-content: flex-start;
+    }
+    .awards-header-line {
+        height: 24px;
+        margin-right: 6px;
+    }
+    .awards-text p {
+        font-size: 14px;
+    }
+
+    .awards-logo-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        width: 100%;
+        padding: 6px 8px 10px 8px;
+        justify-items: center;
+    }
+
+    .award-logo-container {
+        height: 56px;
+        max-width: 120px;
+        padding: 3px;
+    }
+    .award-logo-container img {
+        max-height: 44px;
+        width: auto;
+    }
+}
+
+.hero-section .breadcrumb,
+.hero-section .hero-description,
+.accreditations-header h1,
+.awards-text p {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
+.accreditation-card,
+.award-logo-container {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.accreditation-card:focus-within,
+.award-logo-container:focus-within {
+    outline: 2px solid rgba(0,0,0,0.06);
+    outline-offset: 2px;
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  .accreditations-grid {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    justify-items: center;
+  }
+
+  .accreditations-header {
+    margin-left: 0;
+    padding-left: 16px;
+    justify-content: flex-start;
+  }
+
+  .header-line {
+    margin-right: 12px;
+  }
+
+  .accreditation-card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 425px) {
+  .accreditation-card {
+    max-width: 320px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 390px) {
+  .accreditation-card {
+    max-width: 300px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 320px) {
+  .accreditation-card {
+    max-width: 260px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 2500px) {
+  .accreditations-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px 110px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-items: center;
+  }
+
+  .accreditation-card {
+    padding: 26px 20px;
+    min-height: 160px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  }
+
+  .card-image-container {
+    max-height: 110px;
+  }
+
+  .accreditation-card p {
+    font-size: 0.95em;
+  }
+
+  .accreditations-header {
+    margin-left: 0;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .awards-container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 40px;
+  }
+
+  .awards-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 36px 40px;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    padding: 10px 8px 30px 8px;
+  }
+
+  .award-logo-container {
+    height: 110px;
+    max-width: 220px;
+    padding: 8px;
+  }
+  .award-logo-container img {
+    max-height: 96px;
+    width: auto;
+  }
 }
