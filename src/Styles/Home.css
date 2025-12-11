@@ -993,7 +993,15 @@
   .edu-image {
     height: 300px;
   }
-
+  .edu-search-box{
+    width: 180px;
+  }
+  .edu-search-box .edu-search-input{
+    height: 40px;
+    font-size: 12px;
+   
+   
+  }
   .edu-image2 {
     height: 250px;
   }
