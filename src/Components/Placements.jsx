@@ -17,7 +17,8 @@ const placements = [
   { id: 1, img: award1 },
   { id: 2, img: award2 },
   { id: 3, img: award3 },
-  { id: 4, img: award2 },
+  { id: 4, img: award3 },
+  { id: 5, img: award3 },
 ];
 
 const logos = [ashok, zoho, tcs, accenture, techm];
@@ -27,29 +28,44 @@ export default function Placements() {
     <div className="placements-section">
       {/* Heading */}
       <div className="placements-header">
-        <h2><span className="highlights">|</span>PLACEMENTS</h2>
-        <p>
-          Empowering Students With <br /><span className="highlight-content">Industry Ready Careers</span>
-        </p>
+        <div className="header-left">
+          <h2><span className="highlights">|</span>PLACEMENTS</h2>
+        </div>
+        <div className="header-right">
+          <p>
+            Empowering Students With <br /><span className="highlight-content">Industry Ready Careers</span>
+          </p>
+        </div>
       </div>
 
-      {/* Placement Cards */}
-      <div className="placements-cards">
-        {placements.map((p) => (
-          <div key={p.id} className="placement-card">
-            <img src={p.img} alt="Placement" />
-          </div>
-        ))}
+      {/* Placement Cards - Carousel Style */}
+      <div className="placements-carousel">
+        <div className="carousel-container">
+          {placements.map((p, index) => (
+            <div
+              key={p.id}
+              className="carousel-card"
+            >
+              <div className="card-content">
+                <img src={p.img} alt="Placement" />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Recruiters */}
       <div className="recruiters">
         <div className="logo-slider">
-            <h3>Our Top <br />Recruiters</h3>
-          <div className="logo-track">
-            {logos.concat(logos).map((logo, i) => (
-              <img key={i} src={logo} alt="logo" />
-            ))}
+          <h3>Our Top <br />Recruiters</h3>
+          <div className="slider-container">
+            <div className="logo-track">
+              {logos.concat(logos).map((logo, i) => (
+                <div className="logo-wrapper" key={i}>
+                  <img src={logo} alt="logo" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

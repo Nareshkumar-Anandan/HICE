@@ -1087,6 +1087,7 @@
   .counter-wrapper{
     flex-direction: row;
     gap: 10px;
+   
   }
   .counter-box{
     width: 80px !important;
@@ -1104,7 +1105,7 @@
   }
 
   .counter-box p {
-    font-size: 12px !important;
+    font-size: 8px !important;
     align-self: center;
   }
 }
