@@ -25,7 +25,10 @@ const Gallery = React.lazy(() => import("./Components/Gallery.jsx"));
 const InformationTech = React.lazy(() => import("./Components/InformationTech.jsx"));
 const Principles = React.lazy(() => import("./Components/Principles.jsx"));
 const ClassRoom = React.lazy(() => import("./Components/ClassRoom.jsx"));
-
+const Library = React.lazy(() => import("./Components/Library.jsx"));
+const Hostel = React.lazy(() => import("./Components/Hostel.jsx"));
+const Canteen = React.lazy(() => import("./Components/Canteen.jsx"));
+const Sports = React.lazy(() => import("./Components/Sports.jsx"));
 
 // ⭐ GLOBAL ROUTE-LEVEL LOADER COMPONENT
 // ⭐ GLOBAL ROUTE-LEVEL LOADER COMPONENT
@@ -96,6 +99,10 @@ function App() {
       import("./Components/InformationTech.jsx");
       import("./Components/Principles.jsx");
       import("./Components/ClassRoom.jsx");
+      import("./Components/Library.jsx");
+      import("./Components/Hostel.jsx");
+      import("./Components/Canteen.jsx");
+      import("./Components/Sports.jsx");
     }, 1500);
   }, []);
 
@@ -124,6 +131,10 @@ function App() {
           <Route path="/programs/information-technology" element={<InformationTech />} />
           <Route path="/principal-desk" element={<Principles />} />
           <Route path="/classroom" element={<ClassRoom />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/hostel" element={<Hostel />} />
+          <Route path="/canteen" element={<Canteen />} />
+          <Route path="/sports" element={<Sports />} />
         </Routes>
       </Suspense>
     </Router>
