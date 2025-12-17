@@ -27,7 +27,7 @@ const Principles = React.lazy(() => import("./Components/Principles.jsx"));
 const ClassRoom = React.lazy(() => import("./Components/ClassRoom.jsx"));
 const Admission = React.lazy(() => import("./Components/AdmissionInformation.jsx"));
 const AdmissionPolicy = React.lazy(() => import("./Components/AdmissionPolicy.jsx"));
-
+const FeedbackGrievance = React.lazy(() => import("./Components/FeedbackGrievance.jsx"));
 
 // ⭐ GLOBAL ROUTE-LEVEL LOADER COMPONENT
 // ⭐ GLOBAL ROUTE-LEVEL LOADER COMPONENT
@@ -100,6 +100,7 @@ function App() {
       import("./Components/ClassRoom.jsx");
       import("./Components/AdmissionInformation.jsx");
       import("./Components/AdmissionPolicy.jsx");
+      import("./Components/FeedbackGrievance.jsx");
     }, 1500);
   }, []);
 
@@ -130,6 +131,7 @@ function App() {
           <Route path="/classroom" element={<ClassRoom />} />
           <Route path="/admission" element={<Admission />} />
           <Route path="/admission-policy" element={<AdmissionPolicy />} />
+          <Route path="/feedback-grievance" element={<FeedbackGrievance />} />
          
         </Routes>
       </Suspense>

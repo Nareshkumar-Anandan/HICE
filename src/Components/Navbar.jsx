@@ -125,9 +125,9 @@ const NAV_DATA = {
         desc: "Promoting Sustainable Development Goals through education, innovation, and responsible campus initiatives.",
       },
       {
-        title: "Educational Philosophy",
-        path: "/educational-philosophy",
-        desc: "Our educational philosophy focuses on holistic learning that nurtures knowledge, values, and real-world skills.",
+        title: "Feedback & Grievance",
+        path: "/feedback-grievance",
+        desc: "Submit feedback or grievances through our official portal of AICTE.",
       },
       {
         title: "Magazine",
