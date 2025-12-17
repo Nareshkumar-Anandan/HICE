@@ -6,6 +6,7 @@ import "../Styles/Navbar.css";
 import logoLight from "../Assets/HICElogo.png";
 import logoDark from "../Assets/HICEdarklogo.png";
 import overViewIcon from "../Assets/Vector/Overview.png";
+import Prospectus from "../Assets/Documents/Admission-Brouchure-25-26.pdf";
 
 // =============================================================================
 // 📌 DATA CONFIGURATION
@@ -69,18 +70,20 @@ const NAV_DATA = {
         desc: "Our Admission Policy ensures fair evaluation, equal opportunity, and a structured process for selecting deserving candidates.",
       },
       {
-        title: "Application Form",
-        path: "/admission-form",
-        desc: "The Application Form allows prospective students to submit their personal, academic, and program details.",
-      },
+  title: "Application Form",
+  path: "https://docs.google.com/forms/d/e/1FAIpQLSenAMxSrhytfELCOQ0t2HCzGMroLrRrv3n7hKblW4bNWvCv5A/viewform?usp=publish-editor",
+  external: true,
+  desc: "Apply online through our official admission application form.",
+},
       {
         title: "Prospectus",
-        path: "/prospectus",
+        path: Prospectus,
         desc: "Our Prospectus offers detailed insights into courses, campus life, faculty excellence, and opportunities.",
       },
       {
         title: "Scholarships",
         path: "/scholarships",
+        underDevelopment: true,
         desc: "Scholarships are offered to support eligible students by recognizing academic excellence and providing financial assistance.",
       },
     ],
@@ -254,7 +257,7 @@ const Navbar = () => {
   };
 
   // Safe Navigation Helper to stop bubbling
-  const handleNavClick = (e, path) => {
+  const handleNavClick = (e, path, external = false,isUnderDev = false) => {
     e.stopPropagation();
     if (window.innerWidth <= 992) {
       // Mobile approach: prevent default navigation if it has children? 
@@ -263,6 +266,24 @@ const Navbar = () => {
       // Standard UX: Click text -> Go to link. Click arrow -> Open submenu.
       // But let's support your logic:
     }
+     // 🚧 Under Development Page
+  if (isUnderDev) {
+    alert("🚧 This page is under development. Please check back later.");
+    closeAll();
+    return;
+  }
+    // If it's a PDF, open in new tab
+  if (typeof path === "string" && path.endsWith(".pdf")) {
+    window.open(path, "_blank");
+    closeAll();
+    return;
+  }
+  // External links (Google Form, etc.)
+  if (external || path.startsWith("http")) {
+    window.open(path, "_blank", "noopener,noreferrer");
+    closeAll();
+    return;
+  }
     navigate(path);
     closeAll();
   };
@@ -374,7 +395,7 @@ const Navbar = () => {
                       <div
                         key={index}
                         className="megamenu-link-item"
-                        onClick={(e) => handleNavClick(e, item.path)}
+                        onClick={(e) => handleNavClick(e, item.path, item.external,  item.underDevelopment)}
                       >
                         <h3>
                           {item.title}

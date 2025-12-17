@@ -1,0 +1,287 @@
+/* Main Wrapper */
+.admission-info-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f9fafb;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Info Container */
+.admission-info-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* General Section Styles */
+.info-section {
+    margin-bottom: 4rem;
+    padding: 2rem;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.info-section.alt-bg {
+    background-color: #f0fdf4;
+    /* Very light green hint */
+    border: 1px solid #dcfce7;
+}
+
+.section-title {
+    font-family: 'Neuton', serif;
+    font-size: 2.2rem;
+    color: #1a202c;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #f1c40f;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Programs Grid */
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.program-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: #007bff;
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.program-card h3 {
+    font-size: 1.3rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.program-card p {
+    color: #718096;
+    line-height: 1.5;
+}
+
+/* Eligibility Criteria */
+.eligibility-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.eligibility-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.eligibility-box h3 {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+.eligibility-list {
+    list-style: none;
+    padding: 0;
+}
+
+.eligibility-list li {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #4a5568;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.eligibility-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Admission Timeline */
+.timeline-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+}
+
+.timeline-step {
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    z-index: 2;
+    position: relative;
+}
+
+.step-content h4 {
+    font-size: 1.1rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.step-content p {
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+/* Tables */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.info-table th,
+.info-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.info-table th {
+    background-color: #2d3748;
+    color: white;
+    font-weight: 600;
+}
+
+.info-table tr:hover {
+    background-color: #f7fafc;
+}
+
+.total-row {
+    background-color: #edf2f7 !important;
+    font-size: 1.1rem;
+}
+
+/* Documents Checklist */
+.documents-checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.checklist-item {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+    font-size: 1rem;
+    color: #4a5568;
+    transition: transform 0.2s;
+}
+
+.checklist-item:hover {
+    transform: translateX(5px);
+    background: #e6f7ff;
+}
+
+/* Contact Info */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.contact-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: #1a202c;
+    color: white;
+    border-radius: 12px;
+}
+
+.contact-card h4 {
+    font-size: 1.2rem;
+    color: #f1c40f;
+    margin-bottom: 1rem;
+}
+
+.contact-card p {
+    margin-bottom: 0.5rem;
+    color: #cbd5e0;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .eligibility-container {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeline-step {
+        width: 100%;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 1rem;
+    }
+
+    .step-number {
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+}

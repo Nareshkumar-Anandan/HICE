@@ -58,6 +58,31 @@
   animation: fadeIn 1s ease-out 1.4s both;
 }
 
+/* Ensuring Parent is Flex */
+.hero-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 60px;
+  height: 100%;
+}
+
+/* Hero Text - Ensuring Centering */
+.hero-text {
+  position: relative;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 1.2s ease-out 0.5s both;
+  gap: 15px;
+  width: max-content;
+  max-width: 90%;
+  left: auto;
+  transform: none;
+}
+
 /* Main Content */
 .main-content {
   padding: 4rem 0;
@@ -568,12 +593,12 @@
   background: white;
 }
 
-.checkbox-label input[type="checkbox"]:checked + .checkmark {
+.checkbox-label input[type="checkbox"]:checked+.checkmark {
   background: #00929F;
   border-color: #00929F;
 }
 
-.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+.checkbox-label input[type="checkbox"]:checked+.checkmark::after {
   content: '✓';
   color: white;
   font-size: 14px;
@@ -584,7 +609,7 @@
   border-color: #00929F;
 }
 
-.checkbox-label input[type="checkbox"]:focus + .checkmark {
+.checkbox-label input[type="checkbox"]:focus+.checkmark {
   outline: 2px solid #00929F;
   outline-offset: 2px;
 }
@@ -948,10 +973,12 @@
     opacity: 0;
     transform: translateY(80px) rotateX(20deg) scale(0.8);
   }
+
   60% {
     opacity: 0.8;
     transform: translateY(-15px) rotateX(-5deg) scale(1.05);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) rotateX(0deg) scale(1);
@@ -963,6 +990,7 @@
     opacity: 0;
     transform: translateY(70px) scale(0.9);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -974,6 +1002,7 @@
     transform: translateY(30px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -996,6 +1025,7 @@
     transform: translateX(-50px);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -1007,6 +1037,7 @@
     transform: translateX(50px);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -1018,6 +1049,7 @@
     transform: translateY(-30px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -1028,6 +1060,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -1037,6 +1070,7 @@
   from {
     width: 0;
   }
+
   to {
     width: 69px;
   }
@@ -1046,9 +1080,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -1259,6 +1295,7 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
+
   .step-card,
   .application-form,
   .instructions-card,
@@ -1269,6 +1306,7 @@
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   ::before,
   ::after {
