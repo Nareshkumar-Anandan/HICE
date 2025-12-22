@@ -117,7 +117,10 @@
   border-radius: 2px;
 }
 
-/* Steps Section */
+/* =========================
+   Steps Section
+   ========================= */
+
 .steps-section {
   margin-bottom: 5rem;
   opacity: 0;
@@ -136,9 +139,7 @@
   gap: 2rem;
   margin-top: 3rem;
   position: relative;
-
 }
-
 
 .step-card {
   background: white;
@@ -153,6 +154,12 @@
   transform: translateY(50px) rotateX(10deg);
   animation: stepCardIn 0.8s ease-out forwards;
   cursor: pointer;
+
+  /* Uniform height for all step cards */
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .step-card::before {
@@ -215,7 +222,7 @@
 }
 
 .step-icon {
-  margin: 2rem auto 1.5rem;
+  margin: 2.5rem auto 1.5rem;
   width: 70px;
   height: 70px;
   display: flex;
@@ -257,6 +264,7 @@
   font-weight: 700;
   font-size: 1.125rem;
   margin-bottom: 0.75rem;
+  margin-top: 0.5rem;
   color: #1a202c;
   transition: color 0.3s ease;
 }
@@ -277,14 +285,10 @@
   color: rgba(255, 255, 255, 0.95);
 }
 
-/* Center the last step when it's alone */
-.steps-container .step-card:last-child:nth-child(5) {
-  grid-column: 1 / -1;
-  width: 220px;
-  margin: 0 auto;
-}
+/* =========================
+   Application Section
+   ========================= */
 
-/* Application Section */
 .application-section {
   margin-bottom: 5rem;
   opacity: 0;
@@ -352,6 +356,13 @@
   animation: gradientShift 3s ease-in-out infinite;
 }
 
+/* LOGIN MODE – make the card more compact & centered */
+.application-form.login-mode {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Tabs */
 .form-tabs {
   display: flex;
   gap: 0.5rem;
@@ -649,6 +660,37 @@
   cursor: not-allowed;
 }
 
+/* login specific submit styles – keep same teal theme */
+.application-form.login-mode .login-submit-btn {
+  background: linear-gradient(135deg, #00929F, #007A85);
+  box-shadow: 0 12px 32px rgba(0, 146, 159, 0.35);
+}
+
+
+/* Forgot password button */
+.forgot-password-btn {
+  background: transparent;
+  border: none;
+  color: #1d4ed8;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 0.25rem;
+  font-family: 'Outfit', sans-serif;
+}
+
+.forgot-password-btn:hover {
+  text-decoration: underline;
+}
+
+/* smaller spacing for remember text */
+.login-remember {
+  margin-bottom: 1.5rem;
+}
+
+/* Resend button (register only) */
 .resend-btn {
   background: transparent;
   color: #00929F;
@@ -779,7 +821,10 @@
   box-shadow: 0 4px 12px rgba(0, 146, 159, 0.15);
 }
 
-/* Support Section */
+/* =========================
+   Support Section
+   ========================= */
+
 .support-section {
   margin-bottom: 3rem;
   opacity: 0;
@@ -919,7 +964,10 @@
   font-weight: 500;
 }
 
-/* Keyframe Animations */
+/* =========================
+   Keyframe Animations
+   ========================= */
+
 @keyframes stepCardIn {
   0% {
     opacity: 0;
@@ -963,7 +1011,12 @@
 
 @keyframes slideInUp {
   from {
-    transform: translateY(1s ease-out 1s both);
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
@@ -1037,11 +1090,14 @@
   }
 }
 
-/* Responsive Design */
+/* =========================
+   Responsive Design
+   ========================= */
+
 @media (max-width: 1200px) {
   .application-container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .steps-container {
@@ -1049,17 +1105,93 @@
   }
 }
 
+/* Laptop / small desktop */
+/* Laptop / small desktop – 1024px fix */
 @media (max-width: 1024px) {
+  .apply-now-page {
+    overflow-x: hidden;
+  }
+
+  .apply-now-page .main-content {
+    padding: 3rem 0;
+  }
+
+  .apply-now-page .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* Form + instructions: single column so it never overflows */
+  .application-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .application-form,
+  .instructions-card {
+    width: 100%;
+  }
+
+  /* Login card also full-width on 1024 */
+  .application-form.login-mode {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Make input rows single column to avoid horizontal overflow */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Steps section – 2 columns, compact cards */
+  .steps-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .step-card {
+    padding: 2rem 1.5rem;
+    min-height: 300px;
+    transform: none;
+  }
+
+  .step-card:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+
+  /* Support card stacked & centered */
   .support-card {
     flex-direction: column;
     text-align: center;
     gap: 2rem;
+    padding: 2.5rem 1.5rem;
   }
 
   .support-contact {
     justify-content: center;
   }
+
+  .support-hours {
+    justify-content: center;
+  }
+
+  /* Hero text tweaks so it doesn’t push width */
+  .hero-title {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    padding: 0 1rem;
+    max-width: 100%;
+  }
 }
+
 
 @media (max-width: 768px) {
   .container {
@@ -1149,7 +1281,8 @@
 /* Focus styles for accessibility */
 .submit-btn:focus,
 .resend-btn:focus,
-.refresh-captcha:focus {
+.refresh-captcha:focus,
+.forgot-password-btn:focus {
   outline: 3px solid #00929F;
   outline-offset: 2px;
 }

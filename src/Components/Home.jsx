@@ -569,7 +569,7 @@ const Home = () => {
                 Rich collection supporting learning, research, and academic
                 excellence daily.
               </p>
-              <h4><a href="#" className="explore-btn">Explore Now <CircleArrowRight size={44} /></a></h4>
+              <h4><a href="/library" className="explore-btn">Explore Now <CircleArrowRight size={44} /></a></h4>
             </div>
           </div>
 
@@ -594,7 +594,7 @@ const Home = () => {
               <p>
                 Our cafeteria is a great place to catch up with friends over lunch.
               </p>
-              <h4><a href="#" className="explore-btn">Explore Now <CircleArrowRight size={44} /></a></h4>
+              <h4><a href="/canteen" className="explore-btn">Explore Now <CircleArrowRight size={44} /></a></h4>
             </div>
           </div>
 
@@ -619,7 +619,7 @@ const Home = () => {
                 Landscaped gardens provide beautiful recreational and outdoor
                 learning spaces.
               </p>
-              <h4><a href="#" className="explore-btn">Explore Now<CircleArrowRight size={44} /></a></h4>
+              <h4><a href="/sports" className="explore-btn">Explore Now<CircleArrowRight size={44} /></a></h4>
             </div>
           </div>
         </div>

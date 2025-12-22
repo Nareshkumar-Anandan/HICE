@@ -36,6 +36,11 @@ import Footer from './Footer';
 
 const ApplyNow = () => {
   const [activeStep, setActiveStep] = useState(1);
+
+  // Which tab is active: 'register' or 'login'
+  const [authTab, setAuthTab] = useState('register');
+
+  // Register form data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -47,8 +52,17 @@ const ApplyNow = () => {
     course: '',
     captcha: '',
   });
+
+  // Login form data
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: '',
+    remember: false,
+  });
+
   const [isVisible, setIsVisible] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('idle');
+  const [submitStatus, setSubmitStatus] = useState('idle');      // register status
+  const [loginStatus, setLoginStatus] = useState('idle');        // login status
   const [selectedProgram, setSelectedProgram] = useState('');
   const [captchaValue, setCaptchaValue] = useState('79c785');
 
@@ -74,9 +88,18 @@ const ApplyNow = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleLoginInputChange = (e) => {
+    const { name, type, checked, value } = e.target;
+    setLoginData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  // Register submit
+  const handleRegisterSubmit = (e) => {
     e.preventDefault();
-    
+
     // Validate captcha
     if (formData.captcha !== captchaValue) {
       alert('Captcha does not match. Please try again.');
@@ -91,6 +114,17 @@ const ApplyNow = () => {
     setTimeout(() => {
       setSubmitStatus('idle');
     }, 3000);
+  };
+
+  // Login submit
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    setLoginStatus('success');
+    console.log('Login attempt:', loginData);
+
+    setTimeout(() => {
+      setLoginStatus('idle');
+    }, 2000);
   };
 
   const steps = [
@@ -127,25 +161,26 @@ const ApplyNow = () => {
   return (
     <div className="apply-now-page">
       {/* Hero Section */}
-      {/* Hero Section */}
-                 <section className="hero-section">
-                   <div className="hero-background">
-                     <img src={campusBackground} alt="Campus Background" className="hero-bg-image" />
-                   </div>
-           
-                   <div className="hero-content">
-           
-                     {/* Hero Text */}
-                     <div className="hero-text">
-                       <h1 className="hero-title">Our Trustee</h1>
-                       <div className="breadcrumb"><a href="/" style={{ textDecoration:"none", color:"white"}}>Home</a> &gt; <a href="/applyNow" style={{ textDecoration:"none", color:"#f4b400"}}>Apply Now</a></div>
-                       <p className="hero-description">
-                         If you are passionate and driven, explore our current openings across
-                         Hindusthan Institutions and apply.
-                       </p>
-                     </div>
-                   </div>
-                 </section>
+      <section className="hero-section">
+        <div className="hero-background">
+          <img src={campusBackground} alt="Campus Background" className="hero-bg-image" />
+        </div>
+
+        <div className="hero-content">
+          {/* Hero Text */}
+          <div className="hero-text">
+            <h1 className="hero-title">Our Trustee</h1>
+            <div className="breadcrumb">
+              <a href="/" style={{ textDecoration: "none", color: "white" }}>Home</a> &gt;{" "}
+              <a href="/applyNow" style={{ textDecoration: "none", color: "#f4b400" }}>Apply Now</a>
+            </div>
+            <p className="hero-description">
+              If you are passionate and driven, explore our current openings across
+              Hindusthan Institutions and apply.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Main Content */}
       <main className="main-content">
@@ -155,185 +190,282 @@ const ApplyNow = () => {
             <div className="application-container">
               <div className="form-section">
                 <div className="form-header">
-                  <h2>Admission Application</h2>
-                  <p>Fill out the details below to start your admission process</p>
+                  <h2>{authTab === 'register' ? 'Admission Application' : 'Admission Open'}</h2>
+                  <p>
+                    {authTab === 'register'
+                      ? 'Fill out the details below to start your admission process'
+                      : 'Login to continue your application or check your status'}
+                  </p>
                 </div>
 
-                {submitStatus === 'success' && (
+                {/* Register success message only for Register tab */}
+                {authTab === 'register' && submitStatus === 'success' && (
                   <div className="form-message success">
                     <CheckCircle size={20} />
                     <p>Application submitted successfully! Check your email for verification link.</p>
                   </div>
                 )}
 
-                <form className="application-form" onSubmit={handleSubmit}>
+                {/* Login success / info message */}
+                {authTab === 'login' && loginStatus === 'success' && (
+                  <div className="form-message success">
+                    <CheckCircle size={20} />
+                    <p>Login successful! Redirecting to your dashboard...</p>
+                  </div>
+                )}
+
+                <form
+                  className={`application-form ${authTab === 'login' ? 'login-mode' : ''}`}
+                  onSubmit={authTab === 'register' ? handleRegisterSubmit : handleLoginSubmit}
+                >
+                  {/* Tabs */}
                   <div className="form-tabs">
-                    <button type="button" className="tab-btn active">Register</button>
-                    <button type="button" className="tab-btn">Login</button>
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label>Enter Name *</label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="Enter your full name"
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>Enter Email Address *</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="Enter your email"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-group phone-group">
-                    <label>Phone Number *</label>
-                    <div className="phone-input">
-                      <select className="country-code">
-                        <option value="+91">+91</option>
-                      </select>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="Enter phone number"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label>Select State *</label>
-                      <select
-                        name="state"
-                        value={formData.state}
-                        onChange={handleInputChange}
-                        required
-                      >
-                        <option value="">Select State</option>
-                        <option value="Tamil Nadu">Tamil Nadu</option>
-                        <option value="Karnataka">Karnataka</option>
-                        <option value="Kerala">Kerala</option>
-                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <label>Select City *</label>
-                      <select
-                        name="city"
-                        value={formData.city}
-                        onChange={handleInputChange}
-                        required
-                      >
-                        <option value="">Select City</option>
-                        <option value="Coimbatore">Coimbatore</option>
-                        <option value="Chennai">Chennai</option>
-                        <option value="Bangalore">Bangalore</option>
-                        <option value="Kochi">Kochi</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label>Select Institution *</label>
-                      <select
-                        name="institution"
-                        value={formData.institution}
-                        onChange={handleInputChange}
-                        required
-                      >
-                        <option value="">Select Institution</option>
-                        <option value="HICAS">HICAS - Hindusthan College of Arts and Science</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <label>Select Program *</label>
-                      <select
-                        name="program"
-                        value={formData.program}
-                        onChange={handleInputChange}
-                        required
-                      >
-                        <option value="">Select Program</option>
-                        <option value="Bachelor of Arts">Bachelor of Arts</option>
-                        <option value="Bachelor of Science">Bachelor of Science</option>
-                        <option value="Bachelor of Commerce">Bachelor of Commerce</option>
-                        <option value="Bachelor of Computer Applications">Bachelor of Computer Applications</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label>Select Course *</label>
-                    <select
-                      name="course"
-                      value={formData.course}
-                      onChange={handleInputChange}
-                      required
+                    <button
+                      type="button"
+                      className={`tab-btn ${authTab === 'register' ? 'active' : ''}`}
+                      onClick={() => setAuthTab('register')}
                     >
-                      <option value="">Select Course</option>
-                      <option value="Computer Science">Computer Science</option>
-                      <option value="Mathematics">Mathematics</option>
-                      <option value="Physics">Physics</option>
-                      <option value="Chemistry">Chemistry</option>
-                      <option value="English Literature">English Literature</option>
-                    </select>
+                      Register
+                    </button>
+                    <button
+                      type="button"
+                      className={`tab-btn ${authTab === 'login' ? 'active' : ''}`}
+                      onClick={() => setAuthTab('login')}
+                    >
+                      Login
+                    </button>
                   </div>
 
-                  <div className="captcha-group">
-                    <label>Enter Captcha *</label>
-                    <div className="captcha-container">
-                      <div className="captcha-display">
-                        <span className="captcha-text">{captchaValue}</span>
-                        <button 
-                          type="button" 
-                          className="refresh-captcha"
-                          onClick={generateNewCaptcha}
-                          title="Refresh Captcha"
-                        >
-                          <RefreshCw size={16} />
-                        </button>
+                  {/* REGISTER FORM CONTENT */}
+                  {authTab === 'register' && (
+                    <>
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label>Enter Name *</label>
+                          <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            placeholder="Enter your full name"
+                            required
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label>Enter Email Address *</label>
+                          <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            placeholder="Enter your email"
+                            required
+                          />
+                        </div>
                       </div>
-                      <input
-                        type="text"
-                        name="captcha"
-                        value={formData.captcha}
-                        onChange={handleInputChange}
-                        placeholder="Enter Captcha"
-                        required
-                      />
-                    </div>
-                  </div>
 
-                  <div className="agreement-section">
-                    <label className="checkbox-label">
-                      <input type="checkbox" required />
-                      <span className="checkmark"></span>
-                      I agree to receive information by signing up on Hindusthan Educational and Charitable Trust *
-                    </label>
-                  </div>
+                      <div className="form-group phone-group">
+                        <label>Phone Number *</label>
+                        <div className="phone-input">
+                          <select className="country-code">
+                            <option value="+91">+91</option>
+                          </select>
+                          <input
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            placeholder="Enter phone number"
+                            required
+                          />
+                        </div>
+                      </div>
 
-                  <button type="submit" className="submit-btn" disabled={submitStatus === 'success'}>
-                    {submitStatus === 'success' ? 'Application Submitted!' : 'Register'}
-                  </button>
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label>Select State *</label>
+                          <select
+                            name="state"
+                            value={formData.state}
+                            onChange={handleInputChange}
+                            required
+                          >
+                            <option value="">Select State</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                          </select>
+                        </div>
+                        <div className="form-group">
+                          <label>Select City *</label>
+                          <select
+                            name="city"
+                            value={formData.city}
+                            onChange={handleInputChange}
+                            required
+                          >
+                            <option value="">Select City</option>
+                            <option value="Coimbatore">Coimbatore</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Kochi">Kochi</option>
+                          </select>
+                        </div>
+                      </div>
 
-                  <button type="button" className="resend-btn">
-                    RESEND VERIFICATION EMAIL
-                  </button>
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label>Select Institution *</label>
+                          <select
+                            name="institution"
+                            value={formData.institution}
+                            onChange={handleInputChange}
+                            required
+                          >
+                            <option value="">Select Institution</option>
+                            <option value="HICAS">HICAS - Hindusthan College of Arts and Science</option>
+                          </select>
+                        </div>
+                        <div className="form-group">
+                          <label>Select Program *</label>
+                          <select
+                            name="program"
+                            value={formData.program}
+                            onChange={handleInputChange}
+                            required
+                          >
+                            <option value="">Select Program</option>
+                            <option value="Bachelor of Arts">Bachelor of Arts</option>
+                            <option value="Bachelor of Science">Bachelor of Science</option>
+                            <option value="Bachelor of Commerce">Bachelor of Commerce</option>
+                            <option value="Bachelor of Computer Applications">Bachelor of Computer Applications</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="form-group">
+                        <label>Select Course *</label>
+                        <select
+                          name="course"
+                          value={formData.course}
+                          onChange={handleInputChange}
+                          required
+                        >
+                          <option value="">Select Course</option>
+                          <option value="Computer Science">Computer Science</option>
+                          <option value="Mathematics">Mathematics</option>
+                          <option value="Physics">Physics</option>
+                          <option value="Chemistry">Chemistry</option>
+                          <option value="English Literature">English Literature</option>
+                        </select>
+                      </div>
+
+                      <div className="captcha-group">
+                        <label>Enter Captcha *</label>
+                        <div className="captcha-container">
+                          <div className="captcha-display">
+                            <span className="captcha-text">{captchaValue}</span>
+                            <button
+                              type="button"
+                              className="refresh-captcha"
+                              onClick={generateNewCaptcha}
+                              title="Refresh Captcha"
+                            >
+                              <RefreshCw size={16} />
+                            </button>
+                          </div>
+                          <input
+                            type="text"
+                            name="captcha"
+                            value={formData.captcha}
+                            onChange={handleInputChange}
+                            placeholder="Enter Captcha"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div className="agreement-section">
+                        <label className="checkbox-label">
+                          <input type="checkbox" required />
+                          <span className="checkmark"></span>
+                          I agree to receive information by signing up on Hindusthan Educational and Charitable Trust *
+                        </label>
+                      </div>
+
+                      <button
+                        type="submit"
+                        className="submit-btn"
+                        disabled={submitStatus === 'success'}
+                      >
+                        {submitStatus === 'success' ? 'Application Submitted!' : 'Register'}
+                      </button>
+
+                      <button type="button" className="resend-btn">
+                        RESEND VERIFICATION EMAIL
+                      </button>
+                    </>
+                  )}
+
+                  {/* LOGIN FORM CONTENT */}
+                  {authTab === 'login' && (
+  <div className="login-content">
+    <div className="form-group">
+      <label>Your Email *</label>
+      <input
+        type="email"
+        name="email"
+        value={loginData.email}
+        onChange={handleLoginInputChange}
+        placeholder="Your Email *"
+        required
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Your Password *</label>
+      <input
+        type="password"
+        name="password"
+        value={loginData.password}
+        onChange={handleLoginInputChange}
+        placeholder="Your Password *"
+        required
+      />
+    </div>
+
+    <div className="login-remember">
+      <label className="checkbox-label">
+        <input
+          type="checkbox"
+          name="remember"
+          checked={loginData.remember}
+          onChange={handleLoginInputChange}
+        />
+        <span className="checkmark"></span>
+        Check to remember your login details
+      </label>
+    </div>
+
+    <button
+      type="submit"
+      className="submit-btn login-submit-btn"
+      disabled={loginStatus === 'success'}
+    >
+      LOGIN
+    </button>
+
+    <button
+      type="button"
+      className="forgot-password-btn"
+      onClick={() => alert('Redirect to forgot password flow')}
+    >
+      FORGOT PASSWORD?
+    </button>
+  </div>
+)}
+
                 </form>
               </div>
 
@@ -341,14 +473,24 @@ const ApplyNow = () => {
                 <div className="instructions-card">
                   <h3>Instructions</h3>
                   <ul>
-                    <li>The online application is for admission to programmes offered in <strong>Hindusthan Educational and Charitable Trust</strong>.</li>
+                    <li>
+                      The online application is for admission to programmes offered in{' '}
+                      <strong>Hindusthan Educational and Charitable Trust</strong>.
+                    </li>
                     <li><strong>Application Form Fee is Non-Refundable</strong>.</li>
-                    <li>Email ID submitted at the time of registration will be used for all correspondences until enrolment is completed. <strong>Change in Email ID will NOT be permitted under any circumstances</strong>.</li>
+                    <li>
+                      Email ID submitted at the time of registration will be used for all correspondences
+                      until enrolment is completed. <strong>Change in Email ID will NOT be permitted under any circumstances</strong>.
+                    </li>
                   </ul>
 
                   <div className="query-section">
                     <h4>Hindusthan Educational and Charitable Trust Query Management System</h4>
-                    <p>Applicants are strongly advised to use Hindusthan Educational and Charitable Trust Query Management System (Hindusthan Educational and Charitable Trust-QMS), rather than emailing, to get a quick response.</p>
+                    <p>
+                      Applicants are strongly advised to use Hindusthan Educational and Charitable Trust
+                      Query Management System (Hindusthan Educational and Charitable Trust-QMS), rather
+                      than emailing, to get a quick response.
+                    </p>
 
                     <div className="steps-list">
                       <div className="step-item">1. Register and verify your email ID</div>
@@ -381,7 +523,6 @@ const ApplyNow = () => {
                     </div>
                     <h3>{step.title}</h3>
                     <p>{step.description}</p>
-                    {index < steps.length - 1 && <div className="step-connector"></div>}
                   </div>
                 );
               })}
@@ -416,7 +557,7 @@ const ApplyNow = () => {
           </div>
         </div>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

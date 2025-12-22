@@ -1,0 +1,417 @@
+/* Library.css (cloned from ClassRoom.css — selectors renamed to .library-root) */
+
+/* ========== Gallery ========== */
+.library-root .library-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.library-root .library-photo {
+  width: 300px;
+  height: 250px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.library-root .library-photo:hover {
+  transform: scale(1.05);
+}
+
+/* ========== Modal ========== */
+.library-root .library-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.library-root .library-modal-image {
+  width: 60%;
+  height: 70%;
+  object-fit: cover;
+  max-height: 85vh;
+}
+
+.library-root .library-close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+.library-root .library-left,
+.library-root .library-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.library-root .library-left { left: 40px; }
+.library-root .library-right { right: 40px; }
+
+/* ========== Feature area (anchor) ========== */
+.library-root .library-feature-block {
+  padding: 60px 80px;
+  height: 450px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* decorative circle (desktop default) */
+.library-root .library-feature-block .library-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  width: 1200px;
+  height: 600px;
+  border-radius: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    rgba(219, 162, 233, 0.55) 10%,
+    rgba(226, 162, 233, 0.4) 30%,
+    rgba(225, 162, 233, 0.2) 50%,
+    transparent 60%
+  );
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.library-root .library-feature-block .library-circle-head {
+  margin-top: 100px;
+  font-family: Outfit;
+  font-size: 38px;
+  font-weight: 700;
+  padding: 20px;
+  z-index: 1;
+}
+
+/* ========== Features (desktop absolute layout) ========== */
+.library-root .library-features {
+  position: relative;
+  width: 1000px;
+  margin: 70px auto;
+  border-radius: 50%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.library-root .library-feature-item {
+  position: absolute;
+  text-align: center;
+  justify-items: center;
+  font-weight: 600;
+  transition: transform 0.1s ease;
+  width: 200px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.library-root .library-feature-item .library-icon {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  align-items: center;
+  color: rgb(1, 129, 131);
+}
+
+.library-root .library-feature-item .library-icon:hover {
+  border: 2px solid #ffbb00ff;
+  color: rgb(12, 52, 54);
+}
+
+/* Positions around the oval (desktop) */
+.library-root .library-item-1 {
+  top: 50px;
+  left: 100%;
+  transform: translate(-50%, -20%);
+}
+
+.library-root .library-item-2 {
+  top: 0;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.library-root .library-item-3 {
+  top: -10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.library-root .library-item-4 {
+  top: 0;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.library-root .library-item-5 {
+  top: 50px;
+  left: 0;
+  transform: translate(-50%, -20%);
+}
+
+.library-root .library-feature-item .library-title {
+  font-family: Outfit;
+  font-size: 22px;
+  margin: 0;
+}
+
+/* ========== Responsive: Mobile (single integrated block) ========== */
+@media (max-width: 600px) {
+
+  .library-root .library-feature-block {
+    padding: 18px 12px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    box-sizing: border-box;
+    z-index: 2;
+    padding-bottom: 0;
+  }
+
+  /* stack vertically, one per row */
+  .library-root .library-feature-block .library-features {
+    width: 100%;
+    max-width: 420px;
+    margin: 10px auto 18px;  /* ← moved features downward */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+
+  .library-root .library-feature-block .library-features .library-feature-item {
+    position: static;
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 10px 6px;
+    box-sizing: border-box;
+    background: transparent;
+    transform: none;
+  }
+
+  .library-root .library-feature-block .library-features .library-feature-item .library-icon {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0;
+  }
+
+  .library-root .library-feature-block .library-features .library-feature-item .library-title {
+    font-size: 18px;
+    margin: 0;
+    line-height: 1.2;
+    color: #111;
+    font-weight: 600;
+  }
+
+  .library-root .library-photo {
+    width: 90%;
+    height: auto;
+    margin: 8px auto;
+  }
+
+  .library-root .library-modal-image {
+    width: 92%;
+    height: auto;
+    max-height: 80%;
+    object-fit: contain;
+  }
+
+  .library-root .library-left {
+    left: 10px;
+    font-size: 30px;
+  }
+
+  .library-root .library-right {
+    right: 10px;
+    font-size: 30px;
+  }
+
+  /* mobile: decorative circle smaller and sits after features */
+  .library-root .library-feature-block .library-circle {
+    position: relative;
+    margin: 12px auto 36px;
+    width: 100%;
+    max-width: 720px;
+    height: 180px;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+    margin-bottom: 0;
+  }
+
+  .library-root .library-feature-block .library-circle-head {
+    margin-top: -60px;
+    font-size: 16px;
+    padding: 6px 8px;
+    text-align: center;
+    z-index: 2;
+    padding-bottom: 0;
+  }
+
+  /* remove gap between circle & footer on mobile */
+  .library-root {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+}
+
+/* ========== Tablet (601–768px) ========== */
+@media (min-width: 601px) and (max-width: 768px) {
+
+  .library-root .library-feature-block {
+    padding: 40px;
+    height: auto;
+  }
+
+  .library-root .library-features {
+    width: 90%;
+    height: 360px;
+  }
+
+  .library-root .library-item-1 { left: 94%; top: 35%; }
+  .library-root .library-item-5 { left: 6%; top: 35%; }
+  .library-root .library-item-2 { top: 5%; }
+  .library-root .library-item-4 { top: 5%; }
+
+  .library-root .library-feature-block .library-circle {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 100%;
+    max-width: 1000px;
+    height: 350px;
+    z-index: 0;
+  }
+
+  .library-root .library-feature-block .library-circle-head {
+    font-size: 30px;
+    margin-top: -70px;
+  }
+}
+
+/* ========== 1024px (769–1024px) ========== */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .library-root .library-features {
+    width: 900px;
+    height: 380px;
+  }
+
+  .library-root .library-item-1 { left: 97%; }
+  .library-root .library-item-5 { left: 3%; }
+
+  .library-root .library-feature-block .library-circle {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 1050px;
+    height: 520px;
+    z-index: 0;
+  }
+
+  .library-root .library-feature-block .library-circle-head {
+    font-size: 34px;
+    margin-top: -200px;
+  }
+}
+
+/* ========== Desktop & large (>=1025px) ========== */
+@media (min-width: 1025px) {
+
+  .library-root .library-feature-block .library-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 1200px;
+    height: 600px;
+    z-index: 0;
+  }
+}
+
+/* ========== Large screens (>=1440px) - centered, same size ========== */
+@media (min-width: 1440px) {
+  .library-root .library-feature-block {
+    position: relative;
+    overflow: visible;
+  }
+
+  .library-root .library-feature-block .library-circle {
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 1200px;
+    height: 600px;
+    border-radius: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .library-root .library-feature-block .library-circle-head {
+    margin-top: -180px;
+    font-size: 40px;
+  }
+}

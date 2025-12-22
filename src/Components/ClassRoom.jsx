@@ -133,13 +133,41 @@ const ClassRoom = () => {
         </div>
       </div>
       {currentIndex !== null && (
-        <div className="modal">
-          <span className="close" onClick={closeModal}>&times;</span>
-          <img src={images[currentIndex]} alt="Full" className="modal-image" />
-          <button className="classroom-left" onClick={showPrev}>&#10094;</button>
-          <button className="classroom-right" onClick={showNext}>&#10095;</button>
-        </div>
-      )}
+  <div className="modal" onClick={closeModal}>   {/* Click ANYWHERE closes modal */}
+    
+    <span className="close" onClick={closeModal}>&times;</span>
+
+    {/* Stop propagation so clicking ON the image does NOT close modal */}
+    <img
+      src={images[currentIndex]}
+      alt="Full"
+      className="modal-image"
+      onClick={(e) => e.stopPropagation()}
+    />
+
+    <button
+      className="classroom-left"
+      onClick={(e) => {
+        e.stopPropagation();
+        showPrev();
+      }}
+    >
+      &#10094;
+    </button>
+
+    <button
+      className="classroom-right"
+      onClick={(e) => {
+        e.stopPropagation();
+        showNext();
+      }}
+    >
+      &#10095;
+    </button>
+
+  </div>
+)}
+
       <Footer/>
     </div>
   );

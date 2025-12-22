@@ -1,4 +1,7 @@
-.classroom-photos {
+/* ClassRoom.css (final — integrated mobile overlap fix) */
+
+/* ========== Gallery ========== */
+.classroom-container .classroom-photos {
   display: flex;
   justify-content: center;
   gap: 35px;
@@ -6,19 +9,20 @@
   padding: 20px;
 }
 
-.photo-thumbnail {
+.classroom-container .photo-thumbnail {
   width: 300px;
   height: 250px;
   object-fit: cover;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-.photo-thumbnail:hover {
+.classroom-container .photo-thumbnail:hover {
   transform: scale(1.05);
 }
 
-.modal {
+/* ========== Modal ========== */
+.classroom-container .modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -29,14 +33,18 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.modal-image {
+.classroom-container .modal-image {
   width: 60%;
   height: 70%;
+  object-fit: cover;
+  max-height: 85vh;
 }
 
-.close {
+.classroom-container .close {
   position: absolute;
   top: 20px;
   right: 40px;
@@ -45,8 +53,8 @@
   cursor: pointer;
 }
 
-.classroom-left,
-.classroom-right {
+.classroom-container .classroom-left,
+.classroom-container .classroom-right {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -57,44 +65,57 @@
   cursor: pointer;
 }
 
-.classroom-left {
-  left: 40px;
+.classroom-container .classroom-left { left: 40px; }
+.classroom-container .classroom-right { right: 40px; }
+
+/* ========== Feature area (anchor) ========== */
+.classroom-container .classroom-featcher {
+  padding: 60px 80px;
+  height: 450px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
 }
 
-.classroom-right {
-  right: 40px;
+/* decorative circle (desktop default) */
+.classroom-container .classroom-featcher .circle-design {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  width: 1200px;
+  height: 600px;
+  border-radius: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    rgba(219, 162, 233, 0.55) 10%,
+    rgba(226, 162, 233, 0.4) 30%,
+    rgba(225, 162, 233, 0.2) 50%,
+    transparent 60%
+  );
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 0;
 }
-.classroom-featcher{
-    padding: 60px 80px;
-    height: 450px;
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-}
-.circle-design{
-    position: absolute;
-    top:1600px;
-    width:1200px;
-    height: 600px;
-    border-radius: 100%;
-    text-align: center;
-    align-items: center;
-    background: linear-gradient(
-  180deg,
-  rgba(219, 162, 233, 0.55) 10%,      
-  rgba(226, 162, 233, 0.4) 30%,     
-  rgba(225, 162, 233, 0.2) 50%,     
-  transparent 60%);
 
+.classroom-container .classroom-featcher .circle-head {
+  margin-top: 100px;
+  font-family: Outfit;
+  font-size: 38px;
+  font-weight: 700;
+  padding: 20px;
+  z-index: 1;
 }
-.circle-head{
-    margin-top: 100px;
-    font-family: outfit;
-    font-size: 38px;
-    font-weight: 700;
-    padding: 20px;
-}
-.features-container{
+
+/* ========== Features (desktop absolute layout) ========== */
+.classroom-container .features-container {
   position: relative;
   width: 1000px;
   margin: 70px auto;
@@ -103,16 +124,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  }
-.feature-item {
+  box-sizing: border-box;
+}
+
+.classroom-container .feature-item {
   position: absolute;
   text-align: center;
   justify-items: center;
   font-weight: 600;
   transition: transform 0.1s ease;
   width: 200px;
+  box-sizing: border-box;
+  z-index: 2;
 }
-.feature-item .icon {
+
+.classroom-container .feature-item .icon {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -123,42 +149,269 @@
   align-items: center;
   color: rgb(1, 129, 131);
 }
-.feature-item .icon:hover{
+
+.classroom-container .feature-item .icon:hover {
   border: 2px solid #ffbb00ff;
   color: rgb(12, 52, 54);
 }
 
-/* Positions around the oval */
-.item-1 {
+/* Positions around the oval (desktop) */
+.classroom-container .item-1 {
   top: 50px;
   left: 100%;
   transform: translate(-50%, -20%);
 }
 
-.item-2 {
+.classroom-container .item-2 {
   top: 0;
   left: 80%;
   transform: translate(-50%, -50%);
 }
 
-.item-3 {
+.classroom-container .item-3 {
   top: -10%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.item-4 {
+.classroom-container .item-4 {
   top: 0;
   left: 20%;
   transform: translate(-50%, -50%);
 }
 
-.item-5 {
+.classroom-container .item-5 {
   top: 50px;
   left: 0;
   transform: translate(-50%, -20%);
 }
-.feature-item p{
+
+.classroom-container .feature-item p {
   font-family: Outfit;
   font-size: 22px;
+  margin: 0;
+}
+
+/* ========== Responsive: Mobile (single integrated block) ========== */
+@media (max-width: 600px) {
+
+  .classroom-container .classroom-featcher {
+    padding: 18px 12px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    box-sizing: border-box;
+    z-index: 2;
+    padding-bottom: 0;
+  }
+
+  /* stack vertically, one per row */
+  .classroom-container .classroom-featcher .features-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 10px auto 18px;  /* ← moved features downward */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+  .classroom-container .classroom-featcher .features-container .feature-item {
+    position: static;
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 10px 6px;
+    box-sizing: border-box;
+    background: transparent;
+    transform: none;
+  }
+
+  .classroom-container .classroom-featcher .features-container .feature-item .icon {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0;
+  }
+
+  .classroom-container .classroom-featcher .features-container .feature-item p {
+    font-size: 18px;
+    margin: 0;
+    line-height: 1.2;
+    color: #111;
+    font-weight: 600;
+  }
+
+  .classroom-container .photo-thumbnail {
+    width: 90%;
+    height: auto;
+    margin: 8px auto;
+  }
+
+  .classroom-container .modal-image {
+    width: 92%;
+    height: auto;
+    max-height: 80%;
+    object-fit: contain;
+  }
+
+  .classroom-container .classroom-left {
+    left: 10px;
+    font-size: 30px;
+  }
+
+  .classroom-container .classroom-right {
+    right: 10px;
+    font-size: 30px;
+  }
+
+  /* mobile: decorative circle smaller and sits after features */
+  .classroom-container .classroom-featcher .circle-design {
+    position: relative;
+    margin: 12px auto 36px;
+    width: 100%;
+    max-width: 720px;
+    height: 180px;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+    margin-bottom: 0;
+  }
+
+  .classroom-container .classroom-featcher .circle-head {
+    margin-top: -60px;
+    font-size: 16px;
+    padding: 6px 8px;
+    text-align: center;
+    z-index: 2;
+    padding-bottom: 0;
+  }
+
+  /* remove gap between circle & footer on mobile */
+  .classroom-container {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+}
+
+/* ========== Tablet (601–768px) ========== */
+@media (min-width: 601px) and (max-width: 768px) {
+
+  .classroom-container .classroom-featcher {
+    padding: 40px;
+    height: auto;
+  }
+
+  .classroom-container .features-container {
+    width: 90%;
+    height: 360px;
+  }
+
+  .classroom-container .item-1 { left: 94%; top: 35%; }
+  .classroom-container .item-5 { left: 6%; top: 35%; }
+  .classroom-container .item-2 { top: 5%; }
+  .classroom-container .item-4 { top: 5%; }
+
+  .classroom-container .classroom-featcher .circle-design {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 100%;
+    max-width: 1000px;
+    height: 350px;
+    z-index: 0;
+  }
+
+  .classroom-container .classroom-featcher .circle-head {
+    font-size: 30px;
+    margin-top: -70px;
+  }
+}
+
+/* ========== 1024px (769–1024px) ========== */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .classroom-container .features-container {
+    width: 900px;
+    height: 380px;
+  }
+
+  .classroom-container .item-1 { left: 97%; }
+  .classroom-container .item-5 { left: 3%; }
+
+  .classroom-container .classroom-featcher .circle-design {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 1050px;
+    height: 520px;
+    z-index: 0;
+  }
+
+  .classroom-container .classroom-featcher .circle-head {
+    font-size: 34px;
+    margin-top: -200px;
+  }
+}
+
+/* ========== Desktop & large (>=1025px) ========== */
+@media (min-width: 1025px) {
+
+  .classroom-container .classroom-featcher .circle-design {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 1200px;
+    height: 600px;
+    z-index: 0;
+  }
+}
+
+/* ========== Large screens (>=1440px) - centered, same size ========== */
+@media (min-width: 1440px) {
+  .classroom-container .classroom-featcher {
+    position: relative;
+    overflow: visible;
+  }
+
+  .classroom-container .classroom-featcher .circle-design {
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 1200px;
+    height: 600px;
+    border-radius: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .classroom-container .classroom-featcher .circle-head {
+    margin-top: -180px;
+    font-size: 40px;
+  }
 }

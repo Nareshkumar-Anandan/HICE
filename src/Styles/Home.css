@@ -904,10 +904,20 @@
     /* REMOVE OFFSET */
   }
 
-  /* Remove 3rd image on mobile */
-  .why-right-bottom {
-    display: none;
-  }
+ /* Place the vector inside the gap between stacked images (mobile fix) */
+.why-section .why-right-bottom {
+  display: block !important;
+  position: absolute;
+  left: 16px;
+  top: -25px;    
+  z-index: 5;
+}
+
+.why-section .why-right-bottom img {
+  width: 70px;
+  height: auto;
+}
+
 
   /* RIGHT TEXT BLOCK — MOBILE FIX */
   .why-right {
@@ -1115,5 +1125,137 @@
   .counter-box p {
     font-size: 8px !important;
     align-self: center;
+  }
+}
+
+/* === Tablet-only fix(Why Section): nudge left images inside left column (601px - 768px) === */
+@media (min-width: 601px) and (max-width: 768px) {
+  
+  .why-section .why-left {
+    position: relative;
+   
+  }
+
+  .why-section .why-left-top img {
+    position: absolute !important;
+    right: 12px;           
+    left: 0 !important; 
+    top: 8px;              
+    width: 62%;            
+    max-width: 340px;     
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    display: block;
+    z-index: 5;
+  }
+
+
+  
+  .why-section .why-left-bottom {
+    position: absolute;
+    right: 8px;
+    top: 160px;         
+    width: 72%;
+    max-width: 360px;
+    box-sizing: border-box;
+    z-index: 6;
+  }
+  .why-section .why-left-bottom img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    display: block;
+  }
+
+}
+
+/* ===== SAFE: Why-section fix for 769px - 1024px (only) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Ensure left column is the positioning context and doesn't clip images */
+  .why-section .why-container {
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .why-section .why-left {
+    width: 50%;                 /* reserve half for images */
+    max-width: 540px;
+    position: relative;         /* positioning context for absolute images */
+    overflow: visible;          /* do NOT hide images (keeps lazy-loading reliable) */
+    min-height: 320px;
+    box-sizing: border-box;
+    padding-left: 8px;
+  }
+
+  /* Top image pinned to left inside the left column */
+  .why-section .why-left-top img {
+    position: absolute !important;
+    left: 8px;
+    top: 12px;
+    width: 70%;
+    max-width: 340px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+    z-index: 5;
+    transform: none !important;
+    will-change: auto;
+    display: block;
+  }
+
+  /* Bottom image pinned lower inside same left column */
+  .why-section .why-left-bottom {
+    position: absolute;
+    right: 12px;                /* keep this inside left column */
+    top: 160px;                 /* push down below the top image */
+    width: 72%;
+    max-width: 380px;
+    box-sizing: border-box;
+    z-index: 6;
+    margin: 0;
+  }
+  .why-section .why-left-bottom img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 12px 22px rgba(0,0,0,0.12);
+    transform: none !important;
+    will-change: auto;
+    display: block;
+  }
+
+  /* Keep the text column intact (no side-by-side changes you don't want) */
+  .why-section .why-right {
+    width: 45%;
+    padding-left: 18px;
+    box-sizing: border-box;
+    /* do not change text flow or alignment */
+  }
+
+  /* Increase the decorative vector for better UI on 1024 */
+  .why-section .why-right-bottom {
+    display: block;
+    position: absolute;
+    left: 18px;                 /* inside left column near bottom */
+    bottom: -100px;
+    z-index: 4;
+  }
+  .why-section .why-right-bottom img {
+    width: 200px;               /* larger vector for 1024 view */
+    height: auto;
+  }
+
+  /* Title size tweak so it doesn't push layout */
+  .why-section .why-title {
+    font-size: 40px;
+    margin-bottom: 18px;
+  }
+
+  /* Paragraph rhythm for this range */
+  .why-section .why-right p {
+    font-size: 18px;
+    line-height: 1.75;
   }
 }
